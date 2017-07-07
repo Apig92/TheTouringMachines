@@ -1,8 +1,6 @@
 import pandas as pd
 import os
-
-
-# In[ ]:
+import numpy as np
 
 newpath ='/home/csstudent/Routesbyday'
 if not os.path.exists(newpath):
