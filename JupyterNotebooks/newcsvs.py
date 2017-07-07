@@ -10,15 +10,6 @@ import pandas as pd
 from collections import OrderedDict
 import os
 
-# Import package numpy for numeric computing
-import numpy as np
-
-# Import package matplotlib for visualisation/plotting
-import matplotlib.pyplot as plt
-
-#For showing plots directly in the notebook
-get_ipython().magic('matplotlib inline')
-
 
 # In[ ]:
 

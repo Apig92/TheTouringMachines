@@ -18,11 +18,6 @@ from collections import OrderedDict
 import numpy as np
 import os
 
-# Import package matplotlib for visualisation/plotting
-import matplotlib.pyplot as plt
-
-#For showing plots directly in the notebook
-get_ipython().magic('matplotlib inline')
 
 import json
 
