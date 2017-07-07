@@ -10,7 +10,7 @@ if not os.path.exists(newpath):
 directory = '/home/csstudent/CleanCSV'
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
-        x= "'"+filename+"'"
+        x= ""+filename+""
     df = pd.read_csv(x) # change for route (possibly programm to run all)
     df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
 
