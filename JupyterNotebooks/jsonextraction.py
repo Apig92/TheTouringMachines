@@ -1,28 +1,12 @@
-
-# coding: utf-8
-
-# In[ ]:
-
-
-
-
-# Extracting Json files for maps
-# 
-
-# In[1]:
-
 import pandas as pd
-from collections import OrderedDict
-
-# Import package numpy for numeric computing
-import numpy as np
 import os
 
 
 import json
+newpath ='/home/csstudent/routes_json'
+if not os.path.exists(newpath):
+    os.makedirs(newpath)
 
-
-# In[2]:
 directory = '/home/csstudent/CleanCSV'
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
@@ -30,48 +14,23 @@ for filename in os.listdir(directory):
     df = pd.read_csv(x) # change for route (possibly programm to run all)
     df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
 
-
-    # In[13]:
-
-    newpath ='/home/csstudent/routes_json'
-    if not os.path.exists(newpath):
-        os.makedirs(newpath)
-
-
-    # In[14]:
-
     #drop nulls
     df=df[df.JourneyPatternID != 'null']
 
 
-    # In[15]:
-
     df=df[df.StopID != 'null']
 
-
-    # In[16]:
 
     df['Date'] = pd.to_datetime(df['Date']) # change types
 
 
-    # In[17]:
-
     df['StopID'] = pd.to_numeric(df['StopID']) #change types (for JSON)
-
-
-    # In[18]:
 
     df= df.dropna( how='any', subset = ['JourneyPatternID', 'StopID'])
     pattern = df['JourneyPatternID'].unique()
 
-
-    # In[19]:
-
     df1 = df[df['AtStop'] == 1]
     #Only at stop to get Lat long
-
-
-    # In[20]:
 
     for p in pattern:
         df2 = df1[df1['JourneyPatternID'] == p ]
@@ -92,156 +51,3 @@ for filename in os.listdir(directory):
         data = json.dumps(json.loads(routedf.to_json(orient='records')), indent=2) # make a JSON File
         with open("/home/csstudent/routes_json/"+p+".json", 'w') as outfile:
            outfile.write(data)
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-

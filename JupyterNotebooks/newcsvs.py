@@ -1,13 +1,4 @@
-
-# coding: utf-8
-
-# Getting routes
-# 
-
-# In[ ]:
-
 import pandas as pd
-from collections import OrderedDict
 import os
 
 
@@ -17,8 +8,6 @@ newpath ='/home/csstudent/Routesbyday'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-
-# In[ ]:
 directory = '/home/csstudent/CleanCSV'
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
@@ -26,58 +15,16 @@ for filename in os.listdir(directory):
 
     df = pd.read_csv(x) # change for route (possibly programm to run all
     df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
-
-
-    # In[ ]:
-
     df1 = df[['Timestamp', 'LineID', 'JourneyPatternID', 'VehicleJourneyID',  'Congestion', 'Delay', 'StopID', 'AtStop', 'Date']].copy()
-
-
-    # In[ ]:
-
-    #df= df.dropna( how='any', subset = ['JourneyPatternID', 'StopID'])
     df1=df1[df1.JourneyPatternID != 'null']
-
-
-    # In[ ]:
-
     df1=df1[df1.StopID != 'null']
-
-
-    # In[ ]:
-
     df1 = df1[df1['AtStop'] == 1]
-
-
-    # In[ ]:
-
     df1= df1.dropna( how='any', subset = ['JourneyPatternID', 'StopID'])
-
-
-    # In[ ]:
-
     jpid = df1['JourneyPatternID'].unique()
-
-
-    # In[ ]:
-
     #need to change type of date
     df1['Date'] = pd.to_datetime(df['Date'])
-
-
-    # In[ ]:
-
     df1['Seconds'] = np.nan # new column that will be filled in
-
-
-    # In[ ]:
-
     routeID = df1.iloc[1]['LineID']
-
-
-    # In[ ]:
-
-
     for day in range (7):
         df_day = df1[df1['Date'].dt.dayofweek == day]
         for journey in jpid:
@@ -114,134 +61,3 @@ for filename in os.listdir(directory):
             df_day = df_day.dropna( how='any', subset = ['Seconds'])
             df_day['Day'] = day
             df_day.to_csv("/home/csstudent/Routesbyday/"+day+routeID+"route.csv") # works for every route
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
-
-    # In[ ]:
-
-
-
