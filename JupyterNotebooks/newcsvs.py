@@ -58,4 +58,4 @@ for filename in os.listdir(directory):
             print ('done day', count)
             df_day = df_day.dropna( how='any', subset = ['Seconds'])
             df_day['Day'] = day
-            df_day.to_csv("/home/csstudent/Routesbyday/"+day+routeID+"route.csv") # works for every route
+            df_day.to_csv("/home/csstudent/Routesbyday/"+str(day)+str(routeID)+"route.csv") # works for every route
