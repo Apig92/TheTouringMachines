@@ -13,13 +13,13 @@ import os
 
 # In[ ]:
 
-newpath ='~/Routesbyday'
+newpath ='/home/csstudent/Routesbyday'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
 
 # In[ ]:
-directory = '~/CleanCSV'
+directory = '/home/csstudent/CleanCSV'
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
         x= "'"+filename+"'"
@@ -113,7 +113,7 @@ for filename in os.listdir(directory):
             print ('done day', count)
             df_day = df_day.dropna( how='any', subset = ['Seconds'])
             df_day['Day'] = day
-            df_day.to_csv("~/Routesbyday/"+day+routeID+"route.csv") # works for every route
+            df_day.to_csv("/home/csstudent/Routesbyday/"+day+routeID+"route.csv") # works for every route
 
 
     # In[ ]:

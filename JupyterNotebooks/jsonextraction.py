@@ -23,7 +23,7 @@ import json
 
 
 # In[2]:
-directory = '~/CleanCSV'
+directory = '/home/csstudent/CleanCSV'
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
         x= "'"+filename+"'"
@@ -33,7 +33,7 @@ for filename in os.listdir(directory):
 
     # In[13]:
 
-    newpath ='~/routes_json'
+    newpath ='/home/csstudent/routes_json'
     if not os.path.exists(newpath):
         os.makedirs(newpath)
 
@@ -90,7 +90,7 @@ for filename in os.listdir(directory):
             routedf = newdf.append(datalist)
         routedf = routedf[['StopID', 'Longitude', 'Latitude']].copy()
         data = json.dumps(json.loads(routedf.to_json(orient='records')), indent=2) # make a JSON File
-        with open("~/routes_json/"+p+".json", 'w') as outfile:
+        with open("/home/csstudent/routes_json/"+p+".json", 'w') as outfile:
            outfile.write(data)
 
 
