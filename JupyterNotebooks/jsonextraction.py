@@ -34,21 +34,26 @@ for filename in os.listdir(directory):
     #Only at stop to get Lat long
 
     for p in pattern:
-        df2 = df1[df1['JourneyPatternID'] == p ]
-        df_longlat = df2[['JourneyPatternID', 'Longitude', 'Latitude', 'StopID']].copy() #drop unnecessary columns
-        df_longlat['Key']= (df_longlat['Longitude'] + df_longlat['Latitude'])# one value for latlng as identifier
-        newdf = pd.DataFrame(columns=['JourneyPatternID', 'Longitude', 'Latitude', 'StopID'])
-        stops = df_longlat['StopID'].unique()
+        df3 = df[df['JourneyPatternID'] == p]
+        data = []
+        alldata = []
         datalist = []
-        for i in stops:
-            #print (i)
-            dftemp=df_longlat[df_longlat['StopID']== i]
-            #print (dftemp)
-            key = dftemp['Key'].value_counts().idxmax()  # Get the highest value count per stop id
-            dftemp=df_longlat[df_longlat['Key']== key].head(1) # Get the first row as all rows are the same
-            datalist.append(dftemp)
+        newdf = pd.DataFrame(columns=['JourneyPatternID', 'Longitude', 'Latitude', 'StopID'])
+        for j in df3['VehicleJourneyID'].unique():
+            tempdf = df3[df3['VehicleJourneyID'] == j]
+            stops1 = tempdf['StopID'].unique()
+            data = stops1
+            alldata.append(data)
+        maxstops = max(alldata, key=len)
+        df_longlat = df3[['JourneyPatternID', 'Longitude', 'Latitude', 'StopID']].copy()  # drop unnecessary columns
+        df_longlat['Key'] = (df_longlat['Longitude'] + df_longlat['Latitude'])  # one value for latlng as identifier
+        for s in maxstops:
+            dfstops = df_longlat[df_longlat['StopID'] == s]
+            key = dfstops['Key'].value_counts().idxmax()  # Get the highest value count per stop id
+            dfstops = dfstops[dfstops['Key'] == key].head(1)  # Get the first row as rows are
+            datalist.append(dfstops)
             routedf = newdf.append(datalist)
         routedf = routedf[['StopID', 'Longitude', 'Latitude']].copy()
-        data = json.dumps(json.loads(routedf.to_json(orient='records')), indent=2) # make a JSON File
+        data = json.dumps(json.loads(routedf.to_json(orient='records')), indent=2)  # make a JSON File
         with open("/home/csstudent/routes_json/"+p+".json", 'w') as outfile:
            outfile.write(data)
