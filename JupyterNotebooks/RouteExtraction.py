@@ -1,49 +1,30 @@
-
-
 import pandas as pd
 import os
 import numpy as np
 
-
-
-# In[ ]:
-
-newpath ='~/Routes'
+newpath ='/home/csstudent/Routes'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-
-# In[ ]:
-directory = '~/CleanCSV'
+directory = '/home/csstudent/CleanCSV'
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
         x= ""+filename+""
 
     df = pd.read_csv(x) # change for route (possibly programm to run all
     df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
-
     df1 = df[['Timestamp', 'LineID', 'JourneyPatternID', 'VehicleJourneyID',  'Congestion', 'Delay', 'StopID', 'AtStop', 'Date']].copy()
-
     df1=df1[df1.JourneyPatternID != 'null']
-
     df1=df1[df1.StopID != 'null']
-
     df1 = df1[df1['AtStop'] == 1]
-
     df1= df1.dropna( how='any', subset = ['JourneyPatternID', 'StopID'])
-
-
     jpid = df1['JourneyPatternID'].unique()
-
     #need to change type of date
     df1['Date'] = pd.to_datetime(df['Date'])
-
     df1['Seconds'] = np.nan # new column that will be filled in
-
-
     routeID = df1.iloc[1]['LineID']
-
-
+    # for day in range (7): single file for LineID now
+    #     df_day = df1[df1['Date'].dt.dayofweek == day]
     for journey in jpid:
         df2 = df1[df1['JourneyPatternID'] == journey ]
         jid = df2['VehicleJourneyID'].unique()
@@ -65,7 +46,7 @@ for filename in os.listdir(directory):
                     #print (temp.index)
                     b = int(temp['Timestamp'])
                     seconds = (b-c)/1000000 # timestamp - the time of the first stop / 1000000 (microseconds) = time from first stop, per route
-                    if seconds >=0 and seconds <= 14400: #just catch one trip - 4hr range
+                    if seconds >=0 and seconds <= 14400: # just catch one trip - 4hr range
                         pass
                     else:
                         seconds = 0
@@ -74,9 +55,7 @@ for filename in os.listdir(directory):
                     df2.set_value(temp.index, 'Seconds', seconds)
                     print (count)
 
-        print ('done day', count)
-        df2 = df2.dropna( how='any', subset = ['Seconds'])
-        df2['Day'] = df2.Date.dt.dayofweek
-        df2.to_csv("~/Routes/"+routeID+"route.csv") # works for every route
-
-
+            print ('done day', count)
+            df2 = df2.dropna( how='any', subset = ['Seconds'])
+            df2['Day'] = df2.Date.dt.dayofweek
+            df2.to_csv("/home/csstudent/Routes/"+str(routeID)+"route.csv") # works for every route
