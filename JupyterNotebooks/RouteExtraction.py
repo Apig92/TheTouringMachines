@@ -6,7 +6,7 @@ newpath ='/home/csstudent/Routes'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-directory = '/home/csstudent/CleanCSV'
+directory = '/home/csstudent/AllLines'
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
         x= ""+filename+""
