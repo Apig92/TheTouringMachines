@@ -15,7 +15,8 @@ for filename in os.listdir(directory):
     df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
     df1 = df[['Timestamp', 'LineID', 'JourneyPatternID', 'VehicleJourneyID',  'Congestion', 'Delay', 'StopID', 'AtStop', 'Date']].copy()
     df1=df1[df1.JourneyPatternID != 'null']
-    df1=df1[df1.StopID != 'null']
+    #df1['AtStop'] = df1['AtStop'].astype(str)
+    #df1=df1[df1.StopID != 'null']
     df1 = df1[df1['AtStop'] == 1]
     df1= df1.dropna( how='any', subset = ['JourneyPatternID', 'StopID'])
     jpid = df1['JourneyPatternID'].unique()
@@ -55,7 +56,7 @@ for filename in os.listdir(directory):
                     df2.set_value(temp.index, 'Seconds', seconds)
                     print (count)
 
-            print ('done day', count)
-            df2 = df2.dropna( how='any', subset = ['Seconds'])
-            df2['Day'] = df2.Date.dt.dayofweek
-            df2.to_csv("/home/csstudent/Routes/"+str(routeID)+"route.csv") # works for every route
+    print ('done day', count)
+    df2 = df2.dropna( how='any', subset = ['Seconds'])
+    df2['Day'] = df2.Date.dt.dayofweek
+    df2.to_csv("/home/csstudent/Routes/"+str(routeID)+"route.csv") # works for every route
