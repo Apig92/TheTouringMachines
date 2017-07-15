@@ -19,9 +19,11 @@
     
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
 
     <!-- Custom CSS -->
     <link href="css/scrolling-nav.css" rel="stylesheet">
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,6 +38,13 @@
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
+<!--                NEED TO WORK ON This  Display todays date and time as initial values (and cookies)
+ <script>
+    
+    $(window).load(function() {
+       var today = getdate();
+      });</script>
+-->
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -71,6 +80,8 @@
         </div>
         <!-- /.container -->
     </nav>
+   
+
 
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
@@ -81,7 +92,7 @@
                         <div class="form-group">
     <label for="sel1">Route</label>
                             
-    <select name = "select1" class="form-control" id="dropdownroutes">
+    <select name = "Route" class="form-control" id="dropdownroutes" onchange = "Cookies(); stopselect();">
        <option value="None" selected="Selected">Selected</option>
     </select>
     </div>
@@ -89,51 +100,36 @@
                     
                      <div class="form-group">
                          <label for="sel1">Date</label>
-                          <select class="form-control" id="sel1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
+                           <input class = "form-control" type="date" name="date" id = "dt" onchange = "Cookies()" >
                         </div>
                     <div class="form-group">
                           <label for="sel1">Time</label>
-                          <select class="form-control" id="sel2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                          <input class = "form-control" type="time" name="time" id = "time"  onchange = "Cookies()">
                           </select>
                         </div>
                     <div class="form-group">
                           <label for="sel1">Start</label>
-                          <select class="form-control" id="sel3">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                          <select class="form-control" id="dropdownstops" onchange = "Cookies(); endstopselect();">
+                            <option value="None" selected="Selected">Selected</option>
                           </select>
                         </div>
+                        
                     <div class="form-group">
-                          <label for="sel1">End</label>
-                          <select class="form-control" id="sel4">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                          <label for="sel1">End Stop</label>
+                          <select class="form-control" id="dropdownstops1" onchange = "Cookies(); endstopselect12();">
+                            <option value="None" selected="Selected">Selected</option>
                           </select>
                         </div>
                     
                     <div class="form-group">
                           <label for="sel1">Weather</label>
                           <select class="form-control" id="sel5">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                            <option>Rain</option>
+                            <option>Wind</option>
+                            <option>Sun</option>
                           </select>
                         </div>
-                    
+                   
                     <input type="submit" class="btn btn-info" value="Submit" onclick=Cookies()>
 <!--                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>-->
                     </form>
