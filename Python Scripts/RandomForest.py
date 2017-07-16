@@ -31,7 +31,7 @@ def RandomForest(df,path,filename):
     y = df.Seconds
     rfc = RandomForestRegressor(n_estimators=130, oob_score=True, random_state=1,)
     rfc.fit(X, y)
-    pickle.dump(rfc, open(path+'/'+filename+".sav", 'wb'))
+    pickle.dump(rfc, open(path+'/'+filename[:-4]+".sav", 'wb'))
 
 
 def main():
@@ -42,12 +42,14 @@ def main():
     for filename in os.listdir(directory):
         if filename.endswith(".csv"):
             x = "" + filename + ""
+            df = read(x)
+            RandomForest(df, newpath, x)
+            print("Working on",filename)
         else:
-            print("There are no files")
-            break
+            print(filename,"is not a.csv")
 
-        df=read(x)
-        RandomForest(df,newpath,x)
+
+
 
 
 main()
