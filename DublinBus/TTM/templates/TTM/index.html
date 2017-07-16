@@ -14,11 +14,22 @@
     <!-- loads the path to the static files -->
     {% load staticfiles %}
 
+    {% static 'TTM/JSON/routes.json' %}
+
+    <!-- For use with Jquery and Javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src = "{% static 'TTM/js/script.js' %}"></script>
+
+
+
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{% static 'TTM/css/bootstrap.min.css' %}" />
+    <link href="{% static 'TTM/css/bootstrap.min.css' %}" rel="stylesheet">
+
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'TTM/css/scrolling-nav.css' %}">
+    <link href="{% static 'TTM/css/scrolling-nav.css' %}" rel="stylesheet">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,6 +43,13 @@
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<!--                NEED TO WORK ON This  Display todays date and time as initial values (and cookies)-->
+ <script>
+
+    $(window).on('load', function() {
+       var today = getdate();
+      });</script>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,70 +87,57 @@
         <!-- /.container -->
     </nav>
 
+
+
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                      <div class="form-group">
+                    <form action = map.html >
+                        <div class="form-group">
     <label for="sel1">Route</label>
-    <select class="form-control" id="sel1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+
+    <select name = "Route" class="form-control" id="dropdownroutes" onchange = "Cookies(); stopselect();">
+       <option value="None" selected="Selected">Selected</option>
     </select>
     </div>
 
+
                      <div class="form-group">
                          <label for="sel1">Date</label>
-                          <select class="form-control" id="sel1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
+                           <input class = "form-control" type="date" name="date" id = "dt" onchange = "Cookies()" >
                         </div>
                     <div class="form-group">
                           <label for="sel1">Time</label>
-                          <select class="form-control" id="sel2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                          </select>
+                          <input class = "form-control" type="time" name="time" id = "time"  onchange = "Cookies()">
                         </div>
                     <div class="form-group">
                           <label for="sel1">Start</label>
-                          <select class="form-control" id="sel3">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                          <select class="form-control" id="dropdownstops" onchange = "Cookies(); endstopselect();">
+                            <option value="None" selected="Selected">Selected</option>
                           </select>
                         </div>
+
                     <div class="form-group">
-                          <label for="sel1">End</label>
-                          <select class="form-control" id="sel4">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                          <label for="sel1">End Stop</label>
+                          <select class="form-control" id="dropdownstops1" onchange = "Cookies(); endstopselect12();">
+                            <option value="None" selected="Selected">Selected</option>
                           </select>
                         </div>
 
                     <div class="form-group">
                           <label for="sel1">Weather</label>
                           <select class="form-control" id="sel5">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
+                            <option>Rain</option>
+                            <option>Wind</option>
+                            <option>Sun</option>
                           </select>
                         </div>
 
-
-                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
+                    <input type="submit" class="btn btn-info" value="Submit" onclick=Cookies()>
+<!--                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>-->
+                    </form>
                 </div>
             </div>
         </div>
@@ -140,20 +145,12 @@
 
     <!-- About Section -->
     <section id="about" class="about-section">
-        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Who are we</h1>
-                    <br>
-
-                    <!-- loads the path to the static files -->
-                    {% load staticfiles %}
-
-                    <img id="us" class="img-responsive" src="{% static 'TTM/images/touring.png' %}" />
-                    <br><br><h5>We're a group of people stuck in college during the summer. It's warm and we want to sleep and maybe drink cans.</h5>
+                    <img id="us" class="img-responsive center-block" src="{% static 'TTM/images/touring.png' %}" />
+                    <br><h5>We're a group of people stuck in college during the summer. It's warm and we want to sleep and maybe drink cans.</h5>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Services Section -->
@@ -190,6 +187,7 @@
     <!-- Scrolling Nav JavaScript -->
     <script src="{% static 'TTM/js/jquery.easing.min.js' %}"></script>
     <script src="{% static 'TTM/js/scrolling-nav.js' %}"></script>
+
 
 </body>
 
