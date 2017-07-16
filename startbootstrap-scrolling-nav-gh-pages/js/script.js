@@ -1,58 +1,95 @@
-function myMap(arr) {
-//    function to populate map need to ament with loop through current stops
-    var out = "";
-    var mapCanvas = document.getElementById("map");
-    var mapOptions = {
-            center: new google.maps.LatLng(53.3498, -6.2603),
-            zoom: 12
+function myMap() {
+    //produces map , creates markers for users specified route
+
+    x = ReadCookie('route');
+    xy = ReadCookie('start');
+    xyz = ReadCookie('stop')
+    
+    $.getJSON('JSON/' + x + '.json', function (obj) {
+        var out = "";
+        var counter = 1;
+        var half = Math.floor(obj.length / 2); // half of the json array
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = {
+            center: new google.maps.LatLng(obj[half].Latitude, obj[half].Longitude), //centre of map is centre of route
+            zoom: 13
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var infoWindow = new google.maps.InfoWindow();
+        var bounds = new google.maps.LatLngBounds();
+         var icon1 = {
+                    url: "Images/icon (2).png",
+                    scaledSize: new google.maps.Size(70, 70), // scaled size
+                    origin: new google.maps.Point(0, 0), // origin
+                    anchor: new google.maps.Point(30, 70) // anchor
+                };
+
+        for (var n in obj) {
+            if (obj[n].StopID == xy) {
+                var j = n;
+                latLng = new google.maps.LatLng(obj[n].Latitude, obj[n].Longitude);
+                bounds.extend(latLng);
+                map.fitBounds(bounds);
+
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: icon1
+
+                });
+            }
         }
         
-    var map = new google.maps.Map(mapCanvas, mapOptions);
-    var infoWindow = new google.maps.InfoWindow();
-    for (var i = 0, length = arr.length; i < length; i++) {
-        var data = arr[i],
+        for (j; j <= obj.length; j++) {
+            data = obj[j];
+            counter ++;
+            if (data.StopID == xyz) { //break at last one
+                latLng = new google.maps.LatLng(data.Latitude, data.Longitude);7
+                bounds.extend(latLng);
+                map.fitBounds(bounds);
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: icon1
+
+                });
+                break;
+            }
+            
             latLng = new google.maps.LatLng(data.Latitude, data.Longitude);
+            bounds.extend(latLng);
+                map.fitBounds(bounds);
+            var iconImage = {
+                url: "Images/rec.png",
+                scaledSize: new google.maps.Size(15, 15), 
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(0, 0) 
+            };
+
+            var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                icon: iconImage
+
+            }); bounds.extend(marker.getPosition());
 
 
-        var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
+            (function (marker, data) {
 
-        });
+                google.maps.event.addListener(marker, "mouseover", function (e) {
+                    infoWindow.setContent("Bus Stop: " + data.StopID + "");
+                    infoWindow.open(map, marker);
 
-
-        (function (marker, data) {
-
-
-            google.maps.event.addListener(marker, "mouseover", function (e) {
-                infoWindow.setContent("Number: " + data.StopID + "<br/>Hello guys!!");
-                infoWindow.open(map, marker);
-
-            });
-           
-
-        })(marker, data);
-    }
-}
-
-function load(code) {
-    var xmlhttp = new XMLHttpRequest();
-    var url = 'JSON/'+code+'.json';
+                });
 
 
-
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var arr = JSON.parse(xmlhttp.responseText);
-            myMap(arr);
-
-        }
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-
+            })(marker, data);
+        } 
+        document.getElementById("counter").innerHTML = "The number of stops is: " + counter;
+    });
 
 }
+
 
 $(document).ready(function(){
     // routes dropdown
@@ -120,7 +157,6 @@ function endstopselect(){
         if (obj[n].StopID == xy){
            var j = n;
         }
-    //alert(obj.length);
      for (j; j <= obj.length; j++) {
     $('#dropdownstops1').append('<option name = "stop1" value='+obj[j].StopID+'>'+obj[j].StopID
     +'</option>');
@@ -130,14 +166,14 @@ function endstopselect(){
 
  } 
 
-function gettime(){
-    
-   d = new Date();
-    alert('hi');
-    alert (d);
-    $('#dropdowntime').append('<option name = "Time" value='+d+'>'+d
-    +'</option>');}
+function gettime() {
 
+    d = new Date();
+    //alert('hi');
+    alert(d);
+    $('#dropdowntime').append('<option name = "Time" value=' + d + '>' + d +
+        '</option>');
+}
 
 function reloadpage() {
     location.reload();
@@ -160,7 +196,7 @@ if(mm<10) {
 } 
 
 today = mm + '/' + dd + '/' + yyyy;
-document.getElementById('dt').innerHTML=today;
+return today;
 }
 
 

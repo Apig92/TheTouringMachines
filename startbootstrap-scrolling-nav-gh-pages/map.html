@@ -3,32 +3,30 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="bus.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = js/script.js></script>
     
     <script src = js/script.js></script>
     
     <title>The Touring Machines</title>
 <body>
     <script>
-    $(window).load(function() {
-      x = ReadCookie('route');
-      load(x);
-      getdate();
+    $(window).on( 'load', function() {
+      myMap();
       });</script>
    
         
     <header id="header">The Touring Machines<br></header>
         
-        <div id="map" style="width:800px;height:600px;"></div>
+        <div id="map" style="width:600px;height:400px;"></div>
         
-        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANEk4AGMlzwR3tsgCUsoa7UptHABc84Lk&callback=myMap"></script>
 
         
-
+<div><p id ="counter"></p></div>
         
-        <footer ></footer>.
+        <footer >Icons made by Freepik from www.flaticon.com</footer>.
 </body>
 
 </html>
