@@ -81,11 +81,11 @@ DATABASES = {
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'DublinBus',
-        'USER': 'TheTouringMachine',
+        'NAME': 'dublinbus',
+        'USER': 'andy',
         'PASSWORD': 'hotchocolate',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'HOST': '137.43.49.42',
+        'PORT': '22',
     }
 }
 
