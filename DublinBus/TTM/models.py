@@ -18,3 +18,10 @@ class Stops(models.Model):
 
     def __str__(self):
         return self.StopID + ' - ' + self.Latitude + self.Longitude
+
+class Json_reading(models.Model):
+    JourneyPatternID = models.CharField(primary_key=True, max_length=100)
+    RouteID_Direction = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.RouteID_Direction + ' - ' + self.JourneyPatternID
