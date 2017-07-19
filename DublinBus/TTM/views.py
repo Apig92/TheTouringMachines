@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.http import HttpResponse
 from django.shortcuts import render
-from models import Routes
+from .models import Routes
 import json
 
 def jsonfiles(request):
