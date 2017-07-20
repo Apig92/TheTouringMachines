@@ -62,4 +62,4 @@ for filename in os.listdir(directory):
 with open("/home/csstudent/allroutes_json/routeinfo.json", 'w') as outfile:
         # outfile.write(data)
         json.dump(results, outfile)
-print('done')
+print('done!')
