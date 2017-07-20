@@ -20,7 +20,7 @@ for filename in os.listdir(directory):
     df=df[df.JourneyPatternID != 'null']
 
 
-    df=df[df.StopID != 'null']
+    
 
 
     df['Date'] = pd.to_datetime(df['Date']) # change types
