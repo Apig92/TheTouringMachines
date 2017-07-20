@@ -1,0 +1,810 @@
+{
+    "routes": [{
+      "number": "40B From Parnell St. To Toberburr",
+      "code": "040B0001"
+  }, {
+      "number": "40B From Toberburr To Parnell St.",
+      "code": "040B1001"
+  }, {
+      "number": "40D From Parnell St. To Tyrrelstown",
+      "code": "040D0001"
+  }, {
+      "number": "40D From Tyrrelstown To Parnell St. ",
+      "code": "040D1001"
+  }, {
+      "number": "40 From Charlestown Shopping Centre To Liffey Valley Shopping Centre ",
+      "code": "00400001"
+  }, {
+      "number": "40 From Liffey Valley Shopping Centre To Charlestown Shopping Centre ",
+      "code": "00401001"
+  },
+     {
+      "number": "102 From Sutton Station To Dublin Airport",
+      "code": "01020001"
+  },
+     {
+      "number":"102 From Dublin Airport To Sutton Station",
+      "code": "01021001"
+  },
+     {
+     "number": "104 From DCU To Clontarf Rd. (Conquer Hill)",
+     "code": "01041001"
+  },
+     {
+     "number": "104 From Clontarf Rd. (Conquer Hill) To DCU",
+     "code": "01040001"
+  },
+     {
+     "number": "111 From Brides Glen (Luas Station) To Dalkey",
+     "code": "01110001"
+  },
+     {
+     "number": "111 From Dalkey To Brides Glen (Luas Station)",
+     "code": "01111001"
+  },
+     {
+     "number": "114 From Ticknock To Blackrock Rail Station",
+     "code": "01140001"
+  },
+     {
+     "number": "114 From Blackrock Rail Station To Ticknock",
+     "code": "01141001"
+  },
+     {
+     "number": "116 From Whitechurch To Parnell Sq",
+     "code": "01161001"
+  },
+     {
+     "number": "116 From Parnell Sq. To Whitechurch",
+     "code": "01160001"
+  },
+     {
+     "number": "118 From D'Olier St. To Kilternan",
+     "code": "Need to completed"
+  },
+     {
+     "number": "11 From Sandyford Business District To Wadelai Park",
+     "code": "four lines seeem right"
+  },      
+     {
+     "number": "120 From Parnell St. To Ashtown Rail Station",
+     "code": "seems that 01200002 and 01200001"
+  },                 
+     {
+     "number": "120 From Ashtown Rail Station To Parnell St.",
+     "code": "seems that 01201002 and 01201001 both particial match"
+  },                 
+     {
+     "number": "120 From Ashtown Rail Station To Parnell St.",
+     "code": "seems that 01201002 and 01201001 both particial match"
+  }, 
+      {
+     "number": "122 From Drimnagh Rd. To Ashington",
+     "code": "seems that 01221002 and 01221001 both particial match"
+  },               
+      {
+     "number": "122 From Ashington To Drimnagh Rd.",
+     "code": "01220001"
+  },  
+      {
+     "number": "123 From Walkinstown (Kilnamanagh Rd.) To Marino.",
+     "code": "01230002"
+  }, 
+      {
+     "number": "123 From Marino To Walkinstown (Kilnamanagh Rd.)",
+     "code": "01231002"
+  },                
+      {
+     "number": "130 From Castle Ave. To Lwr. Abbey St.",
+     "code": "01230002 and 01231002 match"
+  },                
+      {
+     "number": "130 From Lwr. Abbey St. To Castle Ave.",
+     "code": "Not match"
+  },                
+      {
+     "number": "13 From From Grange Castle To Harristown",
+     "code": "seems all match"
+  },                  
+      {
+     "number": "13 From Harristown To Grange Castle",
+     "code": "seems all match"
+  }, 
+      {
+     "number": "140 From Palmerston Park To Finglas (IKEA)",
+     "code": "01401001"
+  },
+      {
+     "number": "140 From Finglas (IKEA) To Palmerston Park",
+     "code": "01400001"
+  },
+     {
+     "number": "142 From UCD Belfield To Portmarnock",
+     "code": "01420001"
+  },               
+     {
+     "number": "142 From Portmarnock To UCD Belfield",
+     "code": "01421001"
+  },                   
+     {
+     "number": "145 From Ballywaltrim To Heuston Rail Station",
+     "code": "01451001"
+  },                     
+      {
+     "number": "145 From Heuston Rail Station To Ballywaltrim",
+     "code": "01450001"
+  },                 
+       {
+     "number": "14 From Dundrum Luas Station To Beaumont (Ardlea Rd.)",
+     "code": "00141001"
+  },                 
+        {
+     "number": "14 From Beaumont (Ardlea Rd.) To Dundrum Luas Station",
+     "code": "00140001"
+  }, 
+        {
+     "number": "150 From Rossmore To Hawkins St.",
+     "code": "01501001"
+  },                
+       {
+     "number": "150 From Hawkins St. To Rossmore",
+     "code": "01500001"
+  },                 
+       {
+     "number": "151 From Foxborough (Balgaddy Rd.) To Docklands (East Rd.)",
+     "code": "01511001"
+  },               
+       {
+     "number": "151 From Docklands (East Rd.) To Foxborough (Balgaddy Rd.)",
+     "code": "01510001"
+  },                  
+       {
+     "number": "15 From Ballycullen Rd. To Clongriffin",
+     "code": "00151001"
+  },              
+       {
+     "number": "15 From Clongriffin To Ballycullen Rd.",
+     "code": "00150001"
+  },                   
+       {
+     "number": "15A From Limekiln Ave. To Grand Canal Dock (Benson St.)",
+     "code": "015A1001"
+  },               
+       {
+     "number": "15A From Grand Canal Dock (Benson St.) To Limekiln Ave.",
+     "code": "015B0001"
+  },                
+       {
+     "number": "15B From Grand Canal Dock (Benson St.) To Limekiln Ave.",
+     "code": "015B0001"
+  },               
+       {
+     "number": "15B From Grand Canal Dock (Benson St.) To Limekiln Ave.",
+     "code": "015B1001"
+  },                   
+       {
+     "number": "16 From Ballinteer (Kingston) To Dublin Airport",
+     "code": "00161001"
+  },               
+       {
+     "number": "16 From Dublin Airport To Ballinteer (Kingston)",
+     "code": "00160001"
+  },                
+       {
+     "number": "16C From Ballinteer or Airport To City Centre",
+     "code": "016C1001"
+  },               
+      {
+     "number": "16C From City Centre To Ballinteer or Airport",
+     "code": "016C0001"
+  },                
+      {
+     "number": "17A From Kilbarrack To Blanchardstown Centre",
+     "code": "017A1001"
+  },               
+      {
+     "number": "17A From Blanchardstown Centre To Kilbarrack",
+     "code": "017A0001"
+  },               
+      {
+     "number": "17 From Rialto To Blackrock Rail Station",
+     "code": "00170001"
+  },               
+      {
+     "number": "17 From Blackrock Rail Station To Rialto",
+     "code": "00171001"
+  },               
+      {
+     "number": "18 From Sandymount To Palmerstown",
+     "code": "00181001"
+  },               
+      {
+     "number": "18 From Palmerstown To Sandymount",
+     "code": "00180001"
+  },               
+      {
+     "number": "1 From Sandymount (St. John's Church) To Santry (Shanard Rd.)",
+     "code": "00011001"
+  },                     
+      {
+     "number": "1 From Santry (Shanard Rd.) To Sandymount (St. John's Church)",
+     "code": "00010001"
+  },                     
+      {
+     "number": "220 From Lady's Well Rd. To Ballymun (Shangan Rd.)",
+     "code": "02201001"
+  },               
+      {
+     "number": "220 From Ballymun (Shangan Rd.) To Lady's Well Rd.",
+     "code": "02200001"
+  },               
+      {
+     "number": "238 From Lady's Well Rd. To Tyrrelstown",
+     "code": "02381001"
+  },               
+      {
+     "number": "238 From Tyrrelstown To Lady's Well Rd.",
+     "code": "02380001"
+  },
+      {
+     "number": "238 From Tyrrelstown To Lady's Well Rd.",
+     "code": "02380001"
+  },               
+      {
+     "number": "25 From Lucan (Dodsboro) To Merrion Sq.",
+     "code": "00251001"
+  },               
+      {
+     "number": "25 From Merrion Sq. To Lucan (Dodsboro)",
+     "code": "00250001"
+  },               
+      {
+     "number": "25A From Merrion Sq. To Lucan (Esker Church)",
+     "code": "025A0001"
+  },               
+     {
+     "number": "25A From Lucan (Esker Church) To Merrion Sq.",
+     "code": "025A1001"
+  },               
+     {
+     "number": "25B From Merrion Sq. To Adamstown Rail Station",
+     "code": "025B0001"
+  },                
+     {
+     "number": "25B From Adamstown Rail Station To Merrion Sq.",
+     "code": "025B1001"
+  },                
+     {
+     "number": "25X From Lucan To UCD Belfield",
+     "code": "025X1001"
+  },                  
+     {
+     "number": "25X From UCD Belfield To Lucan",
+     "code": "025X0001"
+  },                  
+     {
+     "number": "26 From Palmerstown (Cemetery) To Merrion Sq.",
+     "code": "00260001"
+  },               
+     {
+     "number": "26 From Merrion Sq. To Palmerstown (Cemetery)",
+     "code": "00261001"
+  },               
+    {
+     "number": "238 From Lady's Well Rd. To Tyrrelstown",
+     "code": "02381001"
+  },                       
+    {
+     "number": "238 From Tyrrelstown To Lady's Well Rd.",
+     "code": "02380001"
+  },                       
+    {
+     "number": "27 From Jobstown To Clare Hall",
+     "code": "No match"
+  },               
+    {
+     "number": "27 From Clare Hall To Jobstown",
+     "code": "no match"
+  },                
+    {
+     "number": "27A From Blunden Drive To Eden Quay",
+     "code": "027A1001"
+  },                
+    {
+     "number": "27A From Eden Quay To Blunden Drive",
+     "code": "027A0001"
+  },                
+    {
+     "number": "27B From Harristown To Eden Quay",
+     "code": "027B1001"
+  },                
+     {
+     "number": "27B From Eden Quay To Harristown",
+     "code": "027B0001"
+  },               
+     {
+     "number": "27X From Clare Hall To UCD Belfield",
+     "code": "027X1001"
+  },                
+     {
+     "number": "27X From UCD Belfield To Clare Hall",
+     "code": "027X0001"
+  },                
+     {
+     "number": "29A From Baldoyle (Coast Rd.) To Lwr. Abbey St.",
+     "code": "029A1001"
+  },               
+     {
+     "number": "29A From Lwr. Abbey St. To Baldoyle (Coast Rd.)",
+     "code": "029A0001"
+  },               
+     {
+     "number": "31 From Howth Summit To Lwr. Abbey St.",
+     "code": "00311001"
+  },               
+     {
+     "number": "31 From Lwr. Abbey St. To Howth Summit",
+     "code": "00310001"
+  },               
+     {
+     "number": "31A From Shielmartin Rd. To Lwr. Abbey St.",
+     "code": "031A1001"
+  },               
+     {
+     "number": "31A From Lwr. Abbey St. To Shielmartin Rd.",
+     "code": "031A0001"
+  },               
+     {
+     "number": "31B From Howth Summit To Talbot St.",
+     "code": "031B1001"
+  },               
+     {
+     "number": "31B From Talbot St. To Howth Summit",
+     "code": "031B0001"
+  },               
+     {
+     "number": "32X From UCD Belfield To Malahide",
+     "code": "032X0001"
+  },                
+     {
+     "number": "32X From Malahide To UCD Belfield",
+     "code": "032X1001"
+  },               
+     {
+     "number": "32 From Malahide To Talbot St.",
+     "code": "00321001"
+  },  
+     {
+     "number": "32 From Talbot St. To Malahide",
+     "code": "00320001"
+  },                
+     {
+     "number": "32 From Talbot St. To Malahide",
+     "code": "00320001"
+  },     {
+     "number": "33 From Balbriggan To Lwr. Abbey St.",
+     "code": "00330001"
+  },               
+     {
+     "number": "33 From Lwr. Abbey St. To Balbriggan",
+     "code": "00331001"
+  },               
+     {
+     "number": "33A From Balbriggan To Swords",
+     "code": "033A1001"
+  },               
+     {
+     "number": "33A From Swords To Balbriggan",
+     "code": "033A0001"
+  },               
+     {
+     "number": "33B From Portrane To Swords",
+     "code": "033B1001"
+  },               
+     {
+     "number": "33B From Swords To Portrane",
+     "code": "033B0001"
+  },               
+     {
+     "number": "33X From Skerries To Custom House Quay / St. Stephen's Green",
+     "code": "None"
+  },               
+     {
+     "number": "33X From Custom House Quay / St. Stephen's Green To Skerries",
+     "code": "none"
+  },               
+     {
+     "number": "37 From Custom House Quay / St. Stephen's Green To Skerries",
+     "code": "00371001"
+  },                
+     {
+     "number": "37 From Custom House Quay / St. Stephen's Green To Skerries",
+     "code": "00370001"
+  },                
+     {
+     "number": "39A From Ongar To UCD Belfield",
+     "code": "039A1001"
+  },               
+     {
+     "number": "39A From UCD Belfield To Ongar",
+     "code": "039A0001"
+  },               
+     {
+     "number": "38 From Damastown To Burlington Rd.",
+     "code": "00381001"
+  },               
+     {
+     "number": "38 From Burlington Rd. To Damastown",
+     "code": "00380001"
+  },               
+     {
+     "number": "38A From Damastown To Burlington Rd.",
+     "code": "038A1001"
+  },                
+     {
+     "number": "38A From Burlington Rd. To Damastown",
+     "code": "038A0001"
+  },                
+     {
+     "number": "38B From Damastown To Burlington Rd.",
+     "code": "038B1001"
+  },               
+      {
+     "number": "38B From Burlington Rd. To Damastown",
+     "code": "038B0001"
+  },              
+      {
+     "number": "41 From Swords Manor To Lwr. Abbey St.",
+     "code": "00411001"
+  },                
+      {
+     "number": "41 From Lwr. Abbey St. To Swords Manor",
+     "code": "00410001"
+  },                
+      {
+     "number": "41A From City Centre To Swords Manor",
+     "code": "041A1001"
+  },  
+      {
+     "number": "41B From Rolestown To Lwr. Abbey St.",
+     "code": "041B1001"
+  },               
+      {
+     "number": "41B From Lwr. Abbey St. To Rolestown",
+     "code": "041B0001"
+  },               
+      {
+     "number": "41C From Swords Manor To Lwr. Abbey St.",
+     "code": "041C1001"
+  },               
+      {
+     "number": "41C From Lwr. Abbey St. To Swords Manor",
+     "code": "041C0001"
+  },               
+      {
+     "number": "41X From Knocksedan To UCD Belfield",
+     "code": "041X1001"
+  },                
+      {
+     "number": "41X From UCD Belfield To Knocksedan",
+     "code": "041X0001"
+  },                
+      {
+     "number": "42 	From Sand's Hotel (Portmarnock) To Talbot St.",
+     "code": "00421001"
+  },                
+      {
+     "number": "42 From Talbot St. To Sand's Hotel (Portmarnock)",
+     "code": "00420001"
+  },                
+      {
+     "number": "43 From Swords Business Park To Talbot St.",
+     "code": "00431001"
+  },                             
+      {
+     "number": "43 From Talbot St. To Swords Business Park",
+     "code": "00430001"
+  },               
+      {
+     "number": "9 From Limekiln Ave. To Charlestown",
+     "code": "00091001"
+  },                
+      {
+     "number": "9 From Charlestown To Limekiln Ave.",
+     "code": "00090001"
+  },                
+      {
+     "number": "44 From Enniskerry To DCU",
+     "code": "00441001"
+  },               
+      {
+     "number": "44 From DCU To Enniskerry",
+     "code": "00440001"
+  },               
+      {
+     "number": "44B From Glencullen To Dundrum Luas Station",
+     "code": "044B1001"
+  },                  
+      {
+     "number": "44B From Dundrum Luas Station To Glencullen",
+     "code": "044B0001"
+  },                  
+      {
+     "number": "45A From Kilmacanogue To Dun Laoghaire (Rail Station)",
+     "code": "045A1001"
+  },               
+      {
+     "number": "45A From Dun Laoghaire (Rail Station) To Kilmacanogue",
+     "code": "045A0001"
+  },               
+      {
+     "number": "46A From Dun Laoghaire To Phoenix Park",
+     "code": "046A1001"
+  },               
+      {
+     "number": "46A From Phoenix Park To Dun Laoghaire",
+     "code": "046A0001"
+  },               
+      {
+     "number": "49 From Tallaght (The Square) To Pearse Street",
+     "code": "00491001"
+  },                 
+      {
+     "number": "49 From Pearse Street To Tallaght (The Square)",
+     "code": "00490001"
+  },                 
+      {
+     "number": "4 From Monkstown Avenue To Harristown",
+     "code": "00041001"
+  },               
+      {
+     "number": "4 From Harristown To Monkstown Avenue",
+     "code": "00040001"
+  },               
+      {
+     "number": "51D From Clondalkin To Aston Quay / Waterloo Rd.",
+     "code": "051D1001"
+  },               
+      {
+     "number": "51D From Aston Quay / Waterloo Rd. To Clondalkin",
+     "code": "051D0001"
+  },               
+      {
+     "number": "51X From Dunawley To UCD Belfield",
+     "code": "051X1001"
+  },               
+      {
+     "number": "53 From Dublin Ferryport To Talbot St.",
+     "code": "00531001"
+  },               
+     {
+     "number": "53 From Talbot St. To Dublin Ferryport",
+     "code": "00530001"
+  },                
+     {
+     "number": "54A From Ellensborough / Kiltipper Way To Pearse Street",
+     "code": "054A1001"
+  },                 
+     {
+     "number": "54A From Pearse Street To Ellensborough / Kiltipper Way",
+     "code": "054A0001"
+  },                 
+     {
+     "number": "56A From Tallaght (The Square) To Ringsend Rd.",
+     "code": "056A1001"
+  },                 
+     {
+     "number": "56A From Ringsend Rd. To Tallaght (The Square)",
+     "code": "056A0001"
+  },                 
+     {
+     "number": "59 From Killiney To Dun Laoghaire",
+     "code": "00591001"
+  },               
+     {
+     "number": "59 From Dun Laoghaire To Killiney)",
+     "code": "00590001"
+  },               
+     {
+     "number": "63 From Kilternan To Dun Laoghaire)",
+     "code": "00631001"
+  },                
+     {
+     "number": "63 From Dun Laoghaire To Kilternan)",
+     "code": "00630001"
+  },                
+     {
+     "number": "65 From Blessington / Ballymore To Poolbeg St.",
+     "code": "00651001"
+  },
+     {
+     "number": "65 From Poolbeg St. To Blessington / Ballymore",
+     "code": "00650001"
+  },               
+     {
+     "number": "65B From Citywest To Poolbeg St.",
+     "code": "065B0001"
+  },               
+     {
+     "number": "65B From Poolbeg St. To Citywest",
+     "code": "065B1001"
+  },               
+     {
+     "number": "66 From Maynooth To Merrion Sq.",
+     "code": "00661001"
+  },               
+     {
+     "number": "66 From Merrion Sq. To Maynooth",
+     "code": "00660001"
+  },               
+     {
+     "number": "66A From Leixlip (Captain's Hill) To Merrion Sq.",
+     "code": "066A1001"
+  },               
+     {
+     "number": "66A From Merrion Sq. To Leixlip (Captain's Hill)",
+     "code": "066A0001"
+  },               
+     {
+     "number": "66B From Leixlip (Castletown) To Merrion Sq.",
+     "code": "066B1001"
+  },                           
+     {
+     "number": "66B From Merrion Sq. To Leixlip (Castletown)",
+     "code": "066B0001"
+  },                 
+     {
+     "number": "66X From Maynooth To UCD Belfield",
+     "code": "066X1001"
+  },                
+     {
+     "number": "66X From UCD Belfield To Maynooth",
+     "code": "066X0001"
+  },                
+     {
+     "number": "67X From Celbridge (Salesian College) To UCD Belfield",
+     "code": "067X1001"
+  },               
+     {
+     "number": "67X From UCD Belfield To Celbridge (Salesian College",
+     "code": "067X0001"
+  },                
+     {
+     "number": "67 From Maynooth To Merrion Sq.",
+     "code": "00671001"
+  },               
+     {
+     "number": "67 From Merrion Sq. To Maynooth",
+     "code": "00670001"
+  },               
+     {
+     "number": "68 From Newcastle / Greenogue Business Park To Burgh Quay",
+     "code": "00681001"
+  },                
+     {
+     "number": "68 From Burgh Quay To Newcastle / Greenogue Business Park",
+     "code": "00680001"
+  },                
+     {
+     "number": "68A From Bulfin Rd. To Burgh Quay",
+     "code": "068A1001"
+  },               
+     {
+     "number": "68A From Burgh Quay To Bulfin Rd.",
+     "code": "068A0001"
+  },               
+     {
+     "number": "69 From Rathcoole To Hawkins St.",
+     "code": "00691001"
+  },                
+     {
+     "number": "69 From Hawkins St. To Rathcoole",
+     "code": "00690001"
+  },                
+     {
+     "number": "747 From Dublin Airport To Heuston Rail Station",
+     "code": "07471001"
+  },                
+     {
+     "number": "747 From Heuston Rail Station To Dublin Airport",
+     "code": "07470001"
+  },                
+     {
+     "number": "75 From Heuston Rail Station To Dublin Airport",
+     "code": "00750001"
+  },                
+     {
+     "number": "75 From Heuston Rail Station To Dublin Airport",
+     "code": "00751001"
+  },                
+     {
+     "number": "76 From Tallaght (The Square) To Chapelizod",
+     "code": "00761001"
+  },                
+     {
+     "number": "76 From Chapelizod To Tallaght (The Square)",
+     "code": "00760001"
+  },                
+     {
+     "number": "76A From Tallaght (The Square) To Blanchardstown Centre",
+     "code": "076A0001"
+  },               
+     {
+     "number": "76A From Blanchardstown Centre To Tallaght (The Square)",
+     "code": "076A1001"
+  },               
+     {
+     "number": "79 From Spiddal Park To Aston Quay",
+     "code": "00791001"
+  },                
+     {
+     "number": "79 From Aston Quay To Spiddal Park",
+     "code": "00790001"
+  },                
+     {
+     "number": "79A From Parkwest To Aston Quay",
+     "code": "079A0001"
+  },               
+     {
+     "number": "79A From Aston Quay To Parkwest",
+     "code": "079A1001"
+  },               
+     {
+     "number": "7 From Brides Glen Luas To Mountjoy Sq.",
+     "code": "00070001"
+  },               
+     {
+     "number": "7 From Mountjoy Sq. To Brides Glen Luas",
+     "code": "00071001"
+  },               
+     {
+     "number": "7B From Shankill To Mountjoy Sq.,
+     "code": "007B1001"
+  },               
+     {
+     "number": "7B From Mountjoy Sq. To Shankill",
+     "code": "007B0001"
+  },               
+     {
+     "number": "83 From Kimmage To Harristown",
+     "code": "00831001"
+  },               
+     {
+     "number": "83 From Harristown To Kimmage",
+     "code": "00830001"
+  },               
+     {
+     "number": "83A From Kimmage To Harristown",
+     "code": "083A1001"
+  }, 
+     {
+     "number": "83A From Harristown To Kimmage",
+     "code": "083A0001"
+  },                
+     {
+     "number": "84 From Newcastle To Blackrock",
+     "code": "00841001"
+  },                
+     {
+     "number": "84 From Blackrock To Newcastle",
+     "code": "00840001"
+  },                
+     {
+     "number": "84A From Bray To Blackrock",
+     "code": "084A1001"
+  }, 
+     {
+     "number": "84A From Blackrock To Bray",
+     "code": "084A0001"
+  }, 
+     {
+     "number": "84X From Newcastle/Kilcoole To Hawkins St.",
+     "code": "084X1001"
+  },                
+     {
+     "number": "84A From Hawkins St. To Newcastle/Kilcoole",
+     "code": "084X0001"
+  },                
+               
+]
+}
