@@ -51,7 +51,7 @@ for filename in os.listdir(directory):
         for s in maxstops:
             dfstops = df_longlat[df_longlat['StopID'] == s]
             key = dfstops['Key'].value_counts().idxmax()  # Get the highest value count per stop id
-            dfstops = dfstops[dfstops['Key'] == key].head(1)  # Get the first row as rows are
+            dfstops = dfstops[dfstops['Key'] == key].head(1)  # Get the first row as rows are ordered
             datalist.append(dfstops)
             routedf = newdf.append(datalist)
         routedf = routedf[['StopID', 'Longitude', 'Latitude']].copy()
@@ -59,7 +59,7 @@ for filename in os.listdir(directory):
         print("It's working, It's working!!!!")
         results[p] = data
         print('route finished')
-with open("C:/Users/Daniel/Desktop/DataAnalytics/DUBLINBUS/allroutes_json/routeinfo.json", 'w') as outfile:
+with open("/home/csstudent/allroutes_json/routeinfo.json", 'w') as outfile:
         # outfile.write(data)
         json.dump(results, outfile)
 print('done')
