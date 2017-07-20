@@ -1,0 +1,10 @@
+{{ json_data }}
+
+{% load staticfiles %}
+
+<script>
+    var json_location = {{ json_data }}
+</script>
+<script src = {% static 'TTM/js/script.js' %}>json_location</script>
+
+

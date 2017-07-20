@@ -10,24 +10,21 @@
     <meta name="author" content="">
 
     <title>Scrolling Nav - Start Bootstrap Template</title>
+    <!-- For use with Jquery and Javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- loads the path to the static files -->
     {% load staticfiles %}
 
-    <!-- For use with Jquery and Javascript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src = "{% static 'TTM/js/script.js' %}"></script>
-
-
+    <!-- <script type="text/javascript" charset="utf-8">var json_loca = {% static "TTM/JSON/routes.json/" %}</script> -->
+    <script src = {% static 'TTM/js/script.js' %}></script>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{% static 'TTM/css/bootstrap.min.css' %}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{% static 'TTM/css/bootstrap.min.css' %}" />
 
     <!-- Custom CSS -->
-    <link href="{% static 'TTM/css/scrolling-nav.css' %}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{% static 'TTM/css/scrolling-nav.css' %}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,8 +45,6 @@
     $(window).on('load', function() {
        var today = getdate();
       });</script>
-
-
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -88,7 +83,6 @@
     </nav>
 
 
-
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
         <div class="container">
@@ -101,22 +95,20 @@
     <select name = "Route" class="form-control" id="dropdownroutes" onchange = "Cookies(); stopselect();">
        <option value="None" selected="Selected">Selected</option>
     </select>
-       <!-- routes selection script -->
+    </div>
     <script>
         $(document).ready(function(){
-            // routes dropdown
-        $.getJSON('{% static 'TTM/JSON/routes.json' %}', function(data) {
-            var jsonStr = JSON.stringify(data.routes[2].code);
-            for( var i in data.routes ) {
-                $('#dropdownroutes').append('<option name = "route" value='+data.routes[i].code+'>'+data.routes[i].number
-           +'</option>');
-    }
-  });
-});
+        // routes dropdown
+        var dir = '{% static 'TTM/JSON/routes.json' %}'
+    $.getJSON(dir, function(data) {
+        //var jsonStr = JSON.stringify(data.routes[2].code);
+        for( var i in data.routes ) {
+            $('#dropdownroutes').append('<option name = "route" value='+data.routes[i].code+'>'+data.routes[i].number
+       +'</option>');
+        }
+      });
+    });
     </script>
-
-                        </div>
-
 
                      <div class="form-group">
                          <label for="sel1">Date</label>
@@ -151,7 +143,7 @@
 
                     <input type="submit" class="btn btn-info" value="Submit" onclick=Cookies()>
 <!--                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>-->
-                    </form>
+
                 </div>
             </div>
         </div>
@@ -189,9 +181,6 @@
         </div>
     </section>
 
-    <!-- loads the path to the static files -->
-    {% load staticfiles %}
-
     <!-- jQuery -->
     <script src="{% static 'TTM/js/jquery.js' %}"></script>
 
@@ -201,7 +190,6 @@
     <!-- Scrolling Nav JavaScript -->
     <script src="{% static 'TTM/js/jquery.easing.min.js' %}"></script>
     <script src="{% static 'TTM/js/scrolling-nav.js' %}"></script>
-
 
 </body>
 
