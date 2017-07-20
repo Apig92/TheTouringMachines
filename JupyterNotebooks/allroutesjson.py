@@ -8,7 +8,7 @@ newpath ='/home/csstudent/allroutes_json'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-directory = '/home/csstudent/CleanCSV'
+directory = '/home/csstudent/AllLines'
 results = {}
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
@@ -20,7 +20,7 @@ for filename in os.listdir(directory):
     df=df[df.JourneyPatternID != 'null']
 
 
-    df=df[df.StopID != 'null']
+    
 
 
     df['Date'] = pd.to_datetime(df['Date']) # change types
