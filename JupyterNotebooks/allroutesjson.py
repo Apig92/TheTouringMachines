@@ -53,9 +53,12 @@ for filename in os.listdir(directory):
             datalist.append(dfstops)
             routedf = newdf.append(datalist)
         routedf = routedf[['StopID', 'Longitude', 'Latitude']].copy()
-        data = json.loads(routedf.to_json(orient='records'))
-        print(p)
-        results[p] = data
+        if routedf.empty:
+            print('empty df')
+        else:
+            data = json.loads(routedf.to_json(orient='records'))
+            print(p)
+            results[p] = data
         print('route finished')
 with open("/home/csstudent/allroutes_json/routeinfo.json", 'w') as outfile:
         # outfile.write(data)
