@@ -4,11 +4,12 @@ import os
 
 
 import json
-newpath ='/home/csstudent/routes_json'
+newpath ='/home/csstudent/allroutes_json'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-directory = '/home/csstudent/AllLines'
+directory = '/home/csstudent/CleanCSV'
+results = {}
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
         x= ""+filename+""
