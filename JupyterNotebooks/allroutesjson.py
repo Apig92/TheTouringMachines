@@ -17,10 +17,10 @@ for filename in os.listdir(directory):
     df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
 
     #drop nulls
-    df=df[df.JourneyPatternID != 'null']
-    df = df[df.StopID != 'null']
-
     df = df.dropna(how='any', subset=['JourneyPatternID', 'StopID'])
+    df=df[df.JourneyPatternID != 'null']
+    df = df[df.StopID != 'null'] # could be a string...
+
     pattern = df['JourneyPatternID'].unique()
 
 
