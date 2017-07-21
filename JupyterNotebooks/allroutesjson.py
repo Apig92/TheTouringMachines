@@ -21,14 +21,14 @@ for filename in os.listdir(directory):
 
     df = df.StopID.apply(str)
 
-    df=df[df.StopID != 'null']
+    #df=df[df.StopID != 'null']
 
 
 
     df['Date'] = pd.to_datetime(df['Date']) # change types
 
 
-    df['StopID'] = pd.to_numeric(df['StopID']) #change types (for JSON)
+    #df['StopID'] = pd.to_numeric(df['StopID']) #change types (for JSON)
 
     df= df.dropna( how='any', subset = ['JourneyPatternID', 'StopID'])
     pattern = df['JourneyPatternID'].unique()
