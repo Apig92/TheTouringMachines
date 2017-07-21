@@ -18,6 +18,8 @@ for filename in os.listdir(directory):
     df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
 
     #drop nulls
+    df['StopID'] = df.StopID.apply(str)
+
     df = df[df.StopID != 'null']  # could be a string...
 
     df = df.dropna(how='any', subset=['JourneyPatternID', 'StopID'])
