@@ -25,7 +25,8 @@ for filename in os.listdir(directory):
 
 
 
-    df['Date'] = pd.to_datetime(df['Date']) # change types
+
+    #df['Date'] = pd.to_datetime(df['Date']) # change types
 
 
     #df['StopID'] = pd.to_numeric(df['StopID']) #change types (for JSON)
