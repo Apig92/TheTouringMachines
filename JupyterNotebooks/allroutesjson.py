@@ -19,8 +19,8 @@ for filename in os.listdir(directory):
     #drop nulls
     df=df[df.JourneyPatternID != 'null']
 
-
-    
+    df = df.dropna(how='any', subset=['JourneyPatternID', 'StopID'])
+    pattern = df['JourneyPatternID'].unique()
 
 
     df['Date'] = pd.to_datetime(df['Date']) # change types
@@ -28,8 +28,6 @@ for filename in os.listdir(directory):
 
     df['StopID'] = pd.to_numeric(df['StopID']) #change types (for JSON)
 
-    df= df.dropna( how='any', subset = ['JourneyPatternID', 'StopID'])
-    pattern = df['JourneyPatternID'].unique()
 
     df1 = df[df['AtStop'] == 1]
     #Only at stop to get Lat long
@@ -56,7 +54,7 @@ for filename in os.listdir(directory):
             routedf = newdf.append(datalist)
         routedf = routedf[['StopID', 'Longitude', 'Latitude']].copy()
         data = json.loads(routedf.to_json(orient='records'))
-        print("It's working, It's working!!!!")
+        print(p)
         results[p] = data
         print('route finished')
 with open("/home/csstudent/allroutes_json/routeinfo.json", 'w') as outfile:
