@@ -19,6 +19,7 @@ for filename in os.listdir(directory):
     #drop nulls
     df=df[df.JourneyPatternID != 'null']
 
+    df = df.StopID.apply(str)
 
     df=df[df.StopID != 'null']
 
