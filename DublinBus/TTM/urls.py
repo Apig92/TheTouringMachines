@@ -8,9 +8,11 @@ urlpatterns = [
     # /ttm/312/
     url(r'^(?P<Route_ID>[0-9]+)/$', views.detail, name='detail'),
 
-    # /ttm/JSON/fsad.json
-    url(r'^JSON/routes.json/$', views.json_routes, name='json_routes'),
-    #url(r'^JSON/(\d||\w)*.json/$', views.json_routes, name='json_routes'),
+    # static/TTM/JSON/routes.json
+    url(r'^static/TTM/JSON/routes.json/$', views.json_routes, name='json_route'),
+
+    # /ttm/JSON/040D1001.json
+    url(r'^static/TTM/JSON/([\d]*[\w]*).json/$', views.json_jpid, name='json_jpid')
 
     # /ttm/map.html
     #url(r'^(map.html)$', views.map, name='map'),

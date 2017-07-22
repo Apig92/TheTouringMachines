@@ -4,8 +4,8 @@ function myMap() {
     x = ReadCookie('route');
     xy = ReadCookie('start');
     xyz = ReadCookie('stop')
-    
-    $.getJSON('JSON/' + x + '.json', function (obj) {
+
+    $.getJSON('../JSON/' + x + '.json/', function (obj) {
         var out = "";
         var counter = 1;
         var half = Math.floor(obj.length / 2); // half of the json array
@@ -39,7 +39,7 @@ function myMap() {
                 });
             }
         }
-        
+
         for (j; j <= obj.length; j++) {
             data = obj[j];
             counter ++;
@@ -55,15 +55,15 @@ function myMap() {
                 });
                 break;
             }
-            
+
             latLng = new google.maps.LatLng(data.Latitude, data.Longitude);
             bounds.extend(latLng);
                 map.fitBounds(bounds);
             var iconImage = {
                 url: "Images/rec.png",
-                scaledSize: new google.maps.Size(15, 15), 
+                scaledSize: new google.maps.Size(15, 15),
                 origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(0, 0) 
+                anchor: new google.maps.Point(0, 0)
             };
 
             var marker = new google.maps.Marker({
@@ -84,7 +84,7 @@ function myMap() {
 
 
             })(marker, data);
-        } 
+        }
         document.getElementById("counter").innerHTML = "The number of stops is: " + counter;
     });
 
@@ -92,9 +92,10 @@ function myMap() {
 
 $(document).ready(function(){
     // routes dropdown
-    var dir = 'JSON/routes.json';
-$.getJSON(dir, function(data) {
-    //var jsonStr = JSON.stringify(data.routes[2].code);
+    var url = '../static/TTM/JSON/routes.json/'
+$.getJSON(url, function(data) {
+    var jsonStr = JSON.stringify(data.routes[2].code);
+    // alert(jsonStr);
     for( var i in data.routes ) {
         $('#dropdownroutes').append('<option name = "route" value='+data.routes[i].code+'>'+data.routes[i].number
    +'</option>');
@@ -115,7 +116,7 @@ function Cookies(){
                document.cookie="date=" + date;
                time = document.getElementById('time').value + ";";
                document.cookie="time=" + time;
-               
+
                            }
 
 function ReadCookie(cookiename){
@@ -139,20 +140,20 @@ var name = cookiename + "=";
 function stopselect(){
     //dropdown for starting stop
     x = ReadCookie('route');
-    $.getJSON('JSON/'+x+'.json', function(obj) {
+    $.getJSON('../static/TTM/JSON/'+x+'.json', function(obj) {
     for( var i in obj ) {
         $('#dropdownstops').append('<option name = "stop1" value='+obj[i].StopID+'>'+obj[i].StopID
    +'</option>');
    }
     });
 
- } 
+ }
 
 function endstopselect(){
     //dropdown for destination
    x = ReadCookie('route');
    xy = ReadCookie('start');
-    $.getJSON('JSON/'+x+'.json', function(obj) {
+    $.getJSON('../static/TTM/JSON/'+x+'.json', function(obj) {
     for( var n in obj ) {
         if (obj[n].StopID == xy){
            var j = n;
@@ -161,10 +162,10 @@ function endstopselect(){
     $('#dropdownstops1').append('<option name = "stop1" value='+obj[j].StopID+'>'+obj[j].StopID
     +'</option>');
                 } }
-    
+
    });
 
- } 
+ }
 
 function gettime() {
 
@@ -189,11 +190,11 @@ var yyyy = today.getFullYear();
 
 if(dd<10) {
     dd = '0'+dd
-} 
+}
 
 if(mm<10) {
     mm = '0'+mm
-} 
+}
 
 today = mm + '/' + dd + '/' + yyyy;
 return today;
