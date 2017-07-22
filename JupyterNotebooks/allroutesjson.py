@@ -3,12 +3,13 @@ import os
 
 
 
+
 import json
 newpath ='/home/csstudent/allroutes_json'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-directory = '/home/csstudent/CleanCSV'
+directory = '/home/csstudent/AllLines'
 results = {}
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
@@ -17,10 +18,14 @@ for filename in os.listdir(directory):
     df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
 
     #drop nulls
+    df['StopID'] = df.StopID.apply(str)
+
+    df = df[df.StopID != 'null']  # could be a string...
+
+    df = df.dropna(how='any', subset=['JourneyPatternID', 'StopID'])
     df=df[df.JourneyPatternID != 'null']
 
-
-    df=df[df.StopID != 'null']
+    pattern = df['JourneyPatternID'].unique()
 
 
     df['Date'] = pd.to_datetime(df['Date']) # change types
@@ -28,8 +33,6 @@ for filename in os.listdir(directory):
 
     df['StopID'] = pd.to_numeric(df['StopID']) #change types (for JSON)
 
-    df= df.dropna( how='any', subset = ['JourneyPatternID', 'StopID'])
-    pattern = df['JourneyPatternID'].unique()
 
     df1 = df[df['AtStop'] == 1]
     #Only at stop to get Lat long
@@ -51,15 +54,18 @@ for filename in os.listdir(directory):
         for s in maxstops:
             dfstops = df_longlat[df_longlat['StopID'] == s]
             key = dfstops['Key'].value_counts().idxmax()  # Get the highest value count per stop id
-            dfstops = dfstops[dfstops['Key'] == key].head(1)  # Get the first row as rows are
+            dfstops = dfstops[dfstops['Key'] == key].head(1)  # Get the first row as rows are ordered
             datalist.append(dfstops)
             routedf = newdf.append(datalist)
         routedf = routedf[['StopID', 'Longitude', 'Latitude']].copy()
-        data = json.loads(routedf.to_json(orient='records'))
-        print("It's working, It's working!!!!")
-        results[p] = data
+        if routedf.empty:
+            print('empty df')
+        else:
+            data = json.loads(routedf.to_json(orient='records'))
+            print(p)
+            results[p] = data
         print('route finished')
-with open("C:/Users/Daniel/Desktop/DataAnalytics/DUBLINBUS/allroutes_json/routeinfo.json", 'w') as outfile:
+with open("/home/csstudent/allroutes_json/routeinfo.json", 'w') as outfile:
         # outfile.write(data)
         json.dump(results, outfile)
-print('done')
+print('done!')
