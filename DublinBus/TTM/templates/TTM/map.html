@@ -2,30 +2,36 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="bus.css">
+
+    <!-- loads the path to the static files -->
+    {% load staticfiles %}
+
+    <!-- <script type="text/javascript" charset="utf-8">var json_loca = {% static "TTM/JSON/routes.json/" %}</script> -->
+    {% block javascript %}
+    <script src = {% static 'TTM/js/script.js' %}></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src = js/script.js></script>
-    
-    <script src = js/script.js></script>
-    
+    {% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'TTM/css/bus.css' %}">
+
     <title>The Touring Machines</title>
 <body>
     <script>
     $(window).on( 'load', function() {
       myMap();
       });</script>
-   
-        
+
+
     <header id="header">The Touring Machines<br></header>
-        
+
         <div id="map" style="width:600px;height:400px;"></div>
-        
+
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANEk4AGMlzwR3tsgCUsoa7UptHABc84Lk&callback=myMap"></script>
 
-        
+
 <div><p id ="counter"></p></div>
-        
+
         <footer >Icons made by Freepik from www.flaticon.com</footer>.
 </body>
 

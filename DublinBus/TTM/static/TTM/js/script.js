@@ -5,7 +5,7 @@ function myMap() {
     xy = ReadCookie('start');
     xyz = ReadCookie('stop')
 
-    $.getJSON('../JSON/' + x + '.json/', function (obj) {
+    $.getJSON('../static/TTM/JSON/' + x + '.json/', function (obj) {
         var out = "";
         var counter = 1;
         var half = Math.floor(obj.length / 2); // half of the json array
