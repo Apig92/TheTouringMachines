@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
 
-    url(r'^index$', views.index, name='index'),
+    url(r'^index.html$', views.index, name='index'),
 
     # /ttm/312/
     url(r'^(?P<Route_ID>[0-9]+)/$', views.detail, name='detail'),
