@@ -12,8 +12,14 @@ urlpatterns = [
     url(r'^static/TTM/JSON/routes.json/$', views.json_routes, name='json_route'),
 
     # /ttm/JSON/040D1001.json
-    url(r'^static/TTM/JSON/([\d]*[\w]*).json/$', views.json_jpid, name='json_jpid')
+    url(r'^static/TTM/JSON/([\d]*[\w]*).json/$', views.json_jpid, name='json_jpid'),
 
     # /ttm/map.html
-    #url(r'^(map.html)$', views.map, name='map'),
+    url(r'^map.html$', views.map, name='map'),
+
+    # /ttm/static/TTM/Images/icon_circle.png
+    url(r'^static/TTM/Images/icon_circle.png$', views.icon_circle, name='icon_circle'),
+
+    # /ttm/static/TTM/Images/icon_rec.png
+    url(r'^static/TTM/Images/icon_rec.png$', views.icon_rec, name='icon_rec'),
 ]
