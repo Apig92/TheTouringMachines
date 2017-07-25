@@ -18,7 +18,7 @@ function myMap() {
         var infoWindow = new google.maps.InfoWindow();
         var bounds = new google.maps.LatLngBounds();
          var icon1 = {
-                    url: "../static/TTM/Images/icon_circle.png",
+                    url: "../static/TTM/images/icon_circle.png",
                     scaledSize: new google.maps.Size(70, 70), // scaled size
                     origin: new google.maps.Point(0, 0), // origin
                     anchor: new google.maps.Point(30, 70) // anchor
@@ -60,7 +60,7 @@ function myMap() {
             bounds.extend(latLng);
                 map.fitBounds(bounds);
             var iconImage = {
-                url: "../static/TTM/Images/icon_rec.png",
+                url: "../static/TTM/images/icon_rec.png",
                 scaledSize: new google.maps.Size(15, 15),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(0, 0)
