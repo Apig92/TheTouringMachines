@@ -99,7 +99,7 @@ function myMap() {
 
 $(document).ready(function(){
     // routes dropdown
-$.getJSON('../static/TTM/JSON/routes.json/', function(data) {
+$.getJSON('../static/TTM/JSON/routes.json', function(data) {
     var data = data.routes;
     for( var i in data ) {
         $('#dropdownroutes').append('<option value='+ [data[i].code, data[i].number] +'>'+data[i].number
