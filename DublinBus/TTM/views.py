@@ -21,8 +21,12 @@ def json_routes(request):
     return render(request, 'ttm/json_routes.html')
 
 def json_jpid(request, jpid):
+    #path = 'TTM/static/TTM/JSON/' + jpid + '.json'
     #json_jpid = json.dumps('TTM/static/TTM/JSON/' + jpid + '.json')
     return render(request, 'ttm/json_jpid.html')
+
+def routeinfo(request):
+    return render(request)
 
 def map(request):
     return render(request, 'ttm/map.html')

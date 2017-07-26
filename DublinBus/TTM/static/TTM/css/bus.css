@@ -1,9 +1,12 @@
 #map {
     padding:auto;
-    margin:auto;
+    margin:100px;
 }
 
-/
+.map {
+
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
