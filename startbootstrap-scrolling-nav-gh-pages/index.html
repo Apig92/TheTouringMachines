@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
     <title>Scrolling Nav - Start Bootstrap Template</title>
     <!-- For use with Jquery and Javascript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <script src = js/script.js></script>
     
     
@@ -43,6 +43,7 @@
     
     $(window).on('load', function() {
        var today = getdate();
+       // alert(today);
       });</script>
 
     <!-- Navigation -->
@@ -74,7 +75,9 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+                    
                 </ul>
+                 <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -99,8 +102,10 @@
     
                     
                      <div class="form-group">
-                         <label for="sel1">Date</label>
-                           <input class = "form-control" type="date" name="date" id = "dt" onchange = "Cookies()" >
+                         <label for="sel1">Day</label>
+                           <select class = "form-control" type="date" name="date" id = "dt" onchange = "Cookies()" > 
+                            <option value="None" selected="Selected">Selected</option>
+                           </select>
                         </div>
                     <div class="form-group">
                           <label for="sel1">Time</label>
@@ -116,7 +121,7 @@
                         
                     <div class="form-group">
                           <label for="sel1">End Stop</label>
-                          <select class="form-control" id="dropdownstops1" onchange = "Cookies(); endstopselect12();">
+                          <select class="form-control" id="dropdownstops1" onchange = "Cookies(); ">
                             <option value="None" selected="Selected">Selected</option>
                           </select>
                         </div>

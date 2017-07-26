@@ -4,14 +4,14 @@ function myMap() {
     x = ReadCookie('route');
     xy = ReadCookie('start');
     xyz = ReadCookie('stop')
-    
-    $.getJSON('JSON/' + x + '.json', function (obj) {
-        var out = "";
-        var counter = 1;
+    routename  = ReadCookie('nameroute')
+    $.getJSON('JSON/routeinfo.json', function (json) {
+        obj = json[x];
+        var counter = 0;
         var half = Math.floor(obj.length / 2); // half of the json array
         var mapCanvas = document.getElementById("map");
         var mapOptions = {
-            center: new google.maps.LatLng(obj[half].Latitude, obj[half].Longitude), //centre of map is centre of route
+            center: new google.maps.LatLng(obj[half].Latitude, obj[half].Longitude), //centre of map is centre of route if no stops are picked
             zoom: 13
         }
         var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -44,7 +44,7 @@ function myMap() {
             data = obj[j];
             counter ++;
             if (data.StopID == xyz) { //break at last one
-                latLng = new google.maps.LatLng(data.Latitude, data.Longitude);7
+                latLng = new google.maps.LatLng(data.Latitude, data.Longitude);
                 bounds.extend(latLng);
                 map.fitBounds(bounds);
                 var marker = new google.maps.Marker({
@@ -85,19 +85,24 @@ function myMap() {
 
             })(marker, data);
         } 
-        document.getElementById("counter").innerHTML = "The number of stops is: " + counter;
+        document.getElementById("counter").innerHTML = "The number of stops is: " + (counter - 1);
+        document.getElementById("nameofroute").innerHTML = "Route: " + routename;
+        document.getElementById("stops").innerHTML = "First stop: " + xy +"<br/> Destination Stop: "+xyz;
+        
     });
 
 }
 
 
+
+
 $(document).ready(function(){
     // routes dropdown
 $.getJSON('routes.json', function(data) {
-    var jsonStr = JSON.stringify(data.routes[2].code); 
-    for( var i in data.routes ) {
-        $('#dropdownroutes').append('<option name = "route" value='+data.routes[i].code+'>'+data.routes[i].number
+    for( var i in data ) {
+        $('#dropdownroutes').append('<option value='+ [data[i].code, data[i].number] +'>'+data[i].number
    +'</option>');
+        
     }
   });
 });
@@ -105,8 +110,11 @@ $.getJSON('routes.json', function(data) {
 
 function Cookies(){
                // makes and stores cookies
-               route= document.getElementById('dropdownroutes').value + ";";
+               routestr= document.getElementById('dropdownroutes').value; //split the string of value for name and code
+               route =routestr.split(',')[0] + ";";
+               nameroute = routestr.split(',')[1]+ ";";
                document.cookie="route=" + route;
+               document.cookie="nameroute=" + nameroute;
                start = document.getElementById('dropdownstops').value + ";";
                document.cookie="start=" + start;
                stop = document.getElementById('dropdownstops1').value + ";";
@@ -116,10 +124,11 @@ function Cookies(){
                time = document.getElementById('time').value + ";";
                document.cookie="time=" + time;
                
+               
                            }
 
 function ReadCookie(cookiename){
-    //gets cookiename
+    //gets cookiename reference this
 var name = cookiename + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -139,7 +148,8 @@ var name = cookiename + "=";
 function stopselect(){
     //dropdown for starting stop
     x = ReadCookie('route');
-    $.getJSON('JSON/'+x+'.json', function(obj) {
+    $.getJSON('JSON/routeinfo.json', function(json) {
+    obj = json[x];
     for( var i in obj ) {
         $('#dropdownstops').append('<option name = "stop1" value='+obj[i].StopID+'>'+obj[i].StopID
    +'</option>');
@@ -152,7 +162,8 @@ function endstopselect(){
     //dropdown for destination
    x = ReadCookie('route');
    xy = ReadCookie('start');
-    $.getJSON('JSON/'+x+'.json', function(obj) {
+    $.getJSON('JSON/routeinfo.json', function(json) {
+    obj = json[x];
     for( var n in obj ) {
         if (obj[n].StopID == xy){
            var j = n;
@@ -180,23 +191,61 @@ function reloadpage() {
 }
 
 
+
 function getdate(){
-    //display todays date in correct format - needs to be default value
+    //need to add if statements for bank holidays and christmas - future work :)
 var today = new Date();
+var weekday = today.getDay();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
 var yyyy = today.getFullYear();
-
+var day = new Array(7);
+day[0] = "Sunday";
+day[1] = "Monday";
+day[2] = "Tuesday";
+day[3] = "Wednesday";
+day[4] = "Thursday";
+day[5] = "Friday";
+day[6] = "Saturday";
+var week_day_loop = ""; //Week day loop to generate Today, Tomorrow and the correct following days depending on the day the user is viewing the site.
+    
 if(dd<10) {
-    dd = '0'+dd
+dd = '0'+dd
 } 
 
 if(mm<10) {
     mm = '0'+mm
 } 
 
-today = mm + '/' + dd + '/' + yyyy;
-return today;
+for (var i = 0; i < 7; i++) {
+    var value = weekday + i;
+    if (value < 7) {
+        var j = value;
+    } else {
+        var j = value - 7;
+    }
+    if (j==0){
+        var pythonvalue = 6; //in python 0 is Monday and 6 is Sunday
+    }
+    else {
+        var pythonvalue = j - 1;
+    }
+
+
+    if (i == 0) {
+        week_day_loop = "Today";
+    } else if (i > 1) {
+        week_day_loop = day[j];
+    } else {
+        week_day_loop = "Tomorrow";
+    }
+
+    $('#dt').append('<option name = "date" value=' +pythonvalue+ '>' + week_day_loop + '</option>');
+}
 }
 
-
+function weatherJSON(){
+        $.getJSON("http://api.openweathermap.org/data/2.5/forecast?id=2964574&APPID=e9da13ccf40ebb756a8680b64650d626",function(json){
+            document.write(JSON.stringify(json));
+        });
+    }
