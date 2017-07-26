@@ -1,12 +1,13 @@
 function myMap() {
     //produces map , creates markers for users specified route
+
     x = ReadCookie('route');
     xy = ReadCookie('start');
     xyz = ReadCookie('stop');
-
-    routename  = ReadCookie('nameroute'); //alert((routename));
-    $.getJSON('../static/TTM/JSON/routeinfo.json/', function (json) {
-        var obj = json[x];
+    routename  = ReadCookie('nameroute');
+    //alert(routename);
+    $.getJSON('../static/TTM/JSON/routeinfo.json', function (json) {
+        obj = json[x];
         var counter = 0;
         var half = Math.floor(obj.length / 2); // half of the json array
         var mapCanvas = document.getElementById("map");
@@ -88,18 +89,22 @@ function myMap() {
         document.getElementById("counter").innerHTML = "The number of stops is: " + (counter - 1);
         document.getElementById("nameofroute").innerHTML = "Route: " + routename;
         document.getElementById("stops").innerHTML = "First stop: " + xy +"<br/> Destination Stop: "+xyz;
+
     });
 
 }
 
+
+
+
 $(document).ready(function(){
     // routes dropdown
-    var url = '../static/TTM/JSON/routes.json/';
-$.getJSON(url, function(data) {
+$.getJSON('../static/TTM/JSON/routes.json/', function(data) {
     var data = data.routes;
     for( var i in data ) {
-        $('#dropdownroutes').append('<option name = "route" value='+data[i].code+'>'+data[i].number
+        $('#dropdownroutes').append('<option value='+ [data[i].code, data[i].number] +'>'+data[i].number
    +'</option>');
+
     }
   });
 });
@@ -109,7 +114,7 @@ function Cookies(){
                // makes and stores cookies
                routestr= document.getElementById('dropdownroutes').value; //split the string of value for name and code
                route =routestr.split(',')[0] + ";";
-               nameroute = routestr.split(',')[1] + ";";
+               nameroute = routestr.split(',')[1]+ ";";
                document.cookie="route=" + route;
                document.cookie="nameroute=" + nameroute;
                start = document.getElementById('dropdownstops').value + ";";
@@ -120,6 +125,7 @@ function Cookies(){
                document.cookie="date=" + date;
                time = document.getElementById('time').value + ";";
                document.cookie="time=" + time;
+
 
                            }
 
@@ -145,8 +151,8 @@ function stopselect(){
     //dropdown for starting stop
     x = ReadCookie('route');
     $.getJSON('../static/TTM/JSON/routeinfo.json', function(json) {
-        var obj = json[x];
-        for( var i in obj ) {
+    obj = json[x];
+    for( var i in obj ) {
         $('#dropdownstops').append('<option name = "stop1" value='+obj[i].StopID+'>'+obj[i].StopID
    +'</option>');
    }
@@ -159,21 +165,25 @@ function endstopselect(){
    x = ReadCookie('route');
    xy = ReadCookie('start');
     $.getJSON('../static/TTM/JSON/routeinfo.json', function(json) {
-        var obj = json[x];
-        for( var n in obj ) {
+    obj = json[x];
+    for( var n in obj ) {
         if (obj[n].StopID == xy){
            var j = n;
         }
      for (j; j <= obj.length; j++) {
-    $('#dropdownstops1').append('<option name = "stop1" value='+obj[j].StopID+'>'+obj[j].StopID +'</option>');
-        }
-        }
+    $('#dropdownstops1').append('<option name = "stop1" value='+obj[j].StopID+'>'+obj[j].StopID
+    +'</option>');
+                } }
+
    });
+
  }
 
 function gettime() {
 
     d = new Date();
+    //alert('hi');
+    alert(d);
     $('#dropdowntime').append('<option name = "Time" value=' + d + '>' + d +
         '</option>');
 }
@@ -181,6 +191,7 @@ function gettime() {
 function reloadpage() {
     location.reload();
 }
+
 
 
 function getdate(){
@@ -201,7 +212,7 @@ day[6] = "Saturday";
 var week_day_loop = ""; //Week day loop to generate Today, Tomorrow and the correct following days depending on the day the user is viewing the site.
 
 if(dd<10) {
-    dd = '0'+dd
+dd = '0'+dd
 }
 
 if(mm<10) {
@@ -222,6 +233,7 @@ for (var i = 0; i < 7; i++) {
         var pythonvalue = j - 1;
     }
 
+
     if (i == 0) {
         week_day_loop = "Today";
     } else if (i > 1) {
@@ -239,5 +251,3 @@ function weatherJSON(){
             document.write(JSON.stringify(json));
         });
     }
-
-

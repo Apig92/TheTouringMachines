@@ -21,7 +21,7 @@
     {% block javascript %}
     <script src = {% static 'TTM/js/script.js' %}></script>
 
-    <!-- jQuery -->
+        <!-- jQuery -->
     <script src="{% static 'TTM/js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -39,16 +39,16 @@
 
 
 </head>
-
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-<!-- NEED TO WORK ON This  Display todays date and time as initial values (and cookies)-->
+<!--                NEED TO WORK ON This  Display todays date and time as initial values (and cookies)-->
  <script>
 
     $(window).on('load', function() {
        var today = getdate();
+       // alert(today);
       });</script>
 
     <!-- Navigation -->
@@ -80,8 +80,9 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+
                 </ul>
-                <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
+                 <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -89,7 +90,8 @@
     </nav>
 
 
-        <!-- Intro Section -->
+
+    <!-- Intro Section -->
     <section id="intro" class="intro-section">
         <div class="container">
             <div class="row">
@@ -155,16 +157,6 @@
             </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img id="us" class="img-responsive center-block" src="{% static 'TTM/images/touring.png' %}" />
-                    <br><h5>We're a group of people stuck in college during the summer. It's warm and we want to sleep and maybe drink cans.</h5>
-                </div>
-            </div>
-    </section>
-
     <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="container">
@@ -187,8 +179,7 @@
         </div>
     </section>
 
-
-
 </body>
 
 </html>
+
