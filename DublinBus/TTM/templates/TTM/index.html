@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Scrolling Nav - Start Bootstrap Template</title>
+    <title>The Touring Machines</title>
     <!-- For use with Jquery and Javascript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -39,16 +39,16 @@
 
 
 </head>
-
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-<!-- NEED TO WORK ON This  Display todays date and time as initial values (and cookies)-->
+<!--                NEED TO WORK ON This  Display todays date and time as initial values (and cookies)-->
  <script>
 
     $(window).on('load', function() {
        var today = getdate();
+       // alert(today);
       });</script>
 
     <!-- Navigation -->
@@ -80,12 +80,15 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+
                 </ul>
+                 <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+
 
 
     <!-- Intro Section -->
@@ -101,23 +104,13 @@
        <option value="None" selected="Selected">Selected</option>
     </select>
     </div>
-    <!-- <script>
-        $(document).ready(function(){
-        // routes dropdown
-        var dir = '{% static 'TTM/JSON/routes.json/' %}'
-    $.getJSON(dir, function(data) {
-        //var jsonStr = JSON.stringify(data.routes[2].code);
-        for( var i in data.routes ) {
-            $('#dropdownroutes').append('<option name = "route" value='+data.routes[i].code+'>'+data.routes[i].number
-       +'</option>');
-        }
-      });
-    });
-    </script> -->
+
 
                      <div class="form-group">
-                         <label for="sel1">Date</label>
-                           <input class = "form-control" type="date" name="date" id = "dt" onchange = "Cookies()" >
+                         <label for="sel1">Day</label>
+                           <select class = "form-control" type="date" name="date" id = "dt" onchange = "Cookies()" >
+                            <option value="None" selected="Selected">Selected</option>
+                           </select>
                         </div>
                     <div class="form-group">
                           <label for="sel1">Time</label>
@@ -132,7 +125,7 @@
 
                     <div class="form-group">
                           <label for="sel1">End Stop</label>
-                          <select class="form-control" id="dropdownstops1" onchange = "Cookies(); endstopselect12();">
+                          <select class="form-control" id="dropdownstops1" onchange = "Cookies(); ">
                             <option value="None" selected="Selected">Selected</option>
                           </select>
                         </div>
@@ -148,7 +141,7 @@
 
                     <input type="submit" class="btn btn-info" value="Submit" onclick=Cookies()>
 <!--                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>-->
-
+                    </form>
                 </div>
             </div>
         </div>
@@ -186,8 +179,7 @@
         </div>
     </section>
 
-
-
 </body>
 
 </html>
+

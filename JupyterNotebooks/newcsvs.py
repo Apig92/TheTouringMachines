@@ -6,7 +6,7 @@ newpath ='/home/csstudent/Routes'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-directory = '/home/csstudent/CleanCSV'
+directory = '/home/csstudent/AllLines'
 for filename in os.listdir(directory):
     if filename.endswith(".csv"):
         x= ""+filename+""
@@ -52,10 +52,12 @@ for filename in os.listdir(directory):
                         seconds = 0
                         c = b
                         print(c, b, seconds)
-                    df2.set_value(temp.index, 'Seconds', seconds)
+                    df1.set_value(temp.index, 'Seconds', seconds)
                     print (count)
 
             print ('done day', count)
-            df2 = df2.dropna( how='any', subset = ['Seconds'])
-            df2['Day'] = df2.Date.dt.dayofweek
-            df2.to_csv("/home/csstudent/Routes/"+str(routeID)+"route.csv") # works for every route
+    df1 = df1.dropna( how='any', subset = ['Seconds'])
+    df1['Day'] = df1.Date.dt.dayofweek
+    df1.to_csv("/home/csstudent/Routes/"+str(routeID)+"route.csv") # works for every route
+    print ("done Line")
+print ('Finished')
