@@ -10,14 +10,14 @@ import json
 def index(request):
     all_routes = Routes.objects.all()
     context = {'all_routes': all_routes,}
-    return render(request, 'ttm/index.html', context)
+    return render(request, 'TTM/index.html', context)
 
 def detail(request, Route_ID):
     try:
         route = Routes.objects.get(pk=Route_ID)
     except Routes.DoesNotExist:
         raise Http404("Route does not exist")
-    return render(request, 'ttm/detail.html', {'route': route})
+    return render(request, 'TTM/detail.html', {'route': route})
 
 def json_routes(request):
     return render(request)

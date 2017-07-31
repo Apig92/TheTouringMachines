@@ -88,8 +88,8 @@ function myMap() {
         }
         document.getElementById("counter").innerHTML = "The number of stops is: " + (counter - 1);
         document.getElementById("nameofroute").innerHTML = "Route: " + routename;
-        document.getElementById("stops").innerHTML = "First stop: " + xy +"<br/> Destination Stop: "+xyz;
-
+        document.getElementById("firststop").innerHTML = "First stop: " + xy;
+        document.getElementById("endstop").innerHTML = "Destination Stop: "+ xyz;
     });
 
 }
@@ -109,7 +109,6 @@ $.getJSON('../static/TTM/JSON/routes.json', function(data) {
   });
 });
 
-
 function Cookies(){
                // makes and stores cookies
                routestr= document.getElementById('dropdownroutes').value; //split the string of value for name and code
@@ -125,12 +124,13 @@ function Cookies(){
                document.cookie="date=" + date;
                time = document.getElementById('time').value + ";";
                document.cookie="time=" + "9;";
-               document.cookie="wind=" + "0;";
-               document.cookie="rain=" + "0;";
-               document.cookie="temp=" + "0;";
-
+               // document.cookie="wind=" + "0;";
+               // document.cookie="rain=" + "0;";
+               // document.cookie="temp=" + "0;";
 
                            }
+
+
 
 function ReadCookie(cookiename){
     //gets cookiename reference this
@@ -191,9 +191,9 @@ function gettime() {
         '</option>');
 }
 
-//function reloadpage() {
-//    location.reload();
-//}
+function reloadpage() {
+    location.reload();
+}
 
 
 
@@ -254,29 +254,3 @@ function weatherJSON(){
             document.write(JSON.stringify(json));
         });
     }
-//function runPyScript(){
-//    alert('hi');
-//    pattern = ReadCookie('route');
-//    start = ReadCookie('start');
-//    end = ReadCookie('stop');
-//    day = ReadCookie('date');
-//    hour = 9;
-//    rain = 0;
-//    temp = 0;
-//    wind = 0;
-//    line = ReadCookie('nameroute');
-//    var pred_variables = [hour, day, start, end, line, pattern, rain, wind, temp];
-//    var jqXHR = $.ajax({
-//        type: "POST",
-//        url: "est_time.html",
-//        async: false,
-//        data: { 'input' : pred_variables}
-//    });
-//
-//
-//}
-
-function reloadpage() {
-    location.reload();
-}
-
