@@ -5,8 +5,6 @@ urlpatterns = [
 
     url(r'^index.html$', views.index, name='index'),
 
-    # /TTM/312/
-    url(r'^(?P<Route_ID>[0-9]+)/$', views.detail, name='detail'),
 
     # static/TTM/JSON/routes.json
     url(r'^static/TTM/JSON/routes.json$', views.json_routes, name='json_route'),
@@ -22,4 +20,10 @@ urlpatterns = [
 
     # /TTM/static/TTM/Images/icon_rec.png
     url(r'^static/TTM/images/icon_rec.png$', views.icon_rec, name='icon_rec'),
+
+    # /TTM/est_time.html
+    url(r'^est_time.html$', views.timepredict, name = 'predictions'),
+
+# static/TTM/pickles/line.sav
+    url(r'^static/TTM/pickles/[\d]*[\w]*.sav$', views.pickle, name='pickle'),
 ]

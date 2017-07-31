@@ -124,7 +124,10 @@ function Cookies(){
                date = document.getElementById('dt').value + ";";
                document.cookie="date=" + date;
                time = document.getElementById('time').value + ";";
-               document.cookie="time=" + time;
+               document.cookie="time=" + "9;";
+               document.cookie="wind=" + "0;";
+               document.cookie="rain=" + "0;";
+               document.cookie="temp=" + "0;";
 
 
                            }
@@ -188,9 +191,9 @@ function gettime() {
         '</option>');
 }
 
-function reloadpage() {
-    location.reload();
-}
+//function reloadpage() {
+//    location.reload();
+//}
 
 
 
@@ -251,3 +254,29 @@ function weatherJSON(){
             document.write(JSON.stringify(json));
         });
     }
+//function runPyScript(){
+//    alert('hi');
+//    pattern = ReadCookie('route');
+//    start = ReadCookie('start');
+//    end = ReadCookie('stop');
+//    day = ReadCookie('date');
+//    hour = 9;
+//    rain = 0;
+//    temp = 0;
+//    wind = 0;
+//    line = ReadCookie('nameroute');
+//    var pred_variables = [hour, day, start, end, line, pattern, rain, wind, temp];
+//    var jqXHR = $.ajax({
+//        type: "POST",
+//        url: "est_time.html",
+//        async: false,
+//        data: { 'input' : pred_variables}
+//    });
+//
+//
+//}
+
+function reloadpage() {
+    location.reload();
+}
+
