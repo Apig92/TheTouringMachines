@@ -109,8 +109,6 @@ $.getJSON('../static/TTM/JSON/routes.json', function(data) {
   });
 });
 
-function Cookies(){
-               // makes and stores cookies
 
 function Cookies() {
     // makes and stores cookies
