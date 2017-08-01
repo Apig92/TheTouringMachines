@@ -34,8 +34,10 @@ def predictions(dict):
     EndInformation = [hour, day, end, line, pattern, rain, wind, temp]
     StartPrediction = TrainedModel.predict(StartInformation)
     EndPrediction= TrainedModel.predict(EndInformation)
-
-    return (EndPrediction[0] - StartPrediction[0])/60
+    seconds = (EndPrediction[0] - StartPrediction[0])
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    return ("%d hrs %02d mins %02d secs" % (h, m, s))
 
 
 
