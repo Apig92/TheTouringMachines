@@ -111,19 +111,22 @@ $.getJSON('../static/TTM/JSON/routes.json', function(data) {
 
 function Cookies(){
                // makes and stores cookies
-               routestr= document.getElementById('dropdownroutes').value; //split the string of value for name and code
-               route =routestr.split(',')[0] + ";";
-               nameroute = routestr.split(',')[1]+ ";";
-               document.cookie="route=" + route;
-               document.cookie="nameroute=" + nameroute;
-               start = document.getElementById('dropdownstops').value + ";";
-               document.cookie="start=" + start;
-               stop = document.getElementById('dropdownstops1').value + ";";
-               document.cookie="stop=" + stop;
-               date = document.getElementById('dt').value + ";";
-               document.cookie="date=" + date;
-               time = document.getElementById('time').value + ";";
-               document.cookie="time=" + "9;";
+
+function Cookies() {
+    // makes and stores cookies
+    routestr = document.getElementById('dropdownroutes').value; //split the string of value for name and code
+    route = routestr.split(',')[0] + ";";
+    nameroute = routestr.split(',')[1] + ";";
+    document.cookie = "route=" + route;
+    document.cookie = "nameroute=" + nameroute;
+    start = document.getElementById('dropdownstops').value + ";";
+    document.cookie = "start=" + start;
+    stop = document.getElementById('dropdownstops1').value + ";";
+    document.cookie = "stop=" + stop;
+    date = document.getElementById('dt').value + ";";
+    document.cookie = "date=" + date;
+    time = document.getElementById('time').value + ";";
+    document.cookie = "time=" + time;
                // document.cookie="wind=" + "0;";
                // document.cookie="rain=" + "0;";
                // document.cookie="temp=" + "0;";
@@ -183,12 +186,47 @@ function endstopselect(){
  }
 
 function gettime() {
+    var time_loop = "";
+    var d = new Date();
+    var n = d.getTime();
+    var hour = d.getHours();
+    var min = d.getMinutes();
+    var j = parseInt(ReadCookie('date'));
+    if (min < 10) {
+       min= '0' + min;}
+    if (min < 30) {
+        newhour = hour;
+    } else {
+        newhour = hour + 1;
+    }
 
-    d = new Date();
-    //alert('hi');
-    alert(d);
-    $('#dropdowntime').append('<option name = "Time" value=' + d + '>' + d +
-        '</option>');
+    if (j == 6) {
+        var thisday = 0; //change to javascript
+    } else {
+        var thisday = (j + 1);
+    }
+    //alert(thisday);
+     var option = $('<option name = "time" value=' + newhour + '>' + hour + ':' + min + '</option>');
+    $("#time").empty().append(option);//delete options and replace with current time
+    if (thisday == d.getDay()) {
+        for (var i = newhour; i < 24; i++) {
+        var value =i;
+        if (i > 0) {
+        time_loop = ""+value+":00";
+        }
+
+        $('#time').append('<option name = "time" value=' +value+ '>' + time_loop + '</option>');
+    }
+
+    }
+    else {
+         for (var i = 6; i < 24; i++) {
+        var value =i;
+        time_loop = ""+value+":00";
+        $('#time').append('<option name = "time" value=' +value+ '>' + time_loop + '</option>');
+    }}
+
+
 }
 
 function reloadpage() {
