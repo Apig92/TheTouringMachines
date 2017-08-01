@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Routes
 from .scripts import predictions
-from .testing import testing
+
 from django.views.decorators.csrf import csrf_exempt
 import json
 
