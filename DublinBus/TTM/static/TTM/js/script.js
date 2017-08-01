@@ -4,8 +4,9 @@ function myMap() {
     x = ReadCookie('route');
     xy = ReadCookie('start');
     xyz = ReadCookie('stop');
-    routename = ReadCookie('nameroute')
-    $.getJSON('JSON/routeinfo.json', function (json) {
+    routename  = ReadCookie('nameroute');
+    //alert(routename);
+    $.getJSON('../static/TTM/JSON/routeinfo.json', function (json) {
         obj = json[x];
         var counter = 0;
         var half = Math.floor(obj.length / 2); // half of the json array
@@ -17,12 +18,12 @@ function myMap() {
         var map = new google.maps.Map(mapCanvas, mapOptions);
         var infoWindow = new google.maps.InfoWindow();
         var bounds = new google.maps.LatLngBounds();
-        var icon1 = {
-            url: "Images/icon (2).png",
-            scaledSize: new google.maps.Size(70, 70), // scaled size
-            origin: new google.maps.Point(0, 0), // origin
-            anchor: new google.maps.Point(30, 70) // anchor
-        };
+         var icon1 = {
+                    url: "../static/TTM/images/icon_circle.png",
+                    scaledSize: new google.maps.Size(70, 70), // scaled size
+                    origin: new google.maps.Point(0, 0), // origin
+                    anchor: new google.maps.Point(30, 70) // anchor
+                };
 
         for (var n in obj) {
             if (obj[n].StopID == xy) {
@@ -42,7 +43,7 @@ function myMap() {
 
         for (j; j <= obj.length; j++) {
             data = obj[j];
-            counter++;
+            counter ++;
             if (data.StopID == xyz) { //break at last one
                 latLng = new google.maps.LatLng(data.Latitude, data.Longitude);
                 bounds.extend(latLng);
@@ -58,9 +59,9 @@ function myMap() {
 
             latLng = new google.maps.LatLng(data.Latitude, data.Longitude);
             bounds.extend(latLng);
-            map.fitBounds(bounds);
+                map.fitBounds(bounds);
             var iconImage = {
-                url: "Images/rec.png",
+                url: "../static/TTM/images/icon_rec.png",
                 scaledSize: new google.maps.Size(15, 15),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(0, 0)
@@ -71,8 +72,7 @@ function myMap() {
                 map: map,
                 icon: iconImage
 
-            });
-            bounds.extend(marker.getPosition());
+            }); bounds.extend(marker.getPosition());
 
 
             (function (marker, data) {
@@ -88,8 +88,8 @@ function myMap() {
         }
         document.getElementById("counter").innerHTML = "The number of stops is: " + (counter - 1);
         document.getElementById("nameofroute").innerHTML = "Route: " + routename;
-        document.getElementById("stops").innerHTML = "First stop: " + xy + "<br/> Destination Stop: " + xyz;
-
+        document.getElementById("firststop").innerHTML = "First stop: " + xy;
+        document.getElementById("endstop").innerHTML = "Destination Stop: "+ xyz;
     });
 
 }
@@ -97,17 +97,20 @@ function myMap() {
 
 
 
-$(document).ready(function () {
+$(document).ready(function(){
     // routes dropdown
-    $.getJSON('routes.json', function (data) {
-        for (var i in data) {
-            $('#dropdownroutes').append('<option value=' + [data[i].code, data[i].number] + '>' + data[i].number +
-                '</option>');
+$.getJSON('../static/TTM/JSON/routes.json', function(data) {
+    var data = data.routes;
+    for( var i in data ) {
+        $('#dropdownroutes').append('<option value='+ [data[i].code, data[i].number] +'>'+data[i].number
+   +'</option>');
 
-        }
-    });
+    }
+  });
 });
 
+function Cookies(){
+               // makes and stores cookies
 
 function Cookies() {
     // makes and stores cookies
@@ -124,18 +127,20 @@ function Cookies() {
     document.cookie = "date=" + date;
     time = document.getElementById('time').value + ";";
     document.cookie = "time=" + time;
-    //alert(date);
-    //alert(time);
+               // document.cookie="wind=" + "0;";
+               // document.cookie="rain=" + "0;";
+               // document.cookie="temp=" + "0;";
+
+     }
 
 
-}
 
-function ReadCookie(cookiename) {
+function ReadCookie(cookiename){
     //gets cookiename reference this
-    var name = cookiename + "=";
+var name = cookiename + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
+    for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
@@ -148,38 +153,37 @@ function ReadCookie(cookiename) {
 }
 
 
-function stopselect() {
+function stopselect(){
     //dropdown for starting stop
     x = ReadCookie('route');
-    $.getJSON('JSON/routeinfo.json', function (json) {
-        obj = json[x];
-        for (var i in obj) {
-            $('#dropdownstops').append('<option name = "stop1" value=' + obj[i].StopID + '>' + obj[i].StopID +
-                '</option>');
-        }
+    $.getJSON('../static/TTM/JSON/routeinfo.json', function(json) {
+    obj = json[x];
+    for( var i in obj ) {
+        $('#dropdownstops').append('<option name = "stop1" value='+obj[i].StopID+'>'+obj[i].StopID
+   +'</option>');
+   }
     });
 
-}
+ }
 
-function endstopselect() {
+function endstopselect(){
     //dropdown for destination
-    x = ReadCookie('route');
-    xy = ReadCookie('start');
-    $.getJSON('JSON/routeinfo.json', function (json) {
-        obj = json[x];
-        for (var n in obj) {
-            if (obj[n].StopID == xy) {
-                var j = n;
-            }
-            for (j; j <= obj.length; j++) {
-                $('#dropdownstops1').append('<option name = "stop1" value=' + obj[j].StopID + '>' + obj[j].StopID +
-                    '</option>');
-            }
+   x = ReadCookie('route');
+   xy = ReadCookie('start');
+    $.getJSON('../static/TTM/JSON/routeinfo.json', function(json) {
+    obj = json[x];
+    for( var n in obj ) {
+        if (obj[n].StopID == xy){
+           var j = n;
         }
+     for (j; j <= obj.length; j++) {
+    $('#dropdownstops1').append('<option name = "stop1" value='+obj[j].StopID+'>'+obj[j].StopID
+    +'</option>');
+                } }
 
-    });
+   });
 
-}
+ }
 
 function gettime() {
     var time_loop = "";
@@ -285,40 +289,3 @@ function getdate() {
         $('#dt').append('<option name = "date" value=' + pythonvalue + '>' + week_day_loop + '</option>');
     }
 }
-
-//function weatherJSON(){
-//        $.getJSON("http://api.openweathermap.org/data/2.5/forecast?id=2964574&APPID=e9da13ccf40ebb756a8680b64650d626",function(json){
-//            var Weather = JSON.stringify(json);
-//            document.write(Weather);
-//        });
-//    }
-
-function weatherJSON() {
-    $.getJSON("JSON/weather.json", function (json) {
-        var Weather = JSON.stringify(json);
-        alert(Weather);
-    });
-}
-
-//function runPyScript(){
-//    alert('hi');
-//    pattern = ReadCookie('route');
-//    start = ReadCookie('start');
-//    end = ReadCookie('stop');
-//    day = ReadCookie('date');
-//    hour = ReadCookie('time');
-//    rain = 0;
-//    temp = 0;
-//    wind = 0;
-//    line = ReadCookie('nameroute');
-//    var pred_variables = [hour, day, start, end, line, pattern, rain, wind, temp];
-//    var jqXHR = $.ajax({
-//        type: "POST",
-//        url: "TTM/est_time.html",
-//        async: false,
-//        data: { param: pred_variables }
-//    });
-//
-//    alert(jqXHR.responseText);
-//}
-//
