@@ -17,7 +17,7 @@ def predictions(dict):
     start = int(dict['start'])
     end = int(dict['stop'])
     pattern = dict['route']
-    line = dict['nameroute']
+    line = dict['line']
     wind = 0
     temp = 0
     rain= 0
@@ -25,7 +25,7 @@ def predictions(dict):
     # temp = float(dict['temp'])
     # rain = float(dict['rain'])
     #return (dict)
-    filename = os.path.join(BASE_DIR, 'TTM\static\TTM\pickles\\'+line+'.sav')
+    filename = '/home/csstudent/DublinBus/TTM/static/TTM/pickles/'+line+'.sav'
     # return dict
     if os.path.isfile(filename):
         print ('filefound')

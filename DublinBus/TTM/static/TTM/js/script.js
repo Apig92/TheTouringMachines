@@ -117,6 +117,8 @@ function Cookies() {
     nameroute = routestr.split(',')[1] + ";";
     document.cookie = "route=" + route;
     document.cookie = "nameroute=" + nameroute;
+    line = nameroute.match(/\d+/)[0];
+    document.cookie = "line=" + line;
     start = document.getElementById('dropdownstops').value + ";";
     document.cookie = "start=" + start;
     stop = document.getElementById('dropdownstops1').value + ";";
@@ -125,11 +127,11 @@ function Cookies() {
     document.cookie = "date=" + date;
     time = document.getElementById('time').value + ";";
     document.cookie = "time=" + time;
-               // document.cookie="wind=" + "0;";
-               // document.cookie="rain=" + "0;";
-               // document.cookie="temp=" + "0;";
+    //alert(date);
+    //alert(time);
 
-     }
+
+}
 
 
 
