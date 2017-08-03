@@ -54,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">The Touring Machines</a>
+                <a class="navbar-brand page-scroll" href="index.html">The Touring Machines</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,15 +63,6 @@
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
                         <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About us</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Plan</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -87,45 +78,14 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANEk4AGMlzwR3tsgCUsoa7UptHABc84Lk&callback=myMap"></script>
             <div id="details">
                 <div id="textarea">
-                <div class="slot"><p id ="nameofroute"></p></div>
-                <div class="slot"><p id ="firststop"></p></div>
-                <div class="slot"><p id ="endstop"></p></div>
-                <div class="slot"><p id ="counter"></p></div>
-                <div class="slot">{% block content %}{% endblock %}</div>
+                    <div class="slot"><p id ="nameofroute"></p></div>
+                    <div class="slot">{% block content %}{% endblock %}</div>
+                    <div class="slot"><p id ="counter"></p></div>
+                    <div class="slot"><p id ="firststop"></p></div>
+                    <div class="slot"><p id ="endstop"></p></div>
                 </div>
         </div>
     </div>
-    </section>
-    <!-- About Section -->
-    <section id="about" class="about-section">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img id="us" class="img-responsive center-block" src="{% static 'TTM/images/touring.png' %}" />
-                    <br><h5>We're a group of people stuck in college during the summer. It's warm and we want to sleep and maybe drink cans.</h5>
-                </div>
-            </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Services Section</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Contact Section</h1>
-                </div>
-            </div>
-        </div>
     </section>
 
 
