@@ -15,7 +15,7 @@ def ReadWeather(weatherfile):
 
 def ReadBusline(busfile):
     df=pd.read_csv(busfile)
-    df = df.rename(columns={'Timeframe': 'date'})
+    df['date'] = df['date'].dt.date
     df['date'] = df['date'].astype('datetime64[ns]')
     return df
 
@@ -25,13 +25,13 @@ def merge(weather,bus,filename):
     return df
 
 def main():
-    weather= ReadWeather("weather.csv")
+    weather= ReadWeather("daily_weather.csv")
     newpath = '/home/csstudent/MergedWeather'
     if not os.path.exists(newpath):
         os.makedirs(newpath)
     directory = '/home/csstudent/Routes'
     for filename in os.listdir(directory):
-        if filename.endswith(".csv"):
+        if filename.endswith("route.csv"):
             x = "" + filename + ""
             bus=ReadBusline(x)
             merge=merge(weather,bus,x)
