@@ -21,15 +21,15 @@ def read(filename):
     df['Day'] = df['Day'].astype('category')
     df['LineID'] = df['LineID'].astype('category')
     df['JourneyPatternID'] = df['JourneyPatternID'].astype('category')
-    df['StopIDID'] = df['StopID'].astype('category')
+    df['StopID'] = df['StopID'].astype('category')
 
     return df
 
 def RandomForest(df,path,filename):
-    features = ['Hour', 'Day', 'StopID', 'LineID']
+    features = ['Hour', 'Day', 'StopID', 'LineID','JourneyPatternID']
     X = pd.concat([df[features]], axis=1)
     y = df.Seconds
-    rfc = RandomForestRegressor(n_estimators=130, oob_score=True, random_state=1,)
+    rfc = RandomForestRegressor(n_estimators=100, oob_score=True, random_state=1,)
     rfc.fit(X, y)
     pickle.dump(rfc, open(path+'/'+filename[:-4]+".sav", 'wb'))
 
