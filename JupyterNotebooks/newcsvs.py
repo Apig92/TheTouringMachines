@@ -8,6 +8,7 @@ if not os.path.exists(newpath):
 
 directory = '/home/csstudent/AllLines'
 for filename in os.listdir(directory):
+    filename = str(filename)
     if filename.endswith(".csv"):
         x= ""+filename+""
 
