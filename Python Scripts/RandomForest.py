@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
+from sklearn import preprocessing
 import datetime
 import pickle
 import joblib
@@ -13,20 +14,15 @@ import os
 
 def read(filename):
     df = pd.read_csv(filename, low_memory=False)
-    df['Hour'] = df['Date']
     df['Date'] = pd.to_datetime(df['Timestamp'], unit='us')
-    for iter in range (len(df)):
-        df.iloc[iter,12]=df.iloc[iter, 9].hour
-    df['Hour'] = df['Hour'].astype('category')
-    df['Day'] = df['Day'].astype('category')
-    df['LineID'] = df['LineID'].astype('category')
+    df['Hour'] = df.Date.dt.hour
     df['JourneyPatternID'] = df['JourneyPatternID'].astype('category')
-    df['StopID'] = df['StopID'].astype('category')
+    df['Pattern'] = df.JourneyPatternID.cat.codes
 
     return df
 
 def RandomForest(df,path,filename):
-    features = ['Hour', 'Day', 'StopID', 'LineID','JourneyPatternID']
+    features = ['Hour', 'Day', 'StopID', 'LineID','Pattern','rain','wdsp','mintp']
     X = pd.concat([df[features]], axis=1)
     y = df.Seconds
     rfc = RandomForestRegressor(n_estimators=100, oob_score=True, random_state=1,)
@@ -38,13 +34,13 @@ def main():
     newpath = '/home/csstudent/Pickles'
     if not os.path.exists(newpath):
         os.makedirs(newpath)
-    directory = '/home/csstudent/Routes'
+    directory = '/home/csstudent/MergedWeather'
     for filename in os.listdir(directory):
         if filename.endswith(".csv"):
             x = "" + filename + ""
             df = read(x)
-            RandomForest(df, newpath, x)
             print("Working on",filename)
+            RandomForest(df, newpath, x)
         else:
             print(filename,"is not a.csv")
 
