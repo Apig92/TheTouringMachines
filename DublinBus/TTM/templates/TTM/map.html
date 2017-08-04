@@ -40,6 +40,7 @@
     <script>
     $(window).on( 'load', function() {
       myMap();
+      weatherJSON();
       });</script>
 
 
@@ -65,6 +66,9 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                 </ul>
+                 <div id="date1"></div>
+
+                        <div id="weather"></div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -83,6 +87,7 @@
                     <div class="slot"><p id ="counter"></p></div>
                     <div class="slot"><p id ="firststop"></p></div>
                     <div class="slot"><p id ="endstop"></p></div>
+                    <div id ="detailedweather"></div>
                 </div>
         </div>
     </div>

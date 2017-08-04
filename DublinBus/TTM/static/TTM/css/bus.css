@@ -34,3 +34,23 @@
 }
 
 
+.table2 {
+    width: 100%;
+    color:gray;
+    font-family: 'Verdana';
+    font-size: 12px;
+    text-align: center;
+    width:350px;
+    height:auto;
+    border-spacing: 10px 50px;
+
+
+}
+
+#weather{
+    float:right;
+}
+
+#date1{
+    float:right;
+}

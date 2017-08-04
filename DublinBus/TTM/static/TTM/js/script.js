@@ -289,3 +289,99 @@ function getdate() {
         $('#dt').append('<option name = "date" value=' + pythonvalue + '>' + week_day_loop + '</option>');
     }
 }
+
+function weatherJSON() {
+    //takes in current day and displays 7 day forecast
+    var out = "";
+    var out1 = "";
+    var today = new Date();
+    var weekday = today.getDay();
+    var i;
+    var x = 1 + parseInt(ReadCookie('date'));
+    if ( x >= weekday){
+        i = x - weekday;}
+    else {
+       i = (x + 7) - weekday; //keep it within mod 7
+    }
+
+
+
+    $.getJSON("JSON/weather.json", function (json) {
+
+                    var list = json.list[i];
+                    var temp = (list.temp.day - 273).toFixed(2);
+                    var main = list.main;
+                    var weather = list.weather[0];
+                    var clouds = list.clouds;
+                    var wind = list.speed;
+                    var rain = list.rain;
+                    if (rain == undefined){
+                        rain = 0;
+                    }
+                    var time = parseInt(list.dt);
+                    var x = time * 1000;
+                    var n = String(new Date(x));
+                    n = n.substring(0, 15);
+                    var Icon = "<img src='http://www.openweathermap.org/img/w/" + weather.icon + ".png'>";
+
+                    temperature = temp + ";";
+                    document.cookie = "temp=" + temp;
+                    windspeed = wind + ";";
+                    document.cookie = "wind=" + wind;
+                    rainfall = rain + ";";
+                    document.cookie = "rain=" + rain;
+
+out1 = "<div class='date1'>"+n+","+Icon+"</div>";
+out = "<div class='table2'><table>";
+out += "<tr><td>" + Icon + "</td><td>Temp: " + temp + "°C</td><td> Wind: " + wind + "m/s</td><td> Clouds: " + clouds + "%</td><td> Rain: " + rain + "mm</td>";
+out += "</table></div>";
+document.getElementById("weather").innerHTML = out1;
+document.getElementById("detailedweather").innerHTML = out;
+
+
+    }
+
+    );
+
+    }
+
+function todaysweather() {
+    var out = "";
+    var out1= "";
+    $.getJSON("JSON/weather.json", function (json) {
+
+                    var list = json.list[0];
+                    var temp = (list.temp.day - 273).toFixed(2);
+                    var main = list.main;
+                    var weather = list.weather[0];
+                    var clouds = list.clouds;
+                    var wind = list.speed;
+                    var rain = list.rain;
+                    if (rain == undefined){
+                        rain = 0;
+                    }
+                    var time = parseInt(list.dt);
+                    var x = time * 1000;
+                    var n = String(new Date(x));
+                    n = n.substring(0, 15);
+                    var Icon = "<img src='http://www.openweathermap.org/img/w/" + weather.icon + ".png'>";
+
+                    temperature = temp + ";";
+                    document.cookie = "temp=" + temp;
+                    windspeed = wind + ";";
+                    document.cookie = "wind=" + wind;
+                    rainfall = rain + ";";
+                    document.cookie = "rain=" + rain;
+
+out1 = "<div class='date1'>"+n+","+Icon+"</div>";
+out = "<div class='table1'><table>";
+//out += "<tr><td>" + Icon + "</td><td>Temp: " + temp + "°C</td><td> Wind: " + wind + "m/s</td><td> Clouds: " + clouds + "%</td><td> Rain: " + rain + "mm</td>";
+out += "<tr><td>" + Icon + "</td>";
+out += "</table></div>";
+document.getElementById("weather1").innerHTML = out1;
+
+
+    }
+
+    );
+}
