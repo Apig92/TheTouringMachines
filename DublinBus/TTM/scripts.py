@@ -18,9 +18,9 @@ def predictions(dict):
     end = int(dict['stop'])
     pattern = dict['route']
     line = dict['line']
-    wind = 0
-    temp = 0
-    rain= 0
+    wind = float(dict['wind'])
+    temp = float(dict['temp'])
+    rain= float(dict['rain'])
     # wind = dict['wind']
     # temp = float(dict['temp'])
     # rain = float(dict['rain'])
