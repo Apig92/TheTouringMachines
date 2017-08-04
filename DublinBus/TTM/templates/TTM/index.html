@@ -49,6 +49,7 @@
     $(window).on('load', function() {
        var today = getdate();
        gettime();
+       todaysweather();
       });</script>
 
     <!-- Navigation -->
@@ -83,6 +84,7 @@
 
                 </ul>
                  <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
+                 <div id = "weather1"></div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -100,8 +102,8 @@
                         <div class="form-group">
     <label for="sel1">Route</label>
 
-    <select name = "Route" class="form-control" id="dropdownroutes" onchange = "Cookies(); stopselect();">
-       <option value="None" selected="Selected">Selected</option>
+     <select name = "Route" class="form-control" id="dropdownroutes" onchange = "Cookies(); stopselect();">
+       <option value="None" selected="Selected">Choose a Route</option>
     </select>
     </div>
 
@@ -109,7 +111,7 @@
                      <div class="form-group">
                          <label for="sel1">Day</label>
                            <select class = "form-control" type="date" name="date" id = "dt" onchange = "Cookies(); gettime()" >
-                            <option value="None" selected="Selected">Selected</option>
+                            <option value="None" selected="Selected">Choose a Day</option>
                            </select>
                         </div>
                     <div class="form-group">
@@ -121,24 +123,19 @@
                     <div class="form-group">
                           <label for="sel1">Start</label>
                           <select class="form-control" id="dropdownstops" onchange = "Cookies(); endstopselect();">
-                            <option value="None" selected="Selected">Selected</option>
+                            <option value="None" selected="Selected">Choose a Starting Bus Stop </option>
                           </select>
                         </div>
 
                     <div class="form-group">
                           <label for="sel1">End Stop</label>
                           <select class="form-control" id="dropdownstops1" onchange = "Cookies(); ">
-                            <option value="None" selected="Selected">Selected</option>
+                            <option value="None" selected="Selected">Choose a Destination Bus Stop</option>
                           </select>
                         </div>
 
-                    <div class="form-group">
-                          <label for="sel1">Weather</label>
-                          <select class="form-control" id="sel5">
-                            <option>Rain</option>
-                            <option>Wind</option>
-                            <option>Sun</option>
-                          </select>
+
+
                         </div>
 
                     <input type="submit" class="btn btn-info" value="Submit" onclick=Cookies()>

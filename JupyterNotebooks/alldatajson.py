@@ -1,0 +1,73 @@
+import pandas as pd
+import os
+
+
+
+
+import json
+newpath ='/home/csstudent/allroutes_json'
+if not os.path.exists(newpath):
+    os.makedirs(newpath)
+
+directory = '/home/csstudent/AllLines'
+results = {}
+for filename in os.listdir(directory):
+    if filename.endswith(".csv"):
+        x= ""+filename+""
+    df = pd.read_csv(x) # change for route (possibly programm to run all)
+    df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator', 'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
+
+    #drop nulls
+    df['StopID'] = df.StopID.apply(str)
+
+    df = df[df.StopID != 'null']  # could be a string...
+
+    df = df.dropna(how='any', subset=['JourneyPatternID', 'StopID'])
+    df=df[df.JourneyPatternID != 'null']
+
+    pattern = df['JourneyPatternID'].unique()
+
+
+    df['Date'] = pd.to_datetime(df['Date']) # change types
+
+
+    df['StopID'] = pd.to_numeric(df['StopID']) #change types (for JSON)
+
+
+    df1 = df[df['AtStop'] == 1]
+    #Only at stop to get Lat long
+
+    results = {}
+    for p in pattern:
+        df3 = df[df['JourneyPatternID'] == p]
+        data = []
+        alldata = []
+        datalist = []
+        newdf1 = pd.DataFrame(
+            columns=['JourneyPatternID', 'LineID', 'Lon', 'Lat', 'StopID', 'Stop_Sequence', 'Stop_name', 'Destination'])
+        for j in df3['VehicleJourneyID'].unique():
+            tempdf = df3[df3['VehicleJourneyID'] == j]
+            stops1 = tempdf['StopID'].unique()
+            data = stops1
+            alldata.append(data)
+        maxstops = max(alldata, key=len)
+        df_longlat = df3[['JourneyPatternID', 'LineID', 'Lon', 'Lat', 'StopID', 'Stop_Sequence', 'Stop_name',
+                          'Destination']].copy()  # drop unnecessary columns
+        df_longlat['Key'] = (df_longlat['Lon'] + df_longlat['Lat'])  # one value for latlng as identifier
+        for s in maxstops:
+            dfstops = df_longlat[df_longlat['StopID'] == s]
+            key = dfstops['Key'].value_counts().idxmax()  # Get the highest value count per stop id
+            dfstops = dfstops[dfstops['Key'] == key].head(1)  # Get the first row as rows are
+            datalist.append(dfstops)
+            routedf = newdf.append(datalist)
+        routedf = routedf[['StopID', 'LineID', 'Lon', 'Lat', 'Stop_Sequence', 'Stop_name', 'Destination']].copy()
+        if routedf.empty:
+            print('empty df')
+        else:
+            data = json.loads(routedf.to_json(orient='records'))
+            print(p)
+            results[p] = data
+with open("/home/csstudent/allroutes_json/routeinfocomplete.json", 'w') as outfile:
+        # outfile.write(data)
+        json.dump(results, outfile)
+print('done!')

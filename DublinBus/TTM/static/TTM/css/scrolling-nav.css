@@ -63,3 +63,7 @@ of those sections to manage the look and feel of the site. */
     margin: auto;
     float: right;
 }
+
+#weather1 {
+    float:right;
+}
