@@ -14,12 +14,12 @@ def PatternJson(df,dictionary):
     patterns = df.JourneyPatternID.unique()
     indexes = df.Pattern.unique()
     for i in range (len(patterns)):
-        dictionary[patterns[i]]= int(indexes[i])
+        dictionary[str(patterns[i])]= int(indexes[i])
         print(patterns[i]," index: ",indexes[i])
 
 
 def main():
-    directory = '/home/csstudent/AllLines'
+    directory = '/home/csstudent/MergedWeather'
     dictionary={}
     for filename in os.listdir(directory):
         if filename.endswith(".csv"):
