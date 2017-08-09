@@ -10,7 +10,9 @@ import os
 def ReadWeather(weatherfile):
     df= pd.read_csv(weatherfile)
     df= df.reset_index(drop=True)
+    df.drop(['ind', 'ind.1', 'igmin', 'gmin', 'ind.2', 'cbl','ind.3','hm','ind.4','ddhm','ind.5','hg','sun','dos','soil','pe','evap','smd_wd','smd_md','smd_pd'], axis=1)
     df['date'] = df['date'].astype('datetime64[ns]')
+    df['temp'] = (df['mintp'] + df['maxtp'])/2
     return df
 
 
