@@ -15,7 +15,7 @@ def PatternJson(df,dictionary):
     indexes = df.Pattern.unique()
     for i in range (len(patterns)):
         dictionary[str(patterns[i])]= int(indexes[i])
-        print(patterns[i]," index: ",indexes[i])
+        #print(patterns[i]," index: ",indexes[i])
 
 
 def main():
@@ -25,6 +25,7 @@ def main():
         if filename.endswith(".csv"):
             x = "" + filename + ""
             df = read(x)
+            print("Working on",x)
             PatternJson(df,dictionary)
 
     with open('indexes.json', 'w') as outfile:
