@@ -24,7 +24,7 @@ def read(filename):
 
 '''Trains model and creates pickle file'''
 def RandomForest(df,path,filename,output):
-    features = ['Hour', 'Day', 'StopID', 'LineID','Pattern','rain','wdsp','mintp']
+    features = ['Hour', 'Day', 'StopID', 'LineID','Pattern','rain','wdsp','temp']
     X = pd.concat([df[features]], axis=1)
     y = df.Seconds
     rfc = RandomForestRegressor(n_estimators=100, oob_score=True, random_state=1,)
