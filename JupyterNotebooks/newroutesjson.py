@@ -45,34 +45,37 @@ for filename in os.listdir(directory):
     #Only at stop to get Lat long
 
     for p in pattern:
-        df3 = df[df['JourneyPatternID'] == p]
+        df3 = df4[df4['JourneyPatternID'] == p]
         data = []
         alldata = []
         datalist = []
-        newdf = pd.DataFrame(columns=['JourneyPatternID', 'Longitude', 'Latitude', 'StopID'])
+        newdf = pd.DataFrame(columns=['JourneyPatternID', 'LineID', 'Lon', 'Lat', 'StopID', 'Stop_Sequence', 'Stop_name', 'Destination'])
         for j in df3['VehicleJourneyID'].unique():
             tempdf = df3[df3['VehicleJourneyID'] == j]
-            stops1 = tempdf['StopID'].unique()
-            data = stops1
+            data = tempdf['StopID'].unique()
+            #data = stops1
             alldata.append(data)
-        maxstops = max(alldata, key=len)
-        df_longlat = df3[['JourneyPatternID', 'Longitude', 'Latitude', 'StopID']].copy()  # drop unnecessary columns
-        df_longlat['Key'] = (df_longlat['Longitude'] + df_longlat['Latitude'])  # one value for latlng as identifier
-        for s in maxstops:
-            dfstops = df_longlat[df_longlat['StopID'] == s]
-            key = dfstops['Key'].value_counts().idxmax()  # Get the highest value count per stop id
-            dfstops = dfstops[dfstops['Key'] == key].head(1)  # Get the first row as rows are ordered
-            datalist.append(dfstops)
-            routedf = newdf.append(datalist)
-        routedf = routedf[['StopID', 'Longitude', 'Latitude']].copy()
-        if routedf.empty:
-            print('empty df')
+        if alldata:
+            maxstops = max(alldata, key=len)
+            df_longlat = df3[['JourneyPatternID', 'Longitude', 'Latitude', 'StopID', 'Lon', 'Lat', 'Stop_name', 'Stop_Sequence']].copy()  # drop unnecessary columns
+            df_longlat['Key'] = (df_longlat['Longitude'] + df_longlat['Latitude'])  # one value for latlng as identifier
+            for s in maxstops:
+                dfstops = df_longlat[df_longlat['StopID'] == s]
+                key = dfstops['Key'].value_counts().idxmax()  # Get the highest value count per stop id
+                dfstops = dfstops[dfstops['Key'] == key].head(1)  # Get the first row as rows are ordered
+                datalist.append(dfstops)
+                routedf = newdf.append(datalist)
+            routedf = routedf[['StopID', 'Lon', 'Lat', 'Stop_name', 'Stop_Sequence']].copy()
+            if routedf.empty:
+                print('empty df')
+            else:
+                data = json.loads(routedf.to_json(orient='records'))
+                print(p)
+                results[p] = data
+            print('route finished')
         else:
-            data = json.loads(routedf.to_json(orient='records'))
-            print(p)
-            results[p] = data
-        print('route finished')
-with open("/home/csstudent/allroutes_json/routeinfo.json", 'w') as outfile:
+            print( 'empty df')
+with open("/home/csstudent/allroutes_json/routeinfo4.json", 'w') as outfile:
         # outfile.write(data)
         json.dump(results, outfile)
 print('done!')
