@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^est_time.html$', views.timepredict, name = 'predictions'),
 
     # static/TTM/pickles/line.sav
-    url(r'^static/TTM/pickles/[\d]*[\w]*.sav$', views.pickle, name='pickle'),
+    url(r'^static/TTM/pickles/[\d]*[\w]*CLEANrouteweather.sav$', views.pickle, name='pickle'),
 ]
