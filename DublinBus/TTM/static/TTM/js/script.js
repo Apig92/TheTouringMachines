@@ -109,16 +109,13 @@ $.getJSON('../static/TTM/JSON/routes.json', function(data) {
   });
 });
 
-
-function Cookies() {
-    // makes and stores cookies
+function Cookies(){
+               // makes and stores cookies
     routestr = document.getElementById('dropdownroutes').value; //split the string of value for name and code
     route = routestr.split(',')[0] + ";";
     nameroute = routestr.split(',')[1] + ";";
     document.cookie = "route=" + route;
     document.cookie = "nameroute=" + nameroute;
-    line = nameroute.match(/\d+/)[0];
-    document.cookie = "line=" + line;
     start = document.getElementById('dropdownstops').value + ";";
     document.cookie = "start=" + start;
     stop = document.getElementById('dropdownstops1').value + ";";
@@ -127,11 +124,11 @@ function Cookies() {
     document.cookie = "date=" + date;
     time = document.getElementById('time').value + ";";
     document.cookie = "time=" + time;
-    //alert(date);
-    //alert(time);
+               // document.cookie="wind=" + "0;";
+               // document.cookie="rain=" + "0;";
+               // document.cookie="temp=" + "0;";
 
-
-}
+                           }
 
 
 
@@ -229,66 +226,63 @@ function gettime() {
 
 }
 
-
-
 function reloadpage() {
     location.reload();
-    //weatherJSON();
 }
 
 
 
-function getdate() {
+function getdate(){
     //need to add if statements for bank holidays and christmas - future work :)
-    var today = new Date();
-    var weekday = today.getDay();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-    var day = new Array(7);
-    day[0] = "Sunday";
-    day[1] = "Monday";
-    day[2] = "Tuesday";
-    day[3] = "Wednesday";
-    day[4] = "Thursday";
-    day[5] = "Friday";
-    day[6] = "Saturday";
-    var week_day_loop = ""; //Week day loop to generate Today, Tomorrow and the correct following days depending on the day the user is viewing the site.
+var today = new Date();
+var weekday = today.getDay();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+var day = new Array(7);
+day[0] = "Sunday";
+day[1] = "Monday";
+day[2] = "Tuesday";
+day[3] = "Wednesday";
+day[4] = "Thursday";
+day[5] = "Friday";
+day[6] = "Saturday";
+var week_day_loop = ""; //Week day loop to generate Today, Tomorrow and the correct following days depending on the day the user is viewing the site.
 
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-
-
-    for (var i = 0; i < 7; i++) {
-        var value = weekday + i;
-        if (value < 7) {
-            var j = value;
-        } else {
-            var j = value - 7;
-        }
-        if (j == 0) {
-            var pythonvalue = 6; //in python 0 is Monday and 6 is Sunday
-        } else {
-            var pythonvalue = j - 1;
-        }
-
-       if (i == 0 ) {
-           week_day_loop = "Today";
-       }
-       else if (i > 1) {
-            week_day_loop = day[j];
-        } else {
-            week_day_loop = "Tomorrow";
-        }
-
-        $('#dt').append('<option name = "date" value=' + pythonvalue + '>' + week_day_loop + '</option>');
-    }
+if(dd<10) {
+dd = '0'+dd
 }
+
+if(mm<10) {
+    mm = '0'+mm
+}
+
+for (var i = 0; i < 7; i++) {
+    var value = weekday + i;
+    if (value < 7) {
+        var j = value;
+    } else {
+        var j = value - 7;
+    }
+    if (j==0){
+        var pythonvalue = 6; //in python 0 is Monday and 6 is Sunday
+    }
+    else {
+        var pythonvalue = j - 1;
+    }
+
+    if (i == 0) {
+        week_day_loop = "Today";
+    } else if (i > 1) {
+        week_day_loop = day[j];
+    } else {
+        week_day_loop = "Tomorrow";
+    }
+
+    $('#dt').append('<option name = "date" value=' +pythonvalue+ '>' + week_day_loop + '</option>');
+}
+}
+
 
 function weatherJSON() {
     //takes in current day and displays 7 day forecast
@@ -306,7 +300,7 @@ function weatherJSON() {
 
 
 
-    $.getJSON("JSON/weather.json", function (json) {
+    $.getJSON("../static/TTM/JSON/weather.json", function (json) {
 
                     var list = json.list[i];
                     var temp = (list.temp.day - 273).toFixed(2);
@@ -348,7 +342,7 @@ document.getElementById("detailedweather").innerHTML = out;
 function todaysweather() {
     var out = "";
     var out1= "";
-    $.getJSON("JSON/weather.json", function (json) {
+    $.getJSON("../static/TTM/JSON/weather.json", function (json) {
 
                     var list = json.list[0];
                     var temp = (list.temp.day - 273).toFixed(2);
@@ -385,3 +379,4 @@ document.getElementById("weather1").innerHTML = out1;
 
     );
 }
+

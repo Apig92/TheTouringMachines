@@ -1,4 +1,5 @@
 *.sav
 *.csv
 *.pkl
-
+workspace.xml
+vcs.xml

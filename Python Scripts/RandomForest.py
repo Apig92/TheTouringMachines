@@ -10,8 +10,9 @@ import datetime
 import pickle
 import joblib
 import os
+import sys
 
-
+'''Creates dataframe with the information needed'''
 def read(filename):
     df = pd.read_csv(filename, low_memory=False)
     df['Date'] = pd.to_datetime(df['Timestamp'], unit='us')
@@ -21,34 +22,43 @@ def read(filename):
 
     return df
 
-def RandomForest(df,path,filename):
-    features = ['Hour', 'Day', 'StopID', 'LineID','Pattern','rain','wdsp','mintp']
+'''Trains model and creates pickle file'''
+def RandomForest(df,path,filename,output):
+    features = ['Hour', 'Day', 'StopID', 'LineID','Pattern','rain','wdsp','temp']
     X = pd.concat([df[features]], axis=1)
     y = df.Seconds
     rfc = RandomForestRegressor(n_estimators=100, oob_score=True, random_state=1,)
     rfc.fit(X, y)
+    print("R Squared: ", metrics.r2_score(y, rfc.predict(X)))
+    print("neg_mean_absolute_error: ", metrics.mean_absolute_error(y,rfc.predict(X)))
+    print("mean_squared_error: ", metrics.mean_squared_error(y, rfc.predict(X)))
+    print("median_absolute_error: ", metrics.median_absolute_error(y, rfc.predict(X)))
     pickle.dump(rfc, open(path+'/'+filename[:-4]+".sav", 'wb'))
 
 
-def main():
-    newpath = '/home/csstudent/Pickles'
+if __name__ == "__main__":
+    newpath = '/home/csstudent/Pickles'          #Destination folder
     if not os.path.exists(newpath):
         os.makedirs(newpath)
-    directory = '/home/csstudent/MergedWeather'
+    directory = '/home/csstudent/MergedWeather'  #Folder where all the CSV files are contained
+    f = open('RandomForestResults.txt', 'w')     #Creates .txt file where all the model information and stats are contained
+    orig_stdout = sys.stdout                     #Original output, the terminal
+    sys.stdout = f                               #Change output to the file
     for filename in os.listdir(directory):
         if filename.endswith(".csv"):
             x = "" + filename + ""
             df = read(x)
-            print("Working on",filename)
-            RandomForest(df, newpath, x)
+            print("Stats for Line",filename)
+            RandomForest(df, newpath, x, f)
+            print('--------------------------------------------------')
         else:
-            print(filename,"is not a.csv")
+            continue
+    sys.stdout = orig_stdout                     #Change output back to terminal
+    f.close()
 
 
 
 
-
-main()
 
 
 
