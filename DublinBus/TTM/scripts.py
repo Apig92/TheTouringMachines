@@ -16,15 +16,11 @@ def predictions(dict):
     day = int(dict['date'])
     start = int(dict['start'])
     end = int(dict['stop'])
-    pattern = dict['route']
+    pattern = int(dict['routeindex'])
     line = dict['line']
     wind = float(dict['wind'])
     temp = float(dict['temp'])
     rain= float(dict['rain'])
-    # wind = dict['wind']
-    # temp = float(dict['temp'])
-    # rain = float(dict['rain'])
-    #return (dict)
     filename = '/home/csstudent/DublinBus/TTM/static/TTM/pickles/'+line+'.sav'
     # return dict
     if os.path.isfile(filename):

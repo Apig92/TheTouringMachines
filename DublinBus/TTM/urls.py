@@ -25,4 +25,10 @@ urlpatterns = [
 
     # static/TTM/pickles/line.sav
     url(r'^static/TTM/pickles/[\d]*[\w]*.sav$', views.pickle, name='pickle'),
+
+# /TTM/JSON/indexes.json
+    url(r'^static/TTM/JSON/indexes.json$', views.indexes, name='indexes'),
+
+# /TTM/JSON/weather.json
+    url(r'^static/TTM/JSON/weather.json$', views.weather, name='weather'),
 ]
