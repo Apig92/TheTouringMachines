@@ -40,16 +40,20 @@ def icon_circle(request):
 def icon_rec(request):
     return render(request)
 
+def pickle(request):
+    return render(request)
+
 @csrf_exempt
 def timepredict(request):
     request_data = request.COOKIES
     est_time = predictions(request_data)
     return render(request, 'TTM/est_time.html', {'est_time': est_time})
 
-
-def test(request, x):
-    print(testing(x))
-
-
-def pickle(request):
+def weather(request):
     return render(request)
+
+def error_404(request):
+    return render(request, 'TTM/error_404.html')
+
+def error_500(request):
+    return render(request, 'TTM/error_500.html')

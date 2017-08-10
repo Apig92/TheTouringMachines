@@ -26,9 +26,15 @@ urlpatterns = [
     # static/TTM/pickles/line.sav
     url(r'^static/TTM/pickles/[\d]*[\w]*.sav$', views.pickle, name='pickle'),
 
-# /TTM/JSON/indexes.json
+    # /TTM/JSON/indexes.json
     url(r'^static/TTM/JSON/indexes.json$', views.indexes, name='indexes'),
 
-# /TTM/JSON/weather.json
+    # /TTM/JSON/weather.json
     url(r'^static/TTM/JSON/weather.json$', views.weather, name='weather'),
+
+    # /TTM/error_404
+    url(r'^error_404$', views.error_404, name='error_404'),
+
+    # /TTM/error_500
+    url(r'^error_500$', views.error_500, name='error_500'),
 ]

@@ -37,6 +37,3 @@ def predictions(dict):
     m, s = divmod(seconds, 60)
     h, m = divmod(m, 60)
     return ("%d hrs %02d mins %02d secs" % (h, m, s))
-
-
-

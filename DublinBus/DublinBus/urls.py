@@ -1,7 +1,12 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^TTM/', include('TTM.urls')),
-]
+] + static(settings.STATIC_URL)
+
+handler404 = 'TTM.views.error_404'
+handler500 = 'TTM.views.error_500'
