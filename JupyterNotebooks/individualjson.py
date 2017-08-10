@@ -15,8 +15,8 @@ for filename in os.listdir(directory):
     if filename.startswith("line"):
         x= ""+filename+""
     df = pd.read_csv(x, encoding='Latin1') # change for route (possibly programm to run all)
-    df.columns = ['Timestamp', 'LineID', 'Direction', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID', 'Operator',
-                  'Congestion', 'Longitude', 'Latitude', 'Delay', 'BlockID', 'VehicleID', 'StopID', 'AtStop', 'Date']
+    df.columns = ['Timestamp', 'LineID', 'JourneyPatternID', 'TimeFrame', 'VehicleJourneyID',
+                 'Longitude', 'Latitude', 'StopID', 'AtStop', 'Date']
     newdf = pd.read_csv('route_seq.csv', encoding='Latin1') # new info available
     newdf = newdf.rename(columns={'Stop_ID': 'StopID'}) #must be the same name to merge
     df = df.dropna(how='any', subset=['JourneyPatternID', 'StopID'])
@@ -48,8 +48,8 @@ for filename in os.listdir(directory):
     for p in pattern:
         if p.endswith('1'): # elominate smaller routes as the variation is so small. For testing purposes
             df3 = df4[df4['JourneyPatternID'] == p]
-            data = []
             alldata = []
+            data = []
             datalist = []
             newdf1 = pd.DataFrame(
                 columns=['JourneyPatternID', 'LineID', 'Lon', 'Lat', 'StopID', 'Stop_Sequence', 'Stop_name', 'Destination'])
@@ -76,10 +76,11 @@ for filename in os.listdir(directory):
                     data = json.loads(routedf.to_json(orient='records'))
                     #print (data, p)
                     results[p] = data
-                    print (p, 'hi')
+                    print (p)
                 #print ('//////////////////////////////////////////////////////////////////////////////////////////////////////////')
 
-with open("/home/csstudent/allroutes_json/routecomplete.json", 'w') as outfile:
+with open("/home/csstudent/allroutes_json/complete.json", 'w') as outfile:
         # outfile.write(data)
     json.dump(results, outfile)
-print('done!')
+    print ('doneall')
+print('done all!')

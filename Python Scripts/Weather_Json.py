@@ -11,10 +11,10 @@ def getjson(api_request):
     output = url.read().decode('utf-8')
     weatherjson = json.loads(output)
     url.close()
-    # with open('C:/Users/Daniel/PycharmProjects/TheTouringMachines/DublinBus/TTM/static/TTM/JSON/weather.json', 'w') as outfile:
-    #     json.dump(weatherjson, outfile)
-    with open('/home/csstudent/DublinBus/TTM/static/TTM/JSON/weather.json', 'w') as outfile:
+    with open('C:/Users/Daniel/PycharmProjects/TheTouringMachines/DublinBus/TTM/static/TTM/JSON/weather.json', 'w') as outfile:
         json.dump(weatherjson, outfile)
+    # with open('/home/csstudent/DublinBus/TTM/static/TTM/JSON/weather.json', 'w') as outfile:
+    #     json.dump(weatherjson, outfile)
     print('done')
     time.sleep(10800)
 
