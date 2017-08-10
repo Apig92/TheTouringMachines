@@ -25,6 +25,12 @@ def json_routes(request):
 def routeinfo(request):
     return render(request)
 
+def weather(request):
+    return render(request)
+
+def indexes(request):
+    return render(request)
+
 def map(request):
     return render(request, 'TTM/map.html')
 
