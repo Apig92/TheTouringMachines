@@ -380,3 +380,12 @@ document.getElementById("weather1").innerHTML = out1;
     );
 }
 
+function convertroute(){
+ $.getJSON('../static/TTM/JSON/indexes.json', function(json) {
+    jpid = ReadCookie('route')
+    var routeindex = json[jpid];
+    indexroute = routeindex + ";";
+    document.cookie = "routeindex=" + indexroute;
+
+   });
+}

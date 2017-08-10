@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    {% load staticfiles %}
+
+    {% block javascript %}
+
+        <!-- jQuery -->
+    <script src="{% static 'TTM/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'TTM/js/bootstrap.min.js' %}"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="{% static 'TTM/js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'TTM/js/scrolling-nav.js' %}"></script>
+    {% endblock %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'TTM/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link href="{% static 'TTM/css/scrolling-nav.css' %}" rel="stylesheet">
+
+    <!--    Map page css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'TTM/css/errorpage.css' %}">
+
+
+
+    <title>404 Page Not Found</title>
+    </head>
+    <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+    <header id="header">The Touring Machines<br></header>
+        <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html">The Touring Machines</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+        <!-- 404 section -->
+
+        <div id="image404">
+{#            <h2>#}
+{#                <strong>404 Error</strong><br>#}
+{#                Page Not Found#}
+{#            </h2>#}
+        </div>
+    <div id="text404">
+        <div id="error">404. page not found</div>
+        <div id="explain">Unfortunately, this page does not exist. Please check your URL or return to <a href="index.html">home page</a></div>
+    </div>
+
+
+
+
+
+
+    </body>
+
+</html>
