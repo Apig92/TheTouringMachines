@@ -4,13 +4,23 @@
     background: black url("http://i0.kym-cdn.com/photos/images/original/000/324/159/cfe.gif") no-repeat center;
 }
 
-#image404 h2{
+#image500 {
+    height: 560px;
+    padding-top: 1px;
+    background-color: black;
+}
+
+#image500 h2{
     margin: 180px 0 40px 0;
     font-weight: 300;
-    color: #444;
-    font-size: 30px;
+    color: white;
+    font-size: 60px;
     text-transform: uppercase;
     text-align: center;
+}
+
+#image500 h2 strong{
+    font-size: 120px;
 }
 
 #text404 {
