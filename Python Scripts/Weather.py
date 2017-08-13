@@ -13,7 +13,7 @@ def ReadWeather(weatherfile):
     clean=df.drop(['ind', 'ind.1', 'igmin', 'gmin', 'ind.2', 'cbl','ind.3','hm','ind.4','ddhm','ind.5','hg','sun','dos','soil','pe','evap','smd_wd','smd_md','smd_pd'], axis=1)
     clean['date'] = clean['date'].astype('datetime64[ns]')
     clean['temp'] = (clean['mintp'] + clean['maxtp'])/2
-    return df
+    return clean
 
 '''Creates a dataframe with the bus information'''
 def ReadBusline(busfile):

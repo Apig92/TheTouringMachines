@@ -37,7 +37,7 @@ def RandomForest(df,path,filename,output):
 
 
 if __name__ == "__main__":
-    newpath = '/home/csstudent/Pickles'          #Destination folder
+    newpath = '/home/csstudent/DublinBus/TTM/static/TTM/pickles'          #Destination folder
     if not os.path.exists(newpath):
         os.makedirs(newpath)
     directory = '/home/csstudent/MergedWeather'  #Folder where all the CSV files are contained
