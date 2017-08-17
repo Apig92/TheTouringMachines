@@ -19,24 +19,24 @@
 
     <!-- <script type="text/javascript" charset="utf-8">var json_loca = {% static "TTM/JSON/routes.json/" %}</script> -->
     {% block javascript %}
-    <script src = {% static 'TTM/js/script.js' %}></script>
+        <script src = {% static 'TTM/js/script.js' %}></script>
 
-        <!-- jQuery -->
-    <script src="{% static 'TTM/js/jquery.js' %}"></script>
+            <!-- jQuery -->
+        <script src="{% static 'TTM/js/jquery.js' %}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{% static 'TTM/js/bootstrap.min.js' %}"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'TTM/js/bootstrap.min.js' %}"></script>
 
-    <!-- Scrolling Nav JavaScript -->
-    <script src="{% static 'TTM/js/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'TTM/js/scrolling-nav.js' %}"></script>
+        <!-- Scrolling Nav JavaScript -->
+        <script src="{% static 'TTM/js/jquery.easing.min.js' %}"></script>
+        <script src="{% static 'TTM/js/scrolling-nav.js' %}"></script>
     {% endblock %}
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{% static 'TTM/css/bootstrap.min.css' %}" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'TTM/css/scrolling-nav.css' %}">
-
+    <link rel="stylesheet" href="{% static 'TTM/css/scrolling-vertical.css' %}">
 
 </head>
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
@@ -49,6 +49,7 @@
        var today = getdate();
        gettime();
        todaysweather();
+       AAtweets();
       });</script>
 
     <!-- Navigation -->
@@ -94,6 +95,7 @@
 
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
+        <div class="AA-container"><p id="AAtweet"></p></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

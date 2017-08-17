@@ -38,4 +38,7 @@ urlpatterns = [
 
     # /TTM/error_500
     url(r'^error_500$', views.error_500, name='error_500'),
+
+    # /TTM/JSON/AAtweets.json
+    url(r'^static/TTM/JSON/AAtweets.json$', views.AAtweets, name='AAtweets'),
 ]

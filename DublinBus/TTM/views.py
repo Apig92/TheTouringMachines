@@ -57,3 +57,6 @@ def error_404(request):
 
 def error_500(request):
     return render(request, 'TTM/error_500.html')
+
+def AAtweets(request):
+    return render(request)

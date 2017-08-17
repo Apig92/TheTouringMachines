@@ -24,7 +24,8 @@ function myMap() {
                     origin: new google.maps.Point(0, 0), // origin
                     anchor: new google.maps.Point(30, 70) // anchor
                 };
-
+        var trafficLayer = new google.maps.TrafficLayer();
+                trafficLayer.setMap(map);
         for (var n in obj) {
             if (obj[n].StopID == xy) {
                 var j = n;
@@ -388,4 +389,16 @@ function convertroute(){
     document.cookie = "routeindex=" + indexroute;
 
    });
+}
+
+//get the last three tweets from AA
+function AAtweets() {
+    var out = "";
+    $.getJSON("../static/TTM/JSON/AAtweets.json", function (data) {
+        var data0 = data["tweets"];
+        var lastItem = data0.slice(-1)[0];
+        var lastsecond = data0.slice(-2)[0];
+    out = lastsecond + "<br>" + lastItem;
+    document.getElementById("AAtweet").innerHTML = out;
+    });
 }
