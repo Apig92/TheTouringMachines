@@ -87,10 +87,10 @@ function myMap() {
 
             })(marker, data);
         }
-        document.getElementById("counter").innerHTML = "The number of stops is: " + (counter - 1);
+        document.getElementById("counter").innerHTML = "Stops: " + (counter - 1);
         document.getElementById("nameofroute").innerHTML = "Route: " + routename;
         document.getElementById("firststop").innerHTML = "First stop: " + xy;
-        document.getElementById("endstop").innerHTML = "Destination Stop: "+ xyz;
+        document.getElementById("endstop").innerHTML = "Last Stop: "+ xyz;
     });
 
 }
