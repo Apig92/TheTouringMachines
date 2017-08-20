@@ -13,11 +13,15 @@
     width: 40%;
 }
 
+#container{
+
+  width:100%;
+
+}
+
+
 #textarea {
     font-family: times, Times New Roman, times-roman, georgia, serif;
-    font-size: 28px;
-    line-height: 40px;
-    letter-spacing: -1px;color: #444;
 }
 
 .slot {
