@@ -82,9 +82,9 @@
                     <li>
                         <a class="page-scroll" href="#about">About us</a>
                     </li>
-
                 </ul>
-
+                    <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
+                    <div id = "weather1"></div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -95,7 +95,6 @@
 
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
-        <div class="AA-container"><p id="AAtweet"></p></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -153,8 +152,6 @@
                 <div class="col-lg-12">
                     <h1>Login Section</h1>
                     <div class="login">{% block content %}{% endblock %}</div>
-                 <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
-                 <div id = "weather1"></div>
                 </div>
             </div>
         </div>
@@ -165,7 +162,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>news</h1>
+                    <h1>Traffic Info</h1>
+                    <div class="AA-container"><p id="AAtweet"></p></div>
                 </div>
             </div>
         </div>
