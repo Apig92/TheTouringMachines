@@ -19,13 +19,14 @@
 
     <!-- <script type="text/javascript" charset="utf-8">var json_loca = {% static "TTM/JSON/routes.json/" %}</script> -->
     {% block javascript %}
+        <script src="{% static 'TTM/js/bootstrap.min.js' %}"></script>
         <script src = {% static 'TTM/js/script.js' %}></script>
 
             <!-- jQuery -->
         <script src="{% static 'TTM/js/jquery.js' %}"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="{% static 'TTM/js/bootstrap.min.js' %}"></script>
+
 
         <!-- Scrolling Nav JavaScript -->
         <script src="{% static 'TTM/js/jquery.easing.min.js' %}"></script>
@@ -73,19 +74,17 @@
                         <a class="page-scroll" href="#page-top"></a>
                     </li>
                     <li>
+                        <a class="page-scroll" href="#services">Login</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">News</a>
+                    </li>
+                    <li>
                         <a class="page-scroll" href="#about">About us</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Plan</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
 
                 </ul>
-                <div class="login">{% block content %}{% endblock %}</div>
-                 <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
-                 <div id = "weather1"></div>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -145,22 +144,17 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img id="us" class="img-responsive center-block" src="{% static 'TTM/images/touring.png' %}" />
-                    <br><h5>We're a group of people stuck in college during the summer. It's warm and we want to sleep and maybe drink cans.</h5>
-                </div>
-            </div>
-    </section>
+
 
     <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Services Section</h1>
+                    <h1>Login Section</h1>
+                    <div class="login">{% block content %}{% endblock %}</div>
+                 <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
+                 <div id = "weather1"></div>
                 </div>
             </div>
         </div>
@@ -171,10 +165,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Contact Section</h1>
+                    <h1>news</h1>
                 </div>
             </div>
         </div>
+    </section>
+
+<!-- About Section -->
+    <section id="about" class="about-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img id="us" class="img-responsive center-block" src="{% static 'TTM/images/touring.png' %}" />
+                    <br><h5>We're a group of people stuck in college during the summer. It's warm and we want to sleep and maybe drink cans.</h5>
+                </div>
+            </div>
     </section>
 
 </body>
