@@ -19,13 +19,14 @@
 
     <!-- <script type="text/javascript" charset="utf-8">var json_loca = {% static "TTM/JSON/routes.json/" %}</script> -->
     {% block javascript %}
+    <script src="{% static 'TTM/js/bootstrap.min.js' %}"></script>
+
     <script src = {% static 'TTM/js/script.js' %}></script>
 
         <!-- jQuery -->
     <script src="{% static 'TTM/js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{% static 'TTM/js/bootstrap.min.js' %}"></script>
 
     <!-- Scrolling Nav JavaScript -->
     <script src="{% static 'TTM/js/jquery.easing.min.js' %}"></script>
@@ -35,7 +36,7 @@
     <link rel="stylesheet" href="{% static 'TTM/css/bootstrap.min.css' %}" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'TTM/css/scrolling-nav.css' %}">
+     <!--<link rel="stylesheet" href="{% static 'TTM/css/scrolling-nav.css' %}">-->
 
 
 </head>
@@ -82,7 +83,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Sign up</h2>
+                    <br><br>
+                    <h2>Sign up</h2><br>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

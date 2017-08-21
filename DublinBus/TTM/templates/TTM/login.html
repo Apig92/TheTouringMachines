@@ -6,13 +6,14 @@
     {% endif %}
 
 <form action = "auth" method = "post"> {% csrf_token %}
+    <br><br>
     <label for = "username">Username:</label>
-    <input type = "text" name = "username" value = "" id = "username">
+    <input type = "text" name = "username" value = "" id = "username"><br><br>
     <label for = "password">Password:</label>
-    <input type = "password" name = "password" value = "" id = "password">
+    <input type = "password" name = "password" value = "" id = "password"><br><br>
+    <p><input type = "submit" value = "login"> or <a href="signup.html">Sign Up</a></p>
 
-    <input type = "submit" value = "login">
 </form>
-<p>or <a href="signup.html">Sign Up</a></p>
+
 
 {% endblock %}
