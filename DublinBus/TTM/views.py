@@ -1,6 +1,10 @@
 from django.http import Http404
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.contrib import auth
+from django.template.context_processors import csrf
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from .models import Routes
 from .scripts import predictions
 
@@ -60,3 +64,43 @@ def error_500(request):
 
 def AAtweets(request):
     return render(request)
+def userlogin(request):
+    c = {}
+    c.update(csrf(request))
+    return render(request, 'TTM/login.html', c)
+
+def auth_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None:
+        auth.login(request, user)
+        return HttpResponseRedirect('loggedin')
+    else:
+        return HttpResponseRedirect('invalid')
+
+def loggedin(request):
+    return render(request, 'TTM/loggedin.html', {'name': request.user.username})
+
+def invalid(request):
+    return render(request, 'TTM/invalid.html')
+
+def logout(request):
+    auth.logout(request)
+    return render(request, 'TTM/login.html')
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('loggedin')
+    else:
+        form = UserCreationForm()
+    return render(request, 'TTM/signup.html', {'form': form})

@@ -3,6 +3,15 @@ from . import views
 
 urlpatterns = [
 
+
+    url(r'^login$', views.userlogin, name = 'login'),
+    url(r'^auth$', views.auth_view, name = 'auth'),
+    url(r'^loggedout$', views.logout, name = 'logout'),
+    url(r'^loggedin$', views.loggedin, name = 'loggedin'),
+    url(r'^invalid$', views.invalid, name = 'invalid'),
+    url(r'^signup.html$', views.signup, name='signup'),
+
+
     # /TTM/index.html
     url(r'^index.html$', views.index, name='index'),
 
@@ -35,6 +44,10 @@ urlpatterns = [
 
     # /TTM/error_404
     url(r'^error_404$', views.error_404, name='error_404'),
+
+# static/TTM/JSON/routes.json
+    url(r'^static/TTM/JSON/indexes.json$', views.indexes, name='indexes'),
+
 
     # /TTM/error_500
     url(r'^error_500$', views.error_500, name='error_500'),

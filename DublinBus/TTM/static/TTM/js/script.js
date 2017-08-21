@@ -151,37 +151,37 @@ var name = cookiename + "=";
 }
 
 
-function stopselect(){
+function stopselect() {
     //dropdown for starting stop
     x = ReadCookie('route');
     $.getJSON('../static/TTM/JSON/routeinfo.json', function(json) {
-    obj = json[x];
-    for( var i in obj ) {
-        $('#dropdownstops').append('<option name = "stop1" value='+obj[i].StopID+'>'+obj[i].StopID
-   +'</option>');
-   }
+        obj = json[x];
+        for (var i in obj) {
+            $('#dropdownstops').append('<option name = "stop1" value=' + obj[i].StopID + '>' + obj[i].Stop_name+ " "+ obj[i].StopID +                '</option>');
+        }
     });
 
- }
+}
 
-function endstopselect(){
+function endstopselect() {
     //dropdown for destination
-   x = ReadCookie('route');
-   xy = ReadCookie('start');
+    x = ReadCookie('route');
+    xy = ReadCookie('start');
     $.getJSON('../static/TTM/JSON/routeinfo.json', function(json) {
-    obj = json[x];
-    for( var n in obj ) {
-        if (obj[n].StopID == xy){
-           var j = n;
+        obj = json[x];
+        for (var n in obj) {
+            if (obj[n].StopID == xy) {
+                var j = n;
+            }
+            for (j; j <= obj.length; j++) {
+                $('#dropdownstops1').append('<option name = "stop1" value=' + obj[j].StopID + '>'+ obj[j].Stop_name+ " "+ obj[j].StopID +
+                    '</option>');
+            }
         }
-     for (j; j <= obj.length; j++) {
-    $('#dropdownstops1').append('<option name = "stop1" value='+obj[j].StopID+'>'+obj[j].StopID
-    +'</option>');
-                } }
 
-   });
+    });
 
- }
+}
 
 function gettime() {
     var time_loop = "";
