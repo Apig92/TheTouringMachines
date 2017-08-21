@@ -328,7 +328,7 @@ function weatherJSON() {
 
 out1 = "<div class='date1'>"+n+","+Icon+"</div>";
 out = "<div class='table2'><table>";
-out += "<tr><td>" + Icon + "</td><td>Temp: " + temp + "°C</td><td> Wind: " + wind + "m/s</td><td> Clouds: " + clouds + "%</td><td> Rain: " + rain + "mm</td>";
+out += "<tr><td>" + Icon + "</td><td>Temp: " + temp + "°C</td>";
 out += "</table></div>";
 document.getElementById("weather").innerHTML = out1;
 document.getElementById("detailedweather").innerHTML = out;
