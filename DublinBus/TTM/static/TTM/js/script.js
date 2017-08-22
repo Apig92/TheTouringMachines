@@ -117,21 +117,34 @@ function Cookies(){
     nameroute = routestr.split(',')[1] + ";";
     document.cookie = "route=" + route;
     document.cookie = "nameroute=" + nameroute;
+    line = nameroute.match(/\d+/)[0];
+    document.cookie = "line=" + line;
     start = document.getElementById('dropdownstops').value + ";";
     document.cookie = "start=" + start;
     stop = document.getElementById('dropdownstops1').value + ";";
     document.cookie = "stop=" + stop;
+}
+function Cookies1(){
+               // makes and stores cookies
+
+    routestr = document.getElementById('dropdownroutes').value; //split the string of value for name and code
+    route = routestr.split(',')[0] + ";";
+    nameroute = routestr.split(',')[1] + ";";
+    document.cookie = "userroute=" + route;
+    document.cookie = "usernameroute=" + nameroute;
+    line = nameroute.match(/\d+/)[0];
+    document.cookie = "userline=" + line;
+    start = document.getElementById('dropdownstops').value + ";";
+    document.cookie = "userstart=" + start;
+    stop = document.getElementById('dropdownstops1').value + ";";
+    document.cookie = "userstop=" + stop;
+}
+
+function timedate(){
     date = document.getElementById('dt').value + ";";
     document.cookie = "date=" + date;
     time = document.getElementById('time').value + ";";
-    document.cookie = "time=" + time;
-               // document.cookie="wind=" + "0;";
-               // document.cookie="rain=" + "0;";
-               // document.cookie="temp=" + "0;";
-
-                           }
-
-
+    document.cookie = "time=" + time;}
 
 function ReadCookie(cookiename){
     //gets cookiename reference this
@@ -157,7 +170,7 @@ function stopselect() {
     $.getJSON('../static/TTM/JSON/routeinfo.json', function(json) {
         obj = json[x];
         for (var i in obj) {
-            $('#dropdownstops').append('<option name = "stop1" value=' + obj[i].StopID + '>' + obj[i].Stop_name+ " "+ obj[i].StopID +                '</option>');
+            $('#dropdownstops').append('<option name = "start" value=' + obj[i].StopID + '>' + obj[i].Stop_name+ " "+ obj[i].StopID +                '</option>');
         }
     });
 
@@ -174,7 +187,7 @@ function endstopselect() {
                 var j = n;
             }
             for (j; j <= obj.length; j++) {
-                $('#dropdownstops1').append('<option name = "stop1" value=' + obj[j].StopID + '>'+ obj[j].Stop_name+ " "+ obj[j].StopID +
+                $('#dropdownstops1').append('<option name = "stop" value=' + obj[j].StopID + '>'+ obj[j].Stop_name+ " "+ obj[j].StopID +
                     '</option>');
             }
         }
@@ -188,6 +201,8 @@ function gettime() {
     var d = new Date();
     var n = d.getTime();
     var hour = d.getHours();
+    time = hour + ";";
+    document.cookie = "time=" + time;
     var min = d.getMinutes();
     var j = parseInt(ReadCookie('date'));
     if (min < 10) {
@@ -387,6 +402,16 @@ function convertroute(){
     var routeindex = json[jpid];
     indexroute = routeindex + ";";
     document.cookie = "routeindex=" + indexroute;
+
+   });
+}
+
+function convertroute1(){
+ $.getJSON('../static/TTM/JSON/indexes.json', function(json) {
+    jpid = ReadCookie('route')
+    var routeindex = json[jpid];
+    indexroute = routeindex + ";";
+    document.cookie = "userrouteindex=" + indexroute;
 
    });
 }

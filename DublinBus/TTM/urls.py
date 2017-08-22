@@ -1,15 +1,17 @@
 from django.conf.urls import url
+
 from . import views
 
 urlpatterns = [
 
 
-    url(r'^login$', views.userlogin, name = 'login'),
-    url(r'^auth$', views.auth_view, name = 'auth'),
-    url(r'^loggedout$', views.logout, name = 'logout'),
-    url(r'^loggedin$', views.loggedin, name = 'loggedin'),
-    url(r'^invalid$', views.invalid, name = 'invalid'),
+    url(r'^login$', views.userlogin, name ='login'),
+    url(r'^auth$', views.auth_view, name ='auth'),
+    url(r'^loggedout$', views.logout, name ='logout'),
+    url(r'^loggedin$', views.loggedin, name ='loggedin'),
+    url(r'^invalid$', views.invalid, name ='invalid'),
     url(r'^signup.html$', views.signup, name='signup'),
+
 
 
     # /TTM/index.html
@@ -35,6 +37,9 @@ urlpatterns = [
 
     # /TTM/est_time.html
     url(r'^est_time.html$', views.timepredict, name='est_time'),
+
+    # /TTM/frequentuser.html
+    url(r'^frequentuser.html$', views.userpredictions, name='freq_user'),
 
     # static/TTM/pickles/line.sav
     url(r'^static/TTM/pickles/[\d]*[\w]*CLEANrouteweather.sav$', views.pickle, name='pickle'),

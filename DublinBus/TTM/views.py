@@ -1,15 +1,15 @@
-from django.http import Http404
-from django.http import HttpResponseRedirect
 from django.contrib import auth
-from django.template.context_processors import csrf
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.http import Http404
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .models import Routes
-from .scripts import predictions
-
+from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
-import json
+
+from .scripts import predictions, userpredictions
+from .models import Routes
+
 
 def index(request):
     all_routes = Routes.objects.all()
@@ -53,6 +53,12 @@ def timepredict(request):
     est_time = predictions(request_data)
     return render(request, 'TTM/est_time.html', {'est_time': est_time})
 
+@csrf_exempt
+def userpredictions(request):
+    request_data = request.COOKIES
+    est_time = userpredictions(request_data)
+    return render(request, 'TTM/frequentuser.html', {'est_time': est_time})
+
 def weather(request):
     return render(request)
 
@@ -81,6 +87,11 @@ def auth_view(request):
         return HttpResponseRedirect('invalid')
 
 def loggedin(request):
+    # reading a form to populate the database with additional user input.
+    # u = FaveForm(request.POST)
+    # if u.is_valid():
+    #     u.save()
+    # return render(request, 'TTM/loggedin.html', {'name': request.user.username, 'favourites': u })
     return render(request, 'TTM/loggedin.html', {'name': request.user.username})
 
 def invalid(request):
@@ -104,3 +115,5 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'TTM/signup.html', {'form': form})
+
+
