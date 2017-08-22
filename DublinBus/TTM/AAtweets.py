@@ -11,60 +11,82 @@ def dublinornot(tweet):
         return False
 
 my_url = 'https://twitter.com/aaroadwatch?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
-
 uClient = uReq(my_url)
 page_html = uClient.read()
 uClient.close()
-
 page_soup = soup(page_html, "html.parser")
 content = page_soup.body.div
 containers = page_soup.findAll("div", {"class": "js-tweet-text-container"})
-# print(containers)
+times = page_soup.findAll("a", {"class": "tweet-timestamp js-permalink js-nav js-tooltip"})
 
-for i in range(len(containers)-1, 0, -1):
-    tweet = containers[i].p.text
+for i in range(len(containers)-1, -1, -1):
+    timestamp = times[i]['title']
+    text = containers[i].p.text
+    tweet = timestamp + ", " + text
     with open("static/TTM/JSON/AAtweets.json") as f:
         data = json.load(f)
-        #if data["tweets"][-1] != tweet and dublinornot(tweet) is True:
-        if tweet not in data["tweets"] and dublinornot(tweet) is True:
+        if tweet not in data["tweets"] and dublinornot(text) is True:
             print("found one: ", tweet)
             (data["tweets"]).append(tweet)
             with open("static/TTM/JSON/AAtweets.json", 'w') as outfile:
                 json.dump(data, outfile)
-# tweet = containers[0].p.text
-# print(containers)
 
-
-
-def write_to_json(file):
+def write_to_AAjson(file):
     my_url = 'https://twitter.com/aaroadwatch?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
     uClient = uReq(my_url)
     page_html = uClient.read()
     uClient.close()
     page_soup = soup(page_html, "html.parser")
-    # content = page_soup.body.div
     containers = page_soup.findAll("div", {"class": "js-tweet-text-container"})
-    tweet = containers[0].p.text
+    timestamp = times[0]['title']
+    text = containers[0].p.text
+    tweet = timestamp + ", " + text
 
     with open(file) as f:
         data = json.load(f)
-        if data["tweets"][-1] != tweet and dublinornot(tweet) is True:
+        if data["tweets"][-1] != tweet and dublinornot(text) is True:
             (data["tweets"]).append(tweet)
             with open(file, 'w') as outfile:
                 json.dump(data, outfile)
     return
-file = "static/TTM/JSON/AAtweets.json"
-#write_to_json(file)
 
+def write_to_DBjson(file):
+    my_url = 'https://twitter.com/dublinbusnews?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
+    uClient = uReq(my_url)
+    page_html = uClient.read()
+    uClient.close()
+    page_soup = soup(page_html, "html.parser")
+    containers = page_soup.findAll("div", {"class": "js-tweet-text-container"})
+    people = page_soup.findAll("span", {"class": "FullNameGroup"})
+    times = page_soup.findAll("a", {"class": "tweet-timestamp js-permalink js-nav js-tooltip"})
+
+    for i in range(len(containers)-1, 0, -1):
+        timestamp = times[i]['title']
+        person = people[i].strong.text
+        text = containers[i].p.text
+        tweet = timestamp + ", " + person + ": " + text
+        with open("static/TTM/JSON/DBtweets.json") as f:
+            data = json.load(f)
+            if tweet not in data["tweets"]:
+                print("found one: ", tweet)
+                (data["tweets"]).append(tweet)
+                with open("static/TTM/JSON/DBtweets.json", 'w') as outfile:
+                    json.dump(data, outfile)
+    return
 
 
 while (True):
-    write_to_json(file)
+    write_to_AAjson("static/TTM/JSON/AAtweets.json")
+    write_to_DBjson("static/TTM/JSON/DBtweets.json")
 
-    with open(file) as f2:
-        data = json.load(f2)
-        print("\n" + data["tweets"][-2])
-        print(data["tweets"][-1])
+    with open("static/TTM/JSON/AAtweets.json") as f1:
+        data1 = json.load(f1)
+        print("\nAA: \n" + data1["tweets"][-2])
+        print(data1["tweets"][-1])
+    with open("static/TTM/JSON/DBtweets.json") as f2:
+        data2 = json.load(f2)
+        print("DB: \n" + data2["tweets"][-2])
+        print(data2["tweets"][-1])
     now = time.time()
     print("now is:", now)
     future = now + 60

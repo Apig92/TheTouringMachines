@@ -416,14 +416,28 @@ function convertroute1(){
    });
 }
 
-//get the last three tweets from AA
+//get the last two tweets from AA
 function AAtweets() {
     var out = "";
     $.getJSON("../static/TTM/JSON/AAtweets.json", function (data) {
         var data0 = data["tweets"];
-        var lastItem = data0.slice(-1)[0];
-        var lastsecond = data0.slice(-2)[0];
-    out = lastsecond + "<br>" + lastItem;
+        var last1 = data0.slice(-1)[0];
+        var last2 = data0.slice(-2)[0];
+    out = last2 + "<br>" + last1;
     document.getElementById("AAtweet").innerHTML = out;
+    });
+}
+
+//get the last four tweets from DublinBus
+function DBtweets() {
+    var out = "";
+    $.getJSON("../static/TTM/JSON/DBtweets.json", function (data) {
+        var data0 = data["tweets"];
+        var last1 = data0.slice(-1)[0];
+        var last2 = data0.slice(-2)[0];
+        var last3 = data0.slice(-3)[0];
+        var last4 = data0.slice(-4)[0];
+    out = last4 + "<br>" + last3 + "<br>" + last2 + "<br>" + last1;
+    document.getElementById("DBtweet").innerHTML = out;
     });
 }

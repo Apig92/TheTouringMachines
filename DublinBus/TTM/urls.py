@@ -50,13 +50,15 @@ urlpatterns = [
     # /TTM/error_404
     url(r'^error_404$', views.error_404, name='error_404'),
 
-# static/TTM/JSON/routes.json
+    # static/TTM/JSON/routes.json
     url(r'^static/TTM/JSON/indexes.json$', views.indexes, name='indexes'),
-
 
     # /TTM/error_500
     url(r'^error_500$', views.error_500, name='error_500'),
 
     # /TTM/JSON/AAtweets.json
     url(r'^static/TTM/JSON/AAtweets.json$', views.AAtweets, name='AAtweets'),
+
+    # /TTM/JSON/DBtweets.json
+    url(r'^static/TTM/JSON/DBtweets.json$', views.DBtweets, name='DBtweets'),
 ]

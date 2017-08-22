@@ -70,6 +70,10 @@ def error_500(request):
 
 def AAtweets(request):
     return render(request)
+
+def DBtweets(request):
+    return render(request)
+
 def userlogin(request):
     c = {}
     c.update(csrf(request))
