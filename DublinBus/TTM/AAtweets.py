@@ -2,6 +2,7 @@ from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import json
 import time
+from datetime import datetime, timedelta
 
 def dublinornot(tweet):
     tweet_loca = tweet[:6]
@@ -9,6 +10,13 @@ def dublinornot(tweet):
         return True
     else:
         return False
+
+def timeconvert(time_was):
+    time_format = '%I:%M %p - %d %b %Y'
+    my_date = datetime.strptime(time_was, time_format)
+    time_now = my_date + timedelta(hours=8)
+    time_now = time_now.strftime(time_format)
+    return time_now
 
 my_url = 'https://twitter.com/aaroadwatch?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
 uClient = uReq(my_url)
@@ -20,7 +28,7 @@ containers = page_soup.findAll("div", {"class": "js-tweet-text-container"})
 times = page_soup.findAll("a", {"class": "tweet-timestamp js-permalink js-nav js-tooltip"})
 
 for i in range(len(containers)-1, -1, -1):
-    timestamp = times[i]['title']
+    timestamp = timeconvert(times[i]['title'])
     text = containers[i].p.text
     tweet = timestamp + ", " + text
     with open("static/TTM/JSON/AAtweets.json") as f:
@@ -38,7 +46,7 @@ def write_to_AAjson(file):
     uClient.close()
     page_soup = soup(page_html, "html.parser")
     containers = page_soup.findAll("div", {"class": "js-tweet-text-container"})
-    timestamp = times[0]['title']
+    timestamp = timeconvert(times[0]['title'])
     text = containers[0].p.text
     tweet = timestamp + ", " + text
 
@@ -61,7 +69,7 @@ def write_to_DBjson(file):
     times = page_soup.findAll("a", {"class": "tweet-timestamp js-permalink js-nav js-tooltip"})
 
     for i in range(len(containers)-1, 0, -1):
-        timestamp = times[i]['title']
+        timestamp = timeconvert(times[i]['title'])
         person = people[i].strong.text
         text = containers[i].p.text
         tweet = timestamp + ", " + person + ": " + text
