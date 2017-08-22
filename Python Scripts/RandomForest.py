@@ -23,12 +23,13 @@ def read(filename):
     return df
 
 '''Trains model and creates pickle file'''
-def RandomForest(df,path,filename,output):
+def RandomForest(df,path,filename,list,output):
     features = ['Hour', 'Day', 'StopID', 'LineID','Pattern','rain','wdsp','temp']
     X = pd.concat([df[features]], axis=1)
     y = df.Seconds
     rfc = RandomForestRegressor(n_estimators=100, oob_score=True, random_state=1,)
     rfc.fit(X, y)
+    list.append(metrics.r2_score(y, rfc.predict(X)))
     print("R Squared: ", metrics.r2_score(y, rfc.predict(X)))
     print("neg_mean_absolute_error: ", metrics.mean_absolute_error(y,rfc.predict(X)))
     print("mean_squared_error: ", metrics.mean_squared_error(y, rfc.predict(X)))
@@ -44,15 +45,22 @@ if __name__ == "__main__":
     f = open('RandomForestResults.txt', 'w')     #Creates .txt file where all the model information and stats are contained
     orig_stdout = sys.stdout                     #Original output, the terminal
     sys.stdout = f                               #Change output to the file
+    list=list()
     for filename in os.listdir(directory):
         if filename.endswith(".csv"):
             x = "" + filename + ""
             df = read(x)
             print("Stats for Line",filename)
-            RandomForest(df, newpath, x, f)
+            RandomForest(df, newpath, x, list, f)
             print('--------------------------------------------------')
         else:
             continue
+    mean=float(sum(list)) / max(len(list), 1)
+    print("The mean of the R-squared values is:",mean)
+    print("The lowest R-squared values is:", min(list))
+    print("The best R-squared value is",max(list))
+    list.remove(min(list))
+    print("The mean of the R-squared removing the worst performing values is:",mean)
     sys.stdout = orig_stdout                     #Change output back to terminal
     f.close()
 
