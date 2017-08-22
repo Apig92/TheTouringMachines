@@ -449,7 +449,7 @@ function realtime1(stopnumber, routenumber){
 //                alert (json.errormessage);
 //
 //            }
-            out = "<div class ='table3'><table><tr><th>Next bus(mins)</th><th>Wheelchair Access</th></tr>";
+            out = "<div class ='table3'><table style= 'text-align:center; margin-left:auto; margin-right:auto; width:300px; text-align:center'><tr><th>Next bus(mins)</th><th>Wheelchair Access</th></tr>";
             var length = json.numberofresults;
             for (var i = 0; i<length; i++){
                 results = json.results[i]

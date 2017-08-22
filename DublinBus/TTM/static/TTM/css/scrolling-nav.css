@@ -68,15 +68,7 @@ of those sections to manage the look and feel of the site. */
     float:right;
 }
 
-.table3 {
-    width: 100%;
-    color:black;
-    font-family: 'Verdana';
-    font-size: 12px;
-    text-align: center;
-    width:500px;
-    height:auto;
-    border-spacing: 10px 50px;
-    padding: 50px;
-    margin-left:525px;
+#table3 {
+     width:98%;
+    margin:1%;
     }
