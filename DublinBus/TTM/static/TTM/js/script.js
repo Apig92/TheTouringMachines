@@ -264,7 +264,13 @@ day[4] = "Thursday";
 day[5] = "Friday";
 day[6] = "Saturday";
 var week_day_loop = ""; //Week day loop to generate Today, Tomorrow and the correct following days depending on the day the user is viewing the site.
-date11 = weekday + ";";
+if (weekday > 0){
+var value1= weekday -1; //change to pythonic days
+}
+else {
+var value1 = 6;
+}
+date11 = value1 + ";";
 document.cookie = "date=" + date11 ;
 if(dd<10) {
 dd = '0'+dd
@@ -466,7 +472,7 @@ function realtime1(stopnumber, routenumber){
 
 function userinfo(){
 
-    if (ReadCookie('userstart') != 'undefined'){
+    if (ReadCookie('userstart') != undefined){
         convertroute1();
         routename = ReadCookie('usernameroute');
         firststop = ReadCookie('userstart');
