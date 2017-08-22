@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^est_time.html$', views.timepredict, name='est_time'),
 
     # /TTM/frequentuser.html
-    url(r'^frequentuser.html$', views.userpredictions, name='freq_user'),
+    url(r'^frequentuser.html$', views.userpredictions, name='est_time'),
 
     # static/TTM/pickles/line.sav
     url(r'^static/TTM/pickles/[\d]*[\w]*CLEANrouteweather.sav$', views.pickle, name='pickle'),
@@ -59,6 +59,11 @@ urlpatterns = [
     # /TTM/JSON/AAtweets.json
     url(r'^static/TTM/JSON/AAtweets.json$', views.AAtweets, name='AAtweets'),
 
+
+    # real time
+    url(r'"https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=[\d]*&routeid=[a-zA-Z0-9_.-]*&[\d]*$', views.realtime, name = 'realtime')
+
     # /TTM/JSON/DBtweets.json
     url(r'^static/TTM/JSON/DBtweets.json$', views.DBtweets, name='DBtweets'),
+
 ]

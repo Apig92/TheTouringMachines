@@ -55,8 +55,8 @@ def timepredict(request):
 
 @csrf_exempt
 def userpredictions(request):
-    request_data = request.COOKIES
-    est_time = userpredictions(request_data)
+    #request.COOKIES
+    est_time = userpredictions(request.COOKIES)
     return render(request, 'TTM/frequentuser.html', {'est_time': est_time})
 
 def weather(request):
@@ -69,6 +69,10 @@ def error_500(request):
     return render(request, 'TTM/error_500.html')
 
 def AAtweets(request):
+    return render(request)
+
+
+def realtime(request):
     return render(request)
 
 def DBtweets(request):

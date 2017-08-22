@@ -46,9 +46,10 @@
 <!--                NEED TO WORK ON This  Display todays date and time as initial values (and cookies)-->
  <script>
     $(window).on('load', function() {
-       var today = getdate();
+       getdate();
        gettime();
        todaysweather();
+       userinfo();
        AAtweets();
       });</script>
 
@@ -62,27 +63,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">The Touring Machines</a>
+                <a class="navbar-brand page-scroll" href="login">The Touring Machines</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About us</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Plan</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
 
-                </ul>
                  <input id = "refresh" type="submit" class="btn btn-info" value="Refresh" onclick="reloadpage()">
                  <div id = "weather1"></div>
             </div>
@@ -99,10 +85,19 @@
         <div class="container"></div>
              <h2>Hi {{name}}</h2>
     <p><a href = 'loggedout'>Logout</a></p>
+
+        <div class="slot"><h2 id ="nameofroute"></h2></div>
+        <div class="slot"><p id ="firststop"></p></div>
+        <div class="slot"><p id ="laststop"></p></div>
+        <input type="submit" class="btn btn-info" value="Realtime for your stop/route" onclick="realtime()">
+
+        <div class = 'row' id ="realtime"></div>
+
+
     <form action="" name="favourites" method="post" >
     {% csrf_token %}
         {{ favourites.as_p }}
-        <p><a href = 'frequentuser.html'>Predict Favourite Route</a></p>
+        <p><a href = 'est_time.html'>Predict Favourite Route</a></p>
         <div class="slot">{% block content %}{% endblock %}</div>
             <div class="row">
                 <div class="col-lg-12">
@@ -110,7 +105,7 @@
                         <div class="form-group">
     <label>Route</label>
 
-    <select name = "Route" class="form-control" id="dropdownroutes" onchange = "Cookies(); stopselect(); convertroute1();">
+    <select name = "Route" class="form-control" id="dropdownroutes" onchange = "Cookies(); stopselect(); convertroute();">
        <option value="None" selected="Selected">Choose a Route</option>
     </select>
     </div>
@@ -130,14 +125,14 @@
                         </div>
 
 
-                    <input type="submit" class="btn btn-info" value="Save Favourites" onclick="Cookies1()">
+                    <input type="submit" class="btn btn-info" value="Save Favourites" onclick="Cookies1(); userinfo();">
                     </form>
                 </div>
             </div>
     </form>
     </section>
 
-<p><a href = 'loggedout'>Predict Favourite Route</a></p>
+
 </body>
 
 </html>

@@ -264,7 +264,8 @@ day[4] = "Thursday";
 day[5] = "Friday";
 day[6] = "Saturday";
 var week_day_loop = ""; //Week day loop to generate Today, Tomorrow and the correct following days depending on the day the user is viewing the site.
-
+date11 = weekday + ";";
+document.cookie = "date=" + date11 ;
 if(dd<10) {
 dd = '0'+dd
 }
@@ -408,10 +409,11 @@ function convertroute(){
 
 function convertroute1(){
  $.getJSON('../static/TTM/JSON/indexes.json', function(json) {
-    jpid = ReadCookie('route')
+    jpid = ReadCookie('userroute')
     var routeindex = json[jpid];
     indexroute = routeindex + ";";
-    document.cookie = "userrouteindex=" + indexroute;
+    document.cookie = "routeindex=" + indexroute;
+
 
    });
 }
@@ -428,6 +430,55 @@ function AAtweets() {
     });
 }
 
+
+
+function realtime(){
+    x =ReadCookie('userstart');
+    y = ReadCookie('userline');
+    z = realtime1(x, y);
+    //timetable(x,y,);
+
+}
+
+function realtime1(stopnumber, routenumber){
+    // function to provide real-time info
+    $.getJSON("https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid="+stopnumber+"&routeid="+routenumber+"&"+4 ,function(json){
+            var info = JSON.stringify(json);
+            //alert (info);
+//            if (json.errorcode =! 0){
+//                alert (json.errormessage);
+//
+//            }
+            out = "<div class ='table3'><table><tr><th>Next bus(mins)</th><th>Wheelchair Access</th></tr>";
+            var length = json.numberofresults;
+            for (var i = 0; i<length; i++){
+                results = json.results[i]
+                if (results.lowfloorstatus === "yes")
+                    out += "<tr><td>"+results.duetime+"</td><td>Yes</td></tr>";
+                else {
+                    out += "<tr><td>"+results.duetime+"</td><td>No</td></tr>";
+                }
+
+            }  out += "</table></div>";
+               document.getElementById("realtime").innerHTML = out;
+    });
+}
+
+function userinfo(){
+
+    if (ReadCookie('userstart') != 'undefined'){
+        convertroute1();
+        routename = ReadCookie('usernameroute');
+        firststop = ReadCookie('userstart');
+        laststop = ReadCookie('userstop');
+        document.getElementById("nameofroute").innerHTML = "Saved Route: " + routename;
+        document.getElementById("firststop").innerHTML = "First stop: " + firststop;
+        document.getElementById("laststop").innerHTML = "Last Stop: "+ laststop;}
+        else {
+        document.getElementById("nameofroute").innerHTML = "Save a route and stops";
+        alert('no');}
+        }
+
 //get the last four tweets from DublinBus
 function DBtweets() {
     var out = "";
@@ -441,3 +492,4 @@ function DBtweets() {
     document.getElementById("DBtweet").innerHTML = out;
     });
 }
+
