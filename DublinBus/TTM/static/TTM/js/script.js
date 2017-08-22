@@ -486,9 +486,8 @@ function DBtweets() {
         var data0 = data["tweets"];
         var last1 = data0.slice(-1)[0];
         var last2 = data0.slice(-2)[0];
-        var last3 = data0.slice(-3)[0];
-        var last4 = data0.slice(-4)[0];
-    out = last4 + "<br>" + last3 + "<br>" + last2 + "<br>" + last1;
+
+    out = last2 + "<br>" + last1;
     document.getElementById("DBtweet").innerHTML = out;
     });
 }
