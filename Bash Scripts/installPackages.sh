@@ -1,7 +1,10 @@
 #!/bin/bash
 
-for i in django pandas pickle numpy sklearn numpy scipy; do
-  sudo pip install -y $i
+sudo apt-get update
+
+for i in django pandas numpy sklearn numpy scipy; do
+  sudo pip install $i
 done
 
-chmod u+x
+
+chmod u+x installPackages.sh
