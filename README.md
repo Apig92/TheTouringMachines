@@ -3,6 +3,8 @@
 This is the official repository of the Touring Machines: Daniel Cummins, Andrea Pignanelli, Shanming Li.
 In this document it will be explained how to run the project and recreate it on any other compatible machine or server.
 
+Up to the end of September 2017, it is hosted at the following address: http://137.43.49.42:8000/TTM/login
+
 This project is the result of the summer of 2017 Research Practicum of UCD's MSc. in Computer science (conversion). The following is the original
 project specification:
 
@@ -27,12 +29,12 @@ estimate of travel time for the selected journey"
 
 
 
-#Instructions to run it
+# Instructions to run it
 
-##Pre-requisites
+## Pre-requisites
 python 3.5, pip installer, tmux or screen, and 20 GB of free space (or less if files are deleted after each passage)
 
-##Links to the files
+## Links to the files
 BUS info (download both): https://data.dublinked.ie/dataset/dublin-bus-gps-sample-data-from-dublin-city-council-insight-project
 Weather info (daily weather from 06/11/12 to 30/11/12 and from 01/01/13 to 31/01/13): http://www.met.ie/climate-request/
 
@@ -44,7 +46,7 @@ TOTAL SIZE: 8 GB uncompressed
 TouringMachines/Bash Scripts/installPackages.sh      It installs all the necessary packages
 
 
-##Data preparation
+## Data preparation
 
 The only modifications that have to be done to the scripts is in the paths, as all the paths contained in the code
 are our own. There are comments highlighting what needs to be changed.
@@ -57,12 +59,12 @@ TouringMachines/Python Scripts/PatternToIndex.py
 TouringMachines/Python Scripts/RandomForest.py  (in case of errors, delete files that are too small <100Kb. The pickle
                                                  files are saved in the correct django folder)
 
-##Files to run on tmux or screen
+## Files to run on tmux or screen
 TouringMachines/Python Scripts/Weather_json.py (scraper for weather predictions)
 TouringMachines/Python Scripts/AAtweets.py  (scraper for twitter feed)
 
 
-#Deployment
+# Deployment
 
 To the deploy the application, changes have to be made to TouringMachines/DublinBus/DublinBus/settings.py to accomodate the changes.
 The easiest way is to run the built-in deployer by adding the proper domain or IP address to the approved hosts. In case nginx+gunicorn,
