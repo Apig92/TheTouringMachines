@@ -6,8 +6,8 @@ from datetime import datetime, timedelta
 
 # function that check if the tweet is about Dublin or not
 def dublinornot(tweet):
-    tweet_loca = tweet[:6]
-    if tweet_loca == "DUBLIN":
+    tweet_loca = tweet[:7]
+    if tweet_loca == "#DUBLIN":
         return True
     else:
         return False
@@ -20,29 +20,6 @@ def timeconvert(time_was):
     time_now = time_now.strftime(time_format)
     return time_now
 
-# web scraping section with python using BeautifulSoup
-my_url = 'https://twitter.com/aaroadwatch?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
-uClient = uReq(my_url)
-page_html = uClient.read()
-uClient.close()
-page_soup = soup(page_html, "html.parser")
-content = page_soup.body.div
-containers = page_soup.findAll("div", {"class": "js-tweet-text-container"})
-times = page_soup.findAll("a", {"class": "tweet-timestamp js-permalink js-nav js-tooltip"})
-
-# get all the tweets showed on the website
-for i in range(len(containers)-1, -1, -1):
-    timestamp = timeconvert(times[i]['title'])
-    text = containers[i].p.text
-    tweet = timestamp + ", " + text
-    with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/AAtweets.json") as f:
-        data = json.load(f)
-        if tweet not in data["tweets"] and dublinornot(text) is True:
-            print("found one: ", tweet)
-            (data["tweets"]).append(tweet)
-            with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/AAtweets.json", 'w') as outfile:
-                json.dump(data, outfile)
-
 # function that get the latest tweet and write it to AAtweets.json
 def write_to_AAjson(file):
     my_url = 'https://twitter.com/aaroadwatch?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
@@ -51,19 +28,22 @@ def write_to_AAjson(file):
     uClient.close()
     page_soup = soup(page_html, "html.parser")
     containers = page_soup.findAll("div", {"class": "js-tweet-text-container"})
-    timestamp = timeconvert(times[0]['title'])
-    text = containers[0].p.text
-    tweet = timestamp + ", " + text
+    times = page_soup.findAll("a", {"class": "tweet-timestamp js-permalink js-nav js-tooltip"})
 
-    with open(file) as f:
-        data = json.load(f)
-        if data["tweets"][-1] != tweet and dublinornot(text) is True:
-            (data["tweets"]).append(tweet)
-            with open(file, 'w') as outfile:
-                json.dump(data, outfile)
+    for i in range(len(containers) - 1, -1, -1):
+        timestamp = timeconvert(times[i]['title'])
+        text = containers[i].p.text
+        tweet = timestamp + ", " + text
+        with open(file) as f:
+            data = json.load(f)
+            if tweet not in data["tweets"] and dublinornot(text) is True:
+                print("found one: ", tweet)
+                (data["tweets"]).append(tweet)
+                with open(file, 'w') as outfile:
+                    json.dump(data, outfile)
     return
 
-# function that get the latest tweet and write it to DublinBus json
+# function that get the latest tweet and write it to DublinBus tweets json
 def write_to_DBjson(file):
     my_url = 'https://twitter.com/dublinbusnews?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
     uClient = uReq(my_url)
@@ -79,12 +59,12 @@ def write_to_DBjson(file):
         person = people[i].strong.text
         text = containers[i].p.text
         tweet = timestamp + ", " + person + ": " + text
-        with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/DBtweets.json") as f:
+        with open(file) as f:
             data = json.load(f)
             if tweet not in data["tweets"]:
                 print("found one: ", tweet)
                 (data["tweets"]).append(tweet)
-                with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/DBtweets.json", 'w') as outfile:
+                with open(file, 'w') as outfile:
                     json.dump(data, outfile)
     return
 
@@ -107,4 +87,3 @@ while (True):
     print("future is:", future)
     while time.time() < future:
         continue
-
