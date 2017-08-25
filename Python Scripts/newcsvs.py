@@ -1,3 +1,4 @@
+# Program to write seconds day ad hors to new csvs per line + clean data
 import pandas as pd
 import os
 import numpy as np
