@@ -32,9 +32,6 @@ urlpatterns = [
     # /TTM/static/TTM/Images/icon_rec.png
     url(r'^static/TTM/images/icon_rec.png$', views.icon_rec, name='icon_rec'),
 
-    # /TTM/detail.html
-    url(r'^detail.html$', views.detail, name='detail'),
-
     # /TTM/est_time.html
     url(r'^est_time.html$', views.timepredict, name='est_time'),
 
@@ -44,7 +41,7 @@ urlpatterns = [
     # static/TTM/pickles/line.sav
     url(r'^static/TTM/pickles/[\d]*[\w]*CLEANrouteweather.sav$', views.pickle, name='pickle'),
 
-    # /TTM/JSON/weather.json
+    # static/TTM/JSON/weather.json
     url(r'^static/TTM/JSON/weather.json$', views.weather, name='weather'),
 
     # /TTM/error_404
@@ -56,14 +53,13 @@ urlpatterns = [
     # /TTM/error_500
     url(r'^error_500$', views.error_500, name='error_500'),
 
-    # /TTM/JSON/AAtweets.json
+    # static/TTM/JSON/AAtweets.json
     url(r'^static/TTM/JSON/AAtweets.json$', views.AAtweets, name='AAtweets'),
 
-
     # real time
-    url(r'"https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=[\d]*&routeid=[a-zA-Z0-9_.-]*&[\d]*$', views.realtime, name = 'realtime')
+    url(r'"https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=[\d]*&routeid=[a-zA-Z0-9_.-]*&[\d]*$', views.realtime, name='realtime'),
 
-    # /TTM/JSON/DBtweets.json
+    # static/TTM/JSON/DBtweets.json
     url(r'^static/TTM/JSON/DBtweets.json$', views.DBtweets, name='DBtweets'),
 
 ]
