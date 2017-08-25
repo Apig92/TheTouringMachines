@@ -51,12 +51,16 @@ TouringMachines/Bash Scripts/installPackages.sh      It installs all the necessa
 The only modifications that have to be done to the scripts is in the paths, as all the paths contained in the code
 are our own. There are comments highlighting what needs to be changed.
 
-TouringMachines/Python Scripts/SeparateLines.py   (after this operation the original files can be deleted)
-TouringMachines/Python Scripts/jsonfromstoptoseq.py
-TouringMachines/Python Scripts/newcsvs.py     (files of the previous operation can be deleted)
-TouringMachines/Python Scripts/Weather.py     (files of the previous operation can be deleted)
-TouringMachines/Python Scripts/PatternToIndex.py
-TouringMachines/Python Scripts/RandomForest.py  (in case of errors, delete files that are too small <100Kb. The pickle
+### TouringMachines/Python Scripts/SeparateLines.py
+  (after this operation the original files can be deleted)
+### TouringMachines/Python Scripts/jsonfromstoptoseq.py
+### TouringMachines/Python Scripts/newcsvs.py
+ (files of the previous operation can be deleted)
+### TouringMachines/Python Scripts/Weather.py
+  (files of the previous operation can be deleted)
+### TouringMachines/Python Scripts/PatternToIndex.py
+### TouringMachines/Python Scripts/RandomForest.py
+    (in case of errors, delete files that are too small <100Kb. The pickle
                                                  files are saved in the correct django folder)
 
 ## Files to run on tmux or screen
