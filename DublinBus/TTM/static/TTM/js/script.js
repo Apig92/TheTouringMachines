@@ -493,6 +493,7 @@ function DBtweets() {
 }
 
 function submitbutton(){
+//stops errors occuring from input
 if (ReadCookie('route') == 'None' || ReadCookie('start') == 'None' || ReadCookie('stop') == 'None' || ReadCookie('date') == 'None' ){
 alert('Please Enter all fields');}
 else {
@@ -510,7 +511,7 @@ document.cookie = "stop=" + stop1;
 
 
 function refreshstops(){
-
+//refreshes stop dropdowns so no refresh is necessary
 $("#dropdownstops1").empty();
 $("#dropdownstops").empty();
 }
