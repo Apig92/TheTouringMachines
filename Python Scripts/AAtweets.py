@@ -35,12 +35,12 @@ for i in range(len(containers)-1, -1, -1):
     timestamp = timeconvert(times[i]['title'])
     text = containers[i].p.text
     tweet = timestamp + ", " + text
-    with open("static/TTM/JSON/AAtweets.json") as f:
+    with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/AAtweets.json") as f:
         data = json.load(f)
         if tweet not in data["tweets"] and dublinornot(text) is True:
             print("found one: ", tweet)
             (data["tweets"]).append(tweet)
-            with open("static/TTM/JSON/AAtweets.json", 'w') as outfile:
+            with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/AAtweets.json", 'w') as outfile:
                 json.dump(data, outfile)
 
 # function that get the latest tweet and write it to AAtweets.json
@@ -79,31 +79,31 @@ def write_to_DBjson(file):
         person = people[i].strong.text
         text = containers[i].p.text
         tweet = timestamp + ", " + person + ": " + text
-        with open("static/TTM/JSON/DBtweets.json") as f:
+        with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/DBtweets.json") as f:
             data = json.load(f)
             if tweet not in data["tweets"]:
                 print("found one: ", tweet)
                 (data["tweets"]).append(tweet)
-                with open("static/TTM/JSON/DBtweets.json", 'w') as outfile:
+                with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/DBtweets.json", 'w') as outfile:
                     json.dump(data, outfile)
     return
 
 # to re-scraped AA tweets and DB tweets every minute, and print the last two tweets.
 while (True):
-    write_to_AAjson("static/TTM/JSON/AAtweets.json")
-    write_to_DBjson("static/TTM/JSON/DBtweets.json")
+    write_to_AAjson("/home/csstudent/DublinBus/TTM/static/TTM/JSON/AAtweets.json")
+    write_to_DBjson("/home/csstudent/DublinBus/TTM/static/TTM/JSON/DBtweets.json")
 
-    with open("static/TTM/JSON/AAtweets.json") as f1:
+    with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/AAtweets.json") as f1:
         data1 = json.load(f1)
         print("\nAA: \n" + data1["tweets"][-2])
         print(data1["tweets"][-1])
-    with open("static/TTM/JSON/DBtweets.json") as f2:
+    with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/DBtweets.json") as f2:
         data2 = json.load(f2)
         print("DB: \n" + data2["tweets"][-2])
         print(data2["tweets"][-1])
     now = time.time()
     print("now is:", now)
-    future = now + 60
+    future = now + 600
     print("future is:", future)
     while time.time() < future:
         continue
