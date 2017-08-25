@@ -36,7 +36,7 @@ def write_to_AAjson(file):
         tweet = timestamp + ", " + text
         with open(file) as f:
             data = json.load(f)
-            if data["tweets"][-1] != tweet and dublinornot(text) is True:
+            if tweet not in data["tweets"] and dublinornot(text) is True:
                 print("found one: ", tweet)
                 (data["tweets"]).append(tweet)
                 with open(file, 'w') as outfile:
