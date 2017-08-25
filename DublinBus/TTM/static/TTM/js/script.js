@@ -509,3 +509,10 @@ function DBtweets() {
         document.getElementById("DBtweet").innerHTML = out;
     });
 }
+
+function submitbutton(){
+if (ReadCookie('route') == 'None' || ReadCookie('start') == 'None' || ReadCookie('stop') == 'None' || ReadCookie('date') == 'None' ){
+alert('Please Enter all fields');}
+else {
+location.href = "est_time.html";}
+}
