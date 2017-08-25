@@ -6,6 +6,7 @@ api_request = "http://api.openweathermap.org/data/2.5/forecast/daily?id=2964574&
 #this can only be called every 10 mins or will get blocked, so will call every 3 hours and save as json
 
 def getjson(api_request):
+    """Scrapes Weather and adds to Json every 3 hours (to make sure it is working within working times of DublinBus"""
     url = urllib.request.urlopen(api_request)
     print ('request made')
     output = url.read().decode('utf-8')
