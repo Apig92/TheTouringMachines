@@ -229,17 +229,6 @@ function gettime() {
     }
     var option = $('<option name = "time" value=' + newhour + '>' + hour + ':' + min + '</option>');
     $("#time").empty().append(option); //delete options and replace with current time
-    if (thisday == d.getDay()) {
-        for (var i = newhour; i < 24; i++) {
-            var value = i;
-            if (i > 0) {
-                time_loop = "" + value + ":00";
-            }
-
-            $('#time').append('<option name = "time" value=' + value + '>' + time_loop + '</option>');
-        }
-
-    } else {
         for (var i = 6; i < 24; i++) {
             var value = i;
             time_loop = "" + value + ":00";
@@ -247,8 +236,6 @@ function gettime() {
         }
     }
 
-
-}
 
 function reloadpage() {
     location.reload();
