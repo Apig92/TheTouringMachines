@@ -507,3 +507,10 @@ stop1 = ReadCookie('userstop');
 document.cookie = "start=" + start1;
 document.cookie = "stop=" + stop1;
 }
+
+
+function refreshstops(){
+
+$("#dropdownstops1").empty();
+$("#dropdownstops").empty();
+}
