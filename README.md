@@ -52,7 +52,7 @@ The only modifications that have to be done to the scripts is in the paths, as a
 are our own. There are comments highlighting what needs to be changed.
 
 TouringMachines/Python Scripts/SeparateLines.py   (after this operation the original files can be deleted)
-TouringMachines/Python Scripts/alldatajson.py
+TouringMachines/Python Scripts/jsonfromstoptoseq.py
 TouringMachines/Python Scripts/newcsvs.py     (files of the previous operation can be deleted)
 TouringMachines/Python Scripts/Weather.py     (files of the previous operation can be deleted)
 TouringMachines/Python Scripts/PatternToIndex.py
