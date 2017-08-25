@@ -1,7 +1,6 @@
 from django.contrib import auth
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.http import Http404
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
@@ -15,13 +14,6 @@ def index(request):
     all_routes = Routes.objects.all()
     context = {'all_routes': all_routes,}
     return render(request, 'TTM/index.html', context)
-
-def detail(request, Route_ID):
-    try:
-        route = Routes.objects.get(pk=Route_ID)
-    except Routes.DoesNotExist:
-        raise Http404("Route does not exist")
-    return render(request, 'TTM/detail.html', {'route': route})
 
 def json_routes(request):
     return render(request)
@@ -55,12 +47,8 @@ def timepredict(request):
 
 @csrf_exempt
 def userpredictions(request):
-    #request.COOKIES
     est_time = userpredictions(request.COOKIES)
     return render(request, 'TTM/frequentuser.html', {'est_time': est_time})
-
-def weather(request):
-    return render(request)
 
 def error_404(request):
     return render(request, 'TTM/error_404.html')
@@ -95,11 +83,6 @@ def auth_view(request):
         return HttpResponseRedirect('invalid')
 
 def loggedin(request):
-    # reading a form to populate the database with additional user input.
-    # u = FaveForm(request.POST)
-    # if u.is_valid():
-    #     u.save()
-    # return render(request, 'TTM/loggedin.html', {'name': request.user.username, 'favourites': u })
     return render(request, 'TTM/loggedin.html', {'name': request.user.username})
 
 def invalid(request):
@@ -108,7 +91,6 @@ def invalid(request):
 def logout(request):
     auth.logout(request)
     return render(request, 'TTM/login.html')
-
 
 def signup(request):
     if request.method == 'POST':

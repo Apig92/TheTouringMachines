@@ -4,6 +4,7 @@ import json
 import time
 from datetime import datetime, timedelta
 
+# function that check if the tweet is about Dublin or not
 def dublinornot(tweet):
     tweet_loca = tweet[:6]
     if tweet_loca == "DUBLIN":
@@ -11,6 +12,7 @@ def dublinornot(tweet):
     else:
         return False
 
+# function that convert the US time to Ireland time
 def timeconvert(time_was):
     time_format = '%I:%M %p - %d %b %Y'
     my_date = datetime.strptime(time_was, time_format)
@@ -18,6 +20,7 @@ def timeconvert(time_was):
     time_now = time_now.strftime(time_format)
     return time_now
 
+# web scraping section with python using BeautifulSoup
 my_url = 'https://twitter.com/aaroadwatch?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
 uClient = uReq(my_url)
 page_html = uClient.read()
@@ -27,6 +30,7 @@ content = page_soup.body.div
 containers = page_soup.findAll("div", {"class": "js-tweet-text-container"})
 times = page_soup.findAll("a", {"class": "tweet-timestamp js-permalink js-nav js-tooltip"})
 
+# get all the tweets showed on the website
 for i in range(len(containers)-1, -1, -1):
     timestamp = timeconvert(times[i]['title'])
     text = containers[i].p.text
@@ -39,6 +43,7 @@ for i in range(len(containers)-1, -1, -1):
             with open("/home/csstudent/DublinBus/TTM/static/TTM/JSON/AAtweets.json", 'w') as outfile:
                 json.dump(data, outfile)
 
+# function that get the latest tweet and write it to AAtweets.json
 def write_to_AAjson(file):
     my_url = 'https://twitter.com/aaroadwatch?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
     uClient = uReq(my_url)
@@ -58,6 +63,7 @@ def write_to_AAjson(file):
                 json.dump(data, outfile)
     return
 
+# function that get the latest tweet and write it to DublinBus json
 def write_to_DBjson(file):
     my_url = 'https://twitter.com/dublinbusnews?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor'
     uClient = uReq(my_url)
@@ -82,7 +88,7 @@ def write_to_DBjson(file):
                     json.dump(data, outfile)
     return
 
-
+# to re-scraped AA tweets and DB tweets every minute, and print the last two tweets.
 while (True):
     write_to_AAjson("/home/csstudent/DublinBus/TTM/static/TTM/JSON/AAtweets.json")
     write_to_DBjson("/home/csstudent/DublinBus/TTM/static/TTM/JSON/DBtweets.json")
