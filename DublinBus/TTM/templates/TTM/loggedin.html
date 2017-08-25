@@ -46,11 +46,11 @@
 <!--                NEED TO WORK ON This  Display todays date and time as initial values (and cookies)-->
  <script>
     $(window).on('load', function() {
-       getdate();
+       thisday();
        gettime();
        todaysweather();
        userinfo();
-       AAtweets();
+       getstops();
       });</script>
 
     <!-- Navigation -->
@@ -81,7 +81,7 @@
 
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
-        <div class="AA-container"><p id="AAtweet"></p></div>
+        <!--<div class="AA-container"><p id="AAtweet"></p></div>-->
         <div class="container"></div>
              <h2>Hi {{name}}</h2>
     <p><a href = 'loggedout'>Logout</a></p>
@@ -125,7 +125,7 @@
                         </div>
 
 
-                    <input type="submit" class="btn btn-info" value="Save Favourites" onclick="Cookies1(); userinfo();">
+                    <input type="submit" class="btn btn-info" value="Save Favourites" onclick="Cookies1(); userinfo(); getstops()">
                     </form>
                 </div>
             </div>

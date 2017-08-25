@@ -254,7 +254,18 @@ function reloadpage() {
     location.reload();
 }
 
-
+function thisday(){
+//function to set cookie date
+    var today = new Date();
+    var weekday = today.getDay();
+ if (weekday > 0) {
+        var value1 = weekday - 1; //change to pythonic days
+    } else {
+        var value1 = 6;
+    }
+    date11 = value1 + ";";
+    document.cookie = "date=" + date11;
+    }
 
 function getdate() {
     //function to get date and convert beyween JS and Python - need to add if statements for bank holidays and christmas - future work :)
@@ -272,20 +283,6 @@ function getdate() {
     day[5] = "Friday";
     day[6] = "Saturday";
     var week_day_loop = ""; //Week day loop to generate Today, Tomorrow and the correct following days depending on the day the user is viewing the site.
-    if (weekday > 0) {
-        var value1 = weekday - 1; //change to pythonic days
-    } else {
-        var value1 = 6;
-    }
-    date11 = value1 + ";";
-    document.cookie = "date=" + date11;
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm
-    }
 
     for (var i = 0; i < 7; i++) {
         var value = weekday + i;
@@ -326,8 +323,6 @@ function weatherJSON() {
     } else {
         i = (x + 7) - weekday; //keep it within mod 7
     }
-
-
 
     $.getJSON("../static/TTM/JSON/weather.json", function (json) {
 
@@ -515,4 +510,13 @@ if (ReadCookie('route') == 'None' || ReadCookie('start') == 'None' || ReadCookie
 alert('Please Enter all fields');}
 else {
 location.href = "est_time.html";}
+}
+
+
+function getstops(){
+// user cookies are sent to predictions program
+start1 = ReadCookie('userstart');
+stop1 = ReadCookie('userstop');
+document.cookie = "start=" + start1;
+document.cookie = "stop=" + stop1;
 }
