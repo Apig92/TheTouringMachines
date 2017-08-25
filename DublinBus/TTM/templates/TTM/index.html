@@ -17,16 +17,13 @@
     <!-- loads the path to the static files -->
     {% load staticfiles %}
 
-    <!-- <script type="text/javascript" charset="utf-8">var json_loca = {% static "TTM/JSON/routes.json/" %}</script> -->
     {% block javascript %}
+        <!-- Bootstrap Core JavaScript -->
         <script src="{% static 'TTM/js/bootstrap.min.js' %}"></script>
         <script src = {% static 'TTM/js/script.js' %}></script>
 
-            <!-- jQuery -->
+        <!-- jQuery -->
         <script src="{% static 'TTM/js/jquery.js' %}"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-
 
         <!-- Scrolling Nav JavaScript -->
         <script src="{% static 'TTM/js/jquery.easing.min.js' %}"></script>
@@ -137,7 +134,6 @@
 
 
                     <input type="submit" class="btn btn-info" value="Submit" onclick="Cookies(); timedate()">
-<!--                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>-->
                     </form>
                 </div>
             </div>
