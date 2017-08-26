@@ -6,11 +6,11 @@ from datetime import datetime, timedelta
 
 # function that check if the tweet is about Dublin or not
 def dublinornot(tweet):
-    if tweet[:7] == "#DUBLIN":
+    tweet_loca = tweet[:7]
+    if tweet_loca == "#DUBLIN":
         return True
-    if tweet[:6] == "DUBLIN":
-        return True
-    return False
+    else:
+        return False
 
 # function that convert the US time to Ireland time
 def timeconvert(time_was):
@@ -36,7 +36,7 @@ def write_to_AAjson(file):
         tweet = timestamp + ", " + text
         with open(file) as f:
             data = json.load(f)
-            if data["tweets"][-1] != tweet and dublinornot(text) is True:
+            if tweet not in data["tweets"] and dublinornot(text) is True:
                 print("found one: ", tweet)
                 (data["tweets"]).append(tweet)
                 with open(file, 'w') as outfile:
@@ -87,4 +87,3 @@ while (True):
     print("future is:", future)
     while time.time() < future:
         continue
-

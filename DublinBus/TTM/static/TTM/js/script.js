@@ -229,17 +229,6 @@ function gettime() {
     }
     var option = $('<option name = "time" value=' + newhour + '>' + hour + ':' + min + '</option>');
     $("#time").empty().append(option); //delete options and replace with current time
-    if (thisday == d.getDay()) {
-        for (var i = newhour; i < 24; i++) {
-            var value = i;
-            if (i > 0) {
-                time_loop = "" + value + ":00";
-            }
-
-            $('#time').append('<option name = "time" value=' + value + '>' + time_loop + '</option>');
-        }
-
-    } else {
         for (var i = 6; i < 24; i++) {
             var value = i;
             time_loop = "" + value + ":00";
@@ -248,13 +237,22 @@ function gettime() {
     }
 
 
-}
-
 function reloadpage() {
     location.reload();
 }
 
-
+function thisday(){
+//function to set cookie date
+    var today = new Date();
+    var weekday = today.getDay();
+ if (weekday > 0) {
+        var value1 = weekday - 1; //change to pythonic days
+    } else {
+        var value1 = 6;
+    }
+    date11 = value1 + ";";
+    document.cookie = "date=" + date11;
+    }
 
 function getdate() {
     //function to get date and convert beyween JS and Python - need to add if statements for bank holidays and christmas - future work :)
@@ -272,20 +270,6 @@ function getdate() {
     day[5] = "Friday";
     day[6] = "Saturday";
     var week_day_loop = ""; //Week day loop to generate Today, Tomorrow and the correct following days depending on the day the user is viewing the site.
-    if (weekday > 0) {
-        var value1 = weekday - 1; //change to pythonic days
-    } else {
-        var value1 = 6;
-    }
-    date11 = value1 + ";";
-    document.cookie = "date=" + date11;
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm
-    }
 
     for (var i = 0; i < 7; i++) {
         var value = weekday + i;
@@ -326,8 +310,6 @@ function weatherJSON() {
     } else {
         i = (x + 7) - weekday; //keep it within mod 7
     }
-
-
 
     $.getJSON("../static/TTM/JSON/weather.json", function (json) {
 
@@ -464,7 +446,7 @@ function realtime1(stopnumber, routenumber) {
         //                alert (json.errormessage);
         //
         //            }
-        out = "<div class ='table3'><table><tr><th>Next bus(mins)</th><th>Wheelchair Access</th></tr>";
+        out = "<div class ='table3'><table style= 'text-align:center; margin-left:auto; margin-right:auto; width:300px; text-align:center'><tr><th>Next bus(mins)</th><th>Wheelchair Access</th></tr>";
         var length = json.numberofresults;
         for (var i = 0; i < length; i++) {
             results = json.results[i]
@@ -508,4 +490,28 @@ function DBtweets() {
         out = last2 + "<br>" + last1;
         document.getElementById("DBtweet").innerHTML = out;
     });
+}
+
+function submitbutton(){
+//stops errors occuring from input
+if (ReadCookie('route') == 'None' || ReadCookie('start') == 'None' || ReadCookie('stop') == 'None' || ReadCookie('date') == 'None' ){
+alert('Please Enter all fields');}
+else {
+location.href = "est_time.html";}
+}
+
+
+function getstops(){
+// user cookies are sent to predictions program
+start1 = ReadCookie('userstart');
+stop1 = ReadCookie('userstop');
+document.cookie = "start=" + start1;
+document.cookie = "stop=" + stop1;
+}
+
+
+function refreshstops(){
+//refreshes stop dropdowns so no refresh is necessary
+$("#dropdownstops1").empty();
+$("#dropdownstops").empty();
 }

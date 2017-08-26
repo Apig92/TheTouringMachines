@@ -28,6 +28,7 @@ week, current weather, the system should produce and display via the interface a
 estimate of travel time for the selected journey"
 
 
+DublinBus is the folder containing the django application.
 
 # Instructions to run it
 
@@ -68,7 +69,7 @@ TouringMachines/Python Scripts/Weather_json.py (scraper for weather predictions)
 TouringMachines/Python Scripts/AAtweets.py  (scraper for twitter feed)
 
 
-# Deployment
+## Deployment
 
 To the deploy the application, changes have to be made to TouringMachines/DublinBus/DublinBus/settings.py to accomodate the changes.
 The easiest way is to run the built-in deployer by adding the proper domain or IP address to the approved hosts. In case nginx+gunicorn,
