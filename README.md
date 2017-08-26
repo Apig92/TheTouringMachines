@@ -29,10 +29,10 @@ estimate of travel time for the selected journey"
 
 
 # Folder Contents
-## Bash Scripts contains hte scripts to populate the database and the packages to install
+## Bash Scripts contains the scripts to populate the database and the packages to install
 ## DublinBus contains the django application.
 ## JupyterNotebooks contains the original notebooks used for the first analysis
-## Python Scripts contains all the scripst for the model preparation
+## Python Scripts contains all the scripts for the model preparation
 ## route40 contains the scripts for the historical average
 ## startbootstrap-scrolling-nav-gh-pages contains the original template and dummy website
 
@@ -50,9 +50,9 @@ Weather info (daily weather from 06/11/12 to 30/11/12 and from 01/01/13 to 31/01
 TOTAL SIZE: 8 GB uncompressed
 
 
-#Script to run on server or local machine (in this order)
+## Script to run on server or local machine
 
-## TouringMachines/Bash Scripts/installPackages.sh
+### TouringMachines/Bash Scripts/installPackages.sh
 It installs all the necessary packages
 
 
@@ -73,8 +73,8 @@ are our own. There are comments highlighting what needs to be changed.
    (in case of errors, delete files that are too small <100Kb. The pickle files are saved in the correct django folder)
 
 ## Files to run on tmux or screen
-TouringMachines/Python Scripts/Weather_json.py (scraper for weather predictions)
-TouringMachines/Python Scripts/AAtweets.py  (scraper for twitter feed)
+### TouringMachines/Python Scripts/Weather_json.py (scraper for weather predictions)
+### TouringMachines/Python Scripts/AAtweets.py  (scraper for twitter feed)
 
 
 ## Deployment
