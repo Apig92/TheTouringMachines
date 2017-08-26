@@ -6,11 +6,11 @@ from datetime import datetime, timedelta
 
 # function that check if the tweet is about Dublin or not
 def dublinornot(tweet):
-    tweet_loca = tweet[:7]
-    if tweet_loca == "#DUBLIN":
+    if tweet[:7] == "#DUBLIN":
         return True
-    else:
-        return False
+    if tweet[:6] == "DUBLIN":
+        return True
+    return False
 
 # function that convert the US time to Ireland time
 def timeconvert(time_was):

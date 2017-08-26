@@ -7,17 +7,19 @@ api_request = "http://api.openweathermap.org/data/2.5/forecast/daily?id=2964574&
 
 def getjson(api_request):
     """Scrapes Weather and adds to Json every 3 hours (to make sure it is working within working times of DublinBus"""
-    url = urllib.request.urlopen(api_request)
-    print ('request made')
-    output = url.read().decode('utf-8')
-    weatherjson = json.loads(output)
-    url.close()
-    with open('C:/Users/Daniel/PycharmProjects/TheTouringMachines/DublinBus/TTM/static/TTM/JSON/weather.json', 'w') as outfile:
-        json.dump(weatherjson, outfile)
-    # with open('/home/csstudent/DublinBus/TTM/static/TTM/JSON/weather.json', 'w') as outfile:
-    #     json.dump(weatherjson, outfile)
-    print('done')
-    time.sleep(10800)
+    on = True
+    while on:
+        url = urllib.request.urlopen(api_request)
+        print ('request made')
+        output = url.read().decode('utf-8')
+        weatherjson = json.loads(output)
+        url.close()
+        # with open('C:/Users/Daniel/PycharmProjects/TheTouringMachines/DublinBus/TTM/static/TTM/JSON/weather.json', 'w') as outfile:
+        #     json.dump(weatherjson, outfile)
+        with open('/home/csstudent/DublinBus/TTM/static/TTM/JSON/weather.json', 'w') as outfile:
+            json.dump(weatherjson, outfile)
+        print('done')
+        time.sleep(10800)
 
 
 if __name__ == "__main__":
