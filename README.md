@@ -28,7 +28,15 @@ week, current weather, the system should produce and display via the interface a
 estimate of travel time for the selected journey"
 
 
-DublinBus is the folder containing the django application.
+# Folder Contents
+## Bash Scripts contains hte scripts to populate the database and the packages to install
+## DublinBus contains the django application.
+## JupyterNotebooks contains the original notebooks used for the first analysis
+## Python Scripts contains all the scripst for the model preparation
+## route40 contains the scripts for the historical average
+## startbootstrap-scrolling-nav-gh-pages contains the original template and dummy website
+
+
 
 # Instructions to run it
 
@@ -44,7 +52,8 @@ TOTAL SIZE: 8 GB uncompressed
 
 #Script to run on server or local machine (in this order)
 
-TouringMachines/Bash Scripts/installPackages.sh      It installs all the necessary packages
+## TouringMachines/Bash Scripts/installPackages.sh
+It installs all the necessary packages
 
 
 ## Data preparation
@@ -53,16 +62,15 @@ The only modifications that have to be done to the scripts is in the paths, as a
 are our own. There are comments highlighting what needs to be changed.
 
 ### TouringMachines/Python Scripts/SeparateLines.py
-  (after this operation the original files can be deleted)
+   (after this operation the original files can be deleted)
 ### TouringMachines/Python Scripts/jsonfromstoptoseq.py
 ### TouringMachines/Python Scripts/newcsvs.py
- (files of the previous operation can be deleted)
+   (files of the previous operation can be deleted)
 ### TouringMachines/Python Scripts/Weather.py
-  (files of the previous operation can be deleted)
+   (files of the previous operation can be deleted
 ### TouringMachines/Python Scripts/PatternToIndex.py
 ### TouringMachines/Python Scripts/RandomForest.py
-    (in case of errors, delete files that are too small <100Kb. The pickle
-                                                 files are saved in the correct django folder)
+   (in case of errors, delete files that are too small <100Kb. The pickle files are saved in the correct django folder)
 
 ## Files to run on tmux or screen
 TouringMachines/Python Scripts/Weather_json.py (scraper for weather predictions)
@@ -73,9 +81,7 @@ TouringMachines/Python Scripts/AAtweets.py  (scraper for twitter feed)
 
 To the deploy the application, changes have to be made to TouringMachines/DublinBus/DublinBus/settings.py to accomodate the changes.
 The easiest way is to run the built-in deployer by adding the proper domain or IP address to the approved hosts. In case nginx+gunicorn,
-or apache more changes have to be made.
-
-When in  TheTouringMachines/DublinBus folder, the command "python manage.py domainname:portofchoice" will work.
+or apache more changes have to be made. When in  TheTouringMachines/DublinBus folder, the command "python manage.py domainname:portofchoice" will work.
 
 
 
